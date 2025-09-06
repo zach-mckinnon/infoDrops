@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resisting Techno-Fascism: A Guide for Citizens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Neutral -->
+    <!-- Application Structure Plan: The application maintains its five-part narrative flow. A language switcher (EN/ES) has been added to the header. All text content is now managed by a JavaScript translation object. A core `setLanguage` function updates all static HTML elements, and dynamically redraws the Chart.js chart, the quiz, and the toolkit cards with the selected language's content, making the entire application fully bilingual. -->
+    <!-- Visualization & Content Choices: 
+        1. Report Info: All textual content from the report. Goal: Provide full bilingual support. Viz/Method: A comprehensive JS object `translations` stores all English ('en') and Spanish ('es') strings. HTML elements are tagged with a `data-translate` key. Interaction: User clicks language buttons in the nav. Justification: This is a robust method for managing translations on a static site, allowing for instant, client-side language switching without a page reload, significantly improving accessibility.
+        2. Report Info: Dynamic components (chart, quiz). Goal: Ensure dynamic content is also translated. Viz/Method: The `setLanguage` function was extended to destroy and re-initialize the Chart.js instance and re-render the quiz/toolkit cards using the appropriate strings from the `translations` object. Interaction: Language switching seamlessly updates these components. Justification: This ensures a consistent, fully-translated user experience across the entire application.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4;
+            color: #1c1917;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+                max-height: 500px;
+            }
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #c2410c;
+            transform: scale(1.05);
+        }
+        .lang-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .lang-btn.active {
+            background-color: #c2410c;
+            color: #ffffff;
+        }
+        .action-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .quiz-option {
+            transition: all 0.2s ease-in-out;
+        }
+        .quiz-option:hover, .quiz-option.selected {
+            background-color: #fed7aa;
+            border-color: #f97316;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-stone-200/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-stone-800" data-translate="header_title">The Citizen's Guide</div>
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-sm lg:text-base">
+                    <a href="#understanding" class="nav-link text-stone-700 font-medium" data-translate="nav_1">1. Warning</a>
+                    <a href="#identifying" class="nav-link text-stone-700 font-medium" data-translate="nav_2">2. Signs</a>
+                    <a href="#reality-check" class="nav-link text-stone-700 font-medium" data-translate="nav_3">3. Reality Check</a>
+                    <a href="#resisting" class="nav-link text-stone-700 font-medium" data-translate="nav_4">4. Toolkit</a>
+                    <a href="#community" class="nav-link text-stone-700 font-medium" data-translate="nav_5">5. Foundation</a>
+                    <div class="border-l border-stone-400 h-6 ml-4 pl-4 flex items-center space-x-2">
+                        <button id="lang-en" class="lang-btn px-3 py-1 rounded-md font-bold text-sm">EN</button>
+                        <button id="lang-es" class="lang-btn px-3 py-1 rounded-md font-bold text-sm">ES</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section class="text-center mb-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight" data-translate="main_title">Resisting the Digital Drift</h1>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-stone-600" data-translate="main_subtitle">A guide for the average citizen to understand the rise of techno-fascism, identify its presence, and discover effective ways to fight back.</p>
+        </section>
+
+        <section id="understanding" class="mb-24 scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800" data-translate="section1_title">1. Understanding the Warning</h2>
+                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section1_subtitle">This section defines the emerging threat of techno-fascism. It is not a historical reenactment but a new form of control that fuses corporate technology with authoritarian politics to monitor, manipulate, and suppress the public in unprecedented ways.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-orange-800 mb-3" data-translate="section1_card1_title">What is Fascism?</h3>
+                    <p class="text-stone-700" data-translate="section1_card1_text">At its core, fascism is a political ideology characterized by a dictatorial leader, centralized autocracy, militarism, and the forcible suppression of opposition. It subordinates individual interests to the perceived good of the nation or state, often defined along ultranationalist or racial lines.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-orange-800 mb-3" data-translate="section1_card2_title">What makes it "Techno"?</h3>
+                    <p class="text-stone-700" data-translate="section1_card2_text">"Techno" refers to the use of modern technology as the primary tool for control. This includes mass surveillance, algorithmic manipulation of information, and data-driven methods to identify and silence dissent. Big Tech and the state become intertwined partners.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-bold text-orange-800 mb-3" data-translate="section1_card3_title">Why is it a Threat Now?</h3>
+                    <p class="text-stone-700" data-translate="section1_card3_text">The combination of vast corporate data collection, powerful AI, and growing political polarization creates a fertile ground for this ideology. It can emerge subtly, disguised as "efficiency," "national security," or "progress," while systematically eroding democratic norms.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="identifying" class="mb-24 scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800" data-translate="section2_title">2. Identifying the Signs</h2>
+                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section2_subtitle">Fascist tendencies don't appear overnight. This interactive chart highlights key characteristics. Click on any segment to see how it connects to recent events. The levels (1-10) indicate the perceived prevalence of that trend in modern American society, with 10 being a critical concern.</p>
+            </div>
+
+            <div class="bg-white p-4 md:p-8 rounded-lg shadow-2xl border border-stone-200">
+                <div class="lg:flex lg:space-x-8">
+                    <div class="lg:w-1/2">
+                        <div class="chart-container">
+                            <canvas id="fascismChart"></canvas>
+                        </div>
+                        <div class="text-center mt-4 text-sm text-stone-500">
+                            <p data-translate="chart_explanation"><span class="font-bold">Chart Levels Explained:</span> The distance from the center represents perceived intensity. A score of <span class="font-bold">10</span> indicates a highly prevalent and critical trend, while a lower score like <span class="font-bold">3</span> suggests an emerging but less overt characteristic.</p>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 mt-8 lg:mt-0 flex flex-col justify-center">
+                        <h3 id="chart-title" class="text-2xl font-bold text-orange-800 mb-3" data-translate="chart_initial_title">Select a Characteristic</h3>
+                        <div id="chart-content" class="text-stone-700 space-y-3">
+                            <p data-translate="chart_initial_text">The chart on the left displays common warning signs. Interacting with it will reveal explanations and connect these abstract ideas to the real world, helping you develop a critical eye for news and political rhetoric.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="reality-check" class="mb-24 scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800" data-translate="section3_title">3. Reality Check Quiz</h2>
+                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section3_subtitle">How much do these trends affect your daily life and perceptions? Answer these questions to reflect on the current climate. This isn't a scientific test, but a tool for self-awareness.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-2xl border border-stone-200 max-w-3xl mx-auto">
+                <div id="quiz-container">
+                </div>
+                <div id="quiz-results" class="hidden text-center">
+                    <h3 class="text-2xl font-bold text-orange-800 mb-4" data-translate="quiz_results_title">Your Reflection</h3>
+                    <p id="results-text" class="text-stone-700 mb-6"></p>
+                    <a href="#resisting" class="inline-block bg-orange-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-700 transition-colors" data-translate="quiz_results_cta">See How You Can Take Action</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="resisting" class="mb-24 scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800" data-translate="section4_title">4. The Citizen's Toolkit for Resistance</h2>
+                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section4_subtitle">Realizing the threat is the first step; taking action is the next. Here are concrete steps any citizen can take. Click each card to learn more.</p>
+            </div>
+            <div id="toolkit-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </section>
+
+        <section id="community" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800" data-translate="section5_title">5. The Ultimate Foundation: Community</span></h2>
+                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section5_subtitle">Authoritarianism thrives when we are divided and isolated. The most powerful act of resistance is to build strong, resilient, and caring communities. When we know and support our neighbors, we create a social fabric that is incredibly difficult to tear apart.</p>
+            </div>
+            
+            <div class="bg-white p-8 rounded-lg shadow-2xl border border-stone-200">
+                <div class="flex flex-col md:flex-row items-center justify-around text-center">
+                    <div class="md:w-2/5 p-4">
+                        <h4 class="text-xl font-bold text-red-700 mb-4" data-translate="division_title">Tactics of Division</h4>
+                         <div class="space-y-3">
+                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_1">Fostering Isolation & Loneliness</p>
+                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_2">Promoting Scapegoating & "Othering"</p>
+                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_3">Spreading Fear & Distrust</p>
+                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_4">Encouraging Extreme Individualism</p>
+                        </div>
+                    </div>
+
+                    <div class="text-5xl my-8 md:my-0 text-orange-600 font-bold">&harr;</div>
+
+                    <div class="md:w-2/5 p-4">
+                        <h4 class="text-xl font-bold text-green-700 mb-4" data-translate="resistance_title">Acts of Community Resistance</h4>
+                        <div class="space-y-3">
+                           <p class="bg-green-100 text-green-800 p-3 rounded-md" data-translate="resistance_1"><strong>Mutual Aid Network:</strong> Organize neighbors to share resources like food, childcare, or transportation, strengthening local bonds.</p>
+                            <p class="bg-green-100 text-green-800 p-3 rounded-md" data-translate="resistance_2"><strong>Local Skill Share:</strong> Host events where people teach each other practical skills (e.g., gardening, basic repairs), building self-sufficiency.</p>
+                            <p class="bg-green-100 text-green-800 p-3 rounded-md" data-translate="resistance_3"><strong>Support Local Groups:</strong> Participate in or donate to local organizations working on issues you care about, from libraries to food banks.</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-stone-600 max-w-3xl mx-auto" data-translate="section5_conclusion">Every time you share food, offer help, or organize a local cleanup, you perform a revolutionary act. You replace fear with solidarity and isolation with connection. This is the ground from which all other forms of resistance grow.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-stone-200 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-stone-600">
+            <p data-translate="footer_text">This guide is for informational purposes. Stay informed, stay engaged, and stay connected.</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                header_title: "The Citizen's Guide",
+                nav_1: "1. Warning", nav_2: "2. Signs", nav_3: "3. Reality Check", nav_4: "4. Toolkit", nav_5: "5. Foundation",
+                main_title: "Resisting the Digital Drift",
+                main_subtitle: "A guide for the average citizen to understand the rise of techno-fascism, identify its presence, and discover effective ways to fight back.",
+                section1_title: "1. Understanding the Warning",
+                section1_subtitle: "This section defines the emerging threat of techno-fascism. It is not a historical reenactment but a new form of control that fuses corporate technology with authoritarian politics to monitor, manipulate, and suppress the public in unprecedented ways.",
+                section1_card1_title: "What is Fascism?",
+                section1_card1_text: "At its core, fascism is a political ideology characterized by a dictatorial leader, centralized autocracy, militarism, and the forcible suppression of opposition. It subordinates individual interests to the perceived good of the nation or state, often defined along ultranationalist or racial lines.",
+                section1_card2_title: 'What makes it "Techno"?',
+                section1_card2_text: '"Techno" refers to the use of modern technology as the primary tool for control. This includes mass surveillance, algorithmic manipulation of information, and data-driven methods to identify and silence dissent. Big Tech and the state become intertwined partners.',
+                section1_card3_title: "Why is it a Threat Now?",
+                section1_card3_text: "The combination of vast corporate data collection, powerful AI, and growing political polarization creates a fertile ground for this ideology. It can emerge subtly, disguised as \"efficiency,\" \"national security,\" or \"progress,\" while systematically eroding democratic norms.",
+                section2_title: "2. Identifying the Signs",
+                section2_subtitle: "Fascist tendencies don't appear overnight. This interactive chart highlights key characteristics. Click on any segment to see how it connects to recent events. The levels (1-10) indicate the perceived prevalence of that trend in modern American society, with 10 being a critical concern.",
+                chart_explanation: '<span class="font-bold">Chart Levels Explained:</span> The distance from the center represents perceived intensity. A score of <span class="font-bold">10</span> indicates a highly prevalent and critical trend, while a lower score like <span class="font-bold">3</span> suggests an emerging but less overt characteristic.',
+                chart_initial_title: "Select a Characteristic",
+                chart_initial_text: "The chart on the left displays common warning signs. Interacting with it will reveal explanations and connect these abstract ideas to the real world, helping you develop a critical eye for news and political rhetoric.",
+                section3_title: "3. Reality Check Quiz",
+                section3_subtitle: "How much do these trends affect your daily life and perceptions? Answer these questions to reflect on the current climate. This isn't a scientific test, but a tool for self-awareness.",
+                quiz_results_title: "Your Reflection",
+                quiz_results_cta: "See How You Can Take Action",
+                section4_title: "4. The Citizen's Toolkit for Resistance",
+                section4_subtitle: "Realizing the threat is the first step; taking action is the next. Here are concrete steps any citizen can take. Click each card to learn more.",
+                section5_title: "5. The Ultimate Foundation: Community",
+                section5_subtitle: "Authoritarianism thrives when we are divided and isolated. The most powerful act of resistance is to build strong, resilient, and caring communities. When we know and support our neighbors, we create a social fabric that is incredibly difficult to tear apart.",
+                division_title: "Tactics of Division",
+                division_1: "Fostering Isolation & Loneliness",
+                division_2: 'Promoting Scapegoating & "Othering"',
+                division_3: "Spreading Fear & Distrust",
+                division_4: "Encouraging Extreme Individualism",
+                resistance_title: "Acts of Community Resistance",
+                resistance_1: "<strong>Mutual Aid Network:</strong> Organize neighbors to share resources like food, childcare, or transportation, strengthening local bonds.",
+                resistance_2: "<strong>Local Skill Share:</strong> Host events where people teach each other practical skills (e.g., gardening, basic repairs), building self-sufficiency.",
+                resistance_3: "<strong>Support Local Groups:</strong> Participate in or donate to local organizations working on issues you care about, from libraries to food banks.",
+                section5_conclusion: "Every time you share food, offer help, or organize a local cleanup, you perform a revolutionary act. You replace fear with solidarity and isolation with connection. This is the ground from which all other forms of resistance grow.",
+                footer_text: "This guide is for informational purposes. Stay informed, stay engaged, and stay connected.",
+                quiz_agree: "Agree",
+                quiz_disagree: "Disagree",
+                toolkit_action_button: "Take Action Now &rarr;"
+            },
+            es: {
+                header_title: "La Guía del Ciudadano",
+                nav_1: "1. Advertencia", nav_2: "2. Señales", nav_3: "3. Autoevaluación", nav_4: "4. Herramientas", nav_5: "5. Fundación",
+                main_title: "Resistiendo la Deriva Digital",
+                main_subtitle: "Una guía para el ciudadano promedio para comprender el auge del tecnofascismo, identificar su presencia y descubrir formas efectivas de contraatacar.",
+                section1_title: "1. Entendiendo la Advertencia",
+                section1_subtitle: "Esta sección define la amenaza emergente del tecnofascismo. No es una recreación histórica, sino una nueva forma de control que fusiona la tecnología corporativa con políticas autoritarias para monitorear, manipular y reprimir al público de maneras sin precedentes.",
+                section1_card1_title: "¿Qué es el Fascismo?",
+                section1_card1_text: "En esencia, el fascismo es una ideología política caracterizada por un líder dictatorial, autocracia centralizada, militarismo y la supresión forzada de la oposición. Subordina los intereses individuales al bien percibido de la nación o el estado, a menudo definido en líneas ultranacionalistas o raciales.",
+                section1_card2_title: '¿Qué lo hace "Tecno"?',
+                section1_card2_text: '"Tecno" se refiere al uso de la tecnología moderna como la principal herramienta de control. Esto incluye la vigilancia masiva, la manipulación algorítmica de la información y métodos basados en datos para identificar y silenciar la disidencia. Las grandes tecnológicas y el estado se convierten en socios entrelazados.',
+                section1_card3_title: "¿Por qué es una Amenaza Ahora?",
+                section1_card3_text: "La combinación de la vasta recopilación de datos corporativos, una IA potente y una creciente polarización política crea un terreno fértil para esta ideología. Puede surgir sutilmente, disfrazado de \"eficiencia\", \"seguridad nacional\" o \"progreso\", mientras erosiona sistemáticamente las normas democráticas.",
+                section2_title: "2. Identificando las Señales",
+                section2_subtitle: "Las tendencias fascistas no aparecen de la noche a la mañana. Este gráfico interactivo destaca características clave. Haz clic en cualquier segmento para ver cómo se conecta con eventos recientes. Los niveles (1-10) indican la prevalencia percibida de esa tendencia en la sociedad estadounidense moderna, siendo 10 una preocupación crítica.",
+                chart_explanation: '<span class="font-bold">Explicación de los Niveles del Gráfico:</span> La distancia desde el centro representa la intensidad percibida. Una puntuación de <span class="font-bold">10</span> indica una tendencia muy prevalente y crítica, mientras que una puntuación más baja como <span class="font-bold">3</span> sugiere una característica emergente pero menos manifiesta.',
+                chart_initial_title: "Selecciona una Característica",
+                chart_initial_text: "El gráfico de la izquierda muestra señales de advertencia comunes. Interactuar con él revelará explicaciones y conectará estas ideas abstractas con el mundo real, ayudándote a desarrollar un ojo crítico para las noticias y la retórica política.",
+                section3_title: "3. Cuestionario de Autoevaluación",
+                section3_subtitle: "¿Cuánto afectan estas tendencias tu vida diaria y tus percepciones? Responde estas preguntas para reflexionar sobre el clima actual. No es una prueba científica, sino una herramienta para la autoconciencia.",
+                quiz_results_title: "Tu Reflexión",
+                quiz_results_cta: "Descubre Cómo Puedes Actuar",
+                section4_title: "4. Herramientas de Resistencia Ciudadana",
+                section4_subtitle: "Darse cuenta de la amenaza es el primer paso; actuar es el siguiente. Aquí hay pasos concretos que cualquier ciudadano puede tomar. Haz clic en cada tarjeta para saber más.",
+                section5_title: "5. La Fundación Definitiva: La Comunidad",
+                section5_subtitle: "El autoritarismo prospera cuando estamos divididos y aislados. El acto de resistencia más poderoso es construir comunidades fuertes, resilientes y solidarias. Cuando conocemos y apoyamos a nuestros vecinos, creamos un tejido social increíblemente difícil de romper.",
+                division_title: "Tácticas de División",
+                division_1: "Fomentar el Aislamiento y la Soledad",
+                division_2: 'Promover Chivos Expiatorios y la "Otredad"',
+                division_3: "Difundir el Miedo y la Desconfianza",
+                division_4: "Fomentar el Individualismo Extremo",
+                resistance_title: "Actos de Resistencia Comunitaria",
+                resistance_1: "<strong>Red de Ayuda Mutua:</strong> Organiza a los vecinos para compartir recursos como comida, cuidado de niños o transporte, fortaleciendo los lazos locales.",
+                resistance_2: "<strong>Intercambio de Habilidades Locales:</strong> Organiza eventos donde las personas se enseñen habilidades prácticas (ej. jardinería, reparaciones básicas), construyendo autosuficiencia.",
+                resistance_3: "<strong>Apoya a Grupos Locales:</strong> Participa o dona a organizaciones locales que trabajan en temas que te importan, desde bibliotecas hasta bancos de alimentos.",
+                section5_conclusion: "Cada vez que compartes comida, ofreces ayuda u organizas una limpieza local, realizas un acto revolucionario. Reemplazas el miedo con solidaridad y el aislamiento con conexión. Este es el terreno del que crecen todas las demás formas de resistencia.",
+                footer_text: "Esta guía es para fines informativos. Mantente informado, participativo y conectado.",
+                quiz_agree: "De acuerdo",
+                quiz_disagree: "En desacuerdo",
+                toolkit_action_button: "Actúa Ahora &rarr;"
+            }
+        };
+
+        const contentData = {
+            en: [
+                { title: "Powerful, Exclusionary Nationalism", content: "This involves a constant appeal to patriotism, often defined against a perceived 'enemy.' Recent examples include rhetoric casting immigrants as invaders and demonizing political opponents as traitors." },
+                { title: "Control of Mass Media & Information", content: "This is characterized by efforts to discredit mainstream media ('fake news'), amplified by social media algorithms that create echo chambers and spread disinformation. The goal is to control the narrative." },
+                { title: "Disdain for Human Rights & Due Process", content: "Civil liberties are framed as an obstacle to security. This can be seen in the expansion of state surveillance powers, justification of police brutality, and rhetoric that dehumanizes minority groups." },
+                { title: "Supremacy of the Military & Police", content: "An outsized portion of the budget is allocated to military/law enforcement, who are glorified. Paramilitary groups may be encouraged. This creates a culture of force where dissent is equated with criminality." },
+                { title: "Rampant Cronyism & Corruption", content: "The leader and their allies use political power to enrich themselves, appointing loyal but unqualified individuals to powerful posts. This blurs the line between public service and personal gain." },
+                { title: "Intertwined Corporate & State Power", content: "In techno-fascism, this is key. Powerful tech corporations provide tools for surveillance and social control in exchange for favorable regulation and massive contracts, merging state and corporate power." },
+                { title: "Suppression of Dissent & Opposition", content: "Political opponents, intellectuals, and protestors are cast as enemies of the state. This can range from online harassment to using the legal system to target critics, creating a climate of fear." },
+                { title: "Obsession with National Security", content: "Fear is used as a primary motivator. A constant state of threat—from terrorism, immigration, crime—is manufactured to justify eroding civil liberties and expanding executive power." }
+            ],
+            es: [
+                { title: "Nacionalismo Poderoso y Excluyente", content: "Implica un llamado constante al patriotismo, a menudo definido en contra de un 'enemigo' percibido. Ejemplos recientes incluyen retórica que presenta a los inmigrantes como invasores y demoniza a los oponentes políticos como traidores." },
+                { title: "Control de los Medios de Comunicación e Información", content: "Se caracteriza por esfuerzos para desacreditar a los medios tradicionales ('noticias falsas'), amplificados por algoritmos de redes sociales que crean cámaras de eco y difunden desinformación. El objetivo es controlar la narrativa." },
+                { title: "Desdén por los Derechos Humanos y el Debido Proceso", content: "Las libertades civiles se presentan como un obstáculo para la seguridad. Se ve en la expansión de los poderes de vigilancia estatal, la justificación de la brutalidad policial y la retórica que deshumaniza a grupos minoritarios." },
+                { title: "Supremacía del Ejército y la Policía", content: "Se asigna una parte desproporcionada del presupuesto a militares/policías, quienes son glorificados. Se puede alentar a grupos paramilitares. Esto crea una cultura de fuerza donde la disidencia se equipara a la criminalidad." },
+                { title: "Amiguismo y Corrupción Rampantes", content: "El líder y sus aliados usan el poder político para enriquecerse, nombrando a individuos leales pero no calificados para puestos poderosos. Esto difumina la línea entre el servicio público y el beneficio personal." },
+                { title: "Fusión del Poder Corporativo y Estatal", content: "En el tecnofascismo, esto es clave. Poderosas corporaciones tecnológicas proporcionan herramientas para la vigilancia y el control social a cambio de una regulación favorable y contratos masivos, fusionando el poder estatal y corporativo." },
+                { title: "Supresión de la Disidencia y la Oposición", content: "Opositores políticos, intelectuales y manifestantes son presentados como enemigos del estado. Esto puede ir desde el acoso en línea hasta el uso del sistema legal para atacar a los críticos, creando un clima de miedo." },
+                { title: "Obsesión con la Seguridad Nacional", content: "El miedo se usa como un motivador principal. Se fabrica o exagera un estado constante de amenaza —terrorismo, inmigración, crimen— para justificar la erosión de las libertades civiles y la expansión del poder ejecutivo." }
+            ]
+        };
+
+        const chartLabels = {
+            en: ['Powerful Nationalism', 'Control of Media', 'Disdain for Rights', 'Military Supremacy', 'Rampant Cronyism', 'Corp/State Fusion', 'Suppression of Dissent', 'Security Obsession'],
+            es: ['Nacionalismo Fuerte', 'Control de Medios', 'Desdén por Derechos', 'Supremacía Militar', 'Amiguismo Rampante', 'Fusión Corp/Estado', 'Supresión de Disidencia', 'Obsesión Seguridad']
+        };
+
+        const quizQuestions = {
+            en: [
+                { question: "When I see news online, I often feel it's designed to make me angry or afraid.", points: 1 },
+                { question: "I feel like my online activities and private conversations are probably being monitored.", points: 1 },
+                { question: "It seems harder to have a respectful political conversation with people who disagree with me.", points: 1 },
+                { question: "I sometimes hear political leaders talk about the media or their opponents as 'enemies of the people'.", points: 1 },
+                { question: "I've noticed a growing sense of distrust towards my neighbors or people in my community.", points: 1 }
+            ],
+            es: [
+                { question: "Cuando veo noticias en línea, a menudo siento que están diseñadas para enojarme o asustarme.", points: 1 },
+                { question: "Siento que mis actividades en línea y conversaciones privadas probablemente están siendo monitoreadas.", points: 1 },
+                { question: "Parece más difícil tener una conversación política respetuosa con personas que no están de acuerdo conmigo.", points: 1 },
+                { question: "A veces escucho a líderes políticos hablar de los medios o de sus oponentes como 'enemigos del pueblo'.", points: 1 },
+                { question: "He notado una creciente desconfianza hacia mis vecinos o la gente de mi comunidad.", points: 1 }
+            ]
+        };
+        
+        const quizResultsText = {
+            en: {
+                high: "It seems you're highly aware of the divisive and concerning trends in our current digital and political landscape. This awareness is a critical first step. The toolkit below will offer concrete ways to channel that awareness into positive action.",
+                medium: "You're noticing some of the key warning signs. These feelings of unease and division are common and valid. The next sections can help you put a name to these trends and find constructive ways to respond.",
+                low: "It's good that these issues may not be at the forefront of your daily experience. However, remaining vigilant and informed is crucial for everyone. The toolkit below offers proactive ways to strengthen our democracy."
+            },
+            es: {
+                high: "Parece que eres muy consciente de las tendencias divisorias y preocupantes en nuestro panorama digital y político actual. Esta conciencia es un primer paso crítico. Las herramientas a continuación ofrecerán formas concretas de canalizar esa conciencia en acción positiva.",
+                medium: "Estás notando algunas de las señales de advertencia clave. Estos sentimientos de inquietud y división son comunes y válidos. Las siguientes secciones pueden ayudarte a nombrar estas tendencias y encontrar formas constructivas de responder.",
+                low: "Es bueno que estos problemas no estén en primer plano en tu experiencia diaria. Sin embargo, mantenerse vigilante e informado es crucial para todos. Las herramientas a continuación ofrecen formas proactivas de fortalecer nuestra democracia."
+            }
+        };
+
+        const actionItems = {
+            en: [
+                { title: '💻 Defend Your Digital Privacy', what: 'Take control of your personal data and reduce your digital footprint.', why: 'Tech companies and governments collect vast amounts of data. Limiting this collection makes it harder for them to track, manipulate, or profile you.', how: '<ul><li class="mb-1">Use encrypted messaging apps like Signal.</li><li class="mb-1">Switch to a privacy-focused browser like Brave or Firefox.</li><li>Install privacy extensions like uBlock Origin.</li></ul>', link: 'https://www.eff.org/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
+                { title: '🗳️ Engage in Local Politics', what: 'Vote in every election and pay attention to local government.', why: 'Local officials (school boards, city councils, DAs) have a huge impact on your daily life and civil liberties. National decay often starts with local apathy.', how: '<ul><li class="mb-1">Find out who your local representatives are.</li><li class="mb-1">Attend a town hall or city council meeting, even online.</li><li>Research candidates beyond the major races.</li></ul>', link: 'https://www.usa.gov/local-governments' },
+                { title: '📰 Support Independent Media', what: 'Fund journalism that is not beholden to corporate or state interests.', why: 'A free and independent press is essential for holding power accountable. Supporting them ensures that investigative journalism can continue.', how: '<ul><li class="mb-1">Subscribe to your local newspaper.</li><li class="mb-1">Donate to non-profit news organizations (e.g., ProPublica, The Markup).</li><li>Share their work and credit them.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
+            ],
+            es: [
+                { title: '💻 Defiende tu Privacidad Digital', what: 'Toma el control de tus datos personales y reduce tu huella digital.', why: 'Las empresas tecnológicas y los gobiernos recopilan grandes cantidades de datos. Limitar esta recopilación les dificulta rastrearte, manipularte o perfilarte.', how: '<ul><li class="mb-1">Usa apps de mensajería cifrada como Signal.</li><li class="mb-1">Cambia a un navegador centrado en la privacidad como Brave o Firefox.</li><li>Instala extensiones de privacidad como uBlock Origin.</li></ul>', link: 'https://www.eff.org/es/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
+                { title: '🗳️ Participa en la Política Local', what: 'Vota en todas las elecciones y presta atención al gobierno local.', why: 'Los funcionarios locales (juntas escolares, ayuntamientos) tienen un gran impacto en tu vida diaria y libertades civiles. El declive nacional a menudo comienza con la apatía local.', how: '<ul><li class="mb-1">Averigua quiénes son tus representantes locales.</li><li class="mb-1">Asiste a una reunión del ayuntamiento, incluso en línea.</li><li>Investiga a los candidatos más allá de las carreras principales.</li></ul>', link: 'https://www.usa.gov/es/gobiernos-locales' },
+                { title: '📰 Apoya a los Medios Independientes', what: 'Financia el periodismo que no depende de intereses corporativos o estatales.', why: 'Una prensa libre e independiente es esencial para que el poder rinda cuentas. Apoyarlos asegura que el periodismo de investigación pueda continuar.', how: '<ul><li class="mb-1">Suscríbete a tu periódico local.</li><li class="mb-1">Dona a organizaciones de noticias sin fines de lucro.</li><li>Comparte su trabajo y dales crédito.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
+            ]
+        };
+
+        let currentLang = 'en';
+        let fascismChart;
+
+        const setLanguage = (lang) => {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.dataset.translate;
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+
+            drawChart(lang);
+            renderToolkit(lang);
+            resetQuiz(lang);
+        };
+
+        const drawChart = (lang) => {
+            if (fascismChart) {
+                fascismChart.destroy();
+            }
+            const chartConfig = {
+                type: 'radar',
+                data: {
+                    labels: chartLabels[lang],
+                    datasets: [{ data: [8, 9, 7, 8, 9, 10, 8, 9], backgroundColor: 'rgba(234, 88, 12, 0.2)', borderColor: 'rgba(194, 65, 12, 1)', pointBackgroundColor: 'rgba(194, 65, 12, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(194, 65, 12, 1)', borderWidth: 3 }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { r: { angleLines: { color: 'rgba(0, 0, 0, 0.1)' }, grid: { color: 'rgba(0, 0, 0, 0.1)' }, pointLabels: { font: { size: 11, weight: 'bold' }, color: '#44403c' }, ticks: { display: false, beginAtZero: true, max: 10, stepSize: 2 } } },
+                    plugins: { legend: { display: false }, tooltip: { enabled: true, callbacks: { label: (c) => chartLabels[lang][c.dataIndex] } } }
+                }
+            };
+            const ctx = document.getElementById('fascismChart').getContext('2d');
+            fascismChart = new Chart(ctx, chartConfig);
+
+            document.getElementById('fascismChart').onclick = (evt) => {
+                const points = fascismChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                if (points.length) {
+                    const index = points[0].index;
+                    document.getElementById('chart-title').textContent = contentData[lang][index].title;
+                    document.getElementById('chart-content').innerHTML = `<p>${contentData[lang][index].content}</p>`;
+                }
+            };
+        };
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const quizContainer = document.getElementById('quiz-container');
+
+        const renderQuestion = () => {
+            if (currentQuestionIndex >= quizQuestions[currentLang].length) {
+                showResults();
+                return;
+            }
+            const q = quizQuestions[currentLang][currentQuestionIndex];
+            quizContainer.innerHTML = `
+                <p class="text-lg font-semibold text-stone-800 mb-6 text-center">${q.question}</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="quiz-option p-4 border-2 border-stone-300 rounded-lg font-bold" data-value="1">${translations[currentLang].quiz_agree}</button>
+                    <button class="quiz-option p-4 border-2 border-stone-300 rounded-lg font-bold" data-value="0">${translations[currentLang].quiz_disagree}</button>
+                </div>
+            `;
+            quizContainer.querySelectorAll('.quiz-option').forEach(button => {
+                button.onclick = (e) => {
+                    score += parseInt(e.target.dataset.value) * q.points;
+                    currentQuestionIndex++;
+                    renderQuestion();
+                };
+            });
+        };
+
+        const showResults = () => {
+            quizContainer.classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+            const resultsTextEl = document.getElementById('results-text');
+            const resultsContent = quizResultsText[currentLang];
+            if (score >= 4) { resultsTextEl.textContent = resultsContent.high; } 
+            else if (score >= 2) { resultsTextEl.textContent = resultsContent.medium; } 
+            else { resultsTextEl.textContent = resultsContent.low; }
+        };
+
+        const resetQuiz = (lang) => {
+            currentQuestionIndex = 0;
+            score = 0;
+            quizContainer.classList.remove('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            renderQuestion();
+        };
+        
+        const renderToolkit = (lang) => {
+            const toolkitContainer = document.getElementById('toolkit-container');
+            toolkitContainer.innerHTML = actionItems[lang].map(item => `
+                <div class="action-card bg-white rounded-lg shadow-lg border border-stone-200 cursor-pointer overflow-hidden">
+                    <div class="p-6"> <h3 class="text-xl font-bold text-orange-800">${item.title}</h3> </div>
+                    <div class="action-card-content">
+                        <div class="px-6 pb-6 text-stone-700 space-y-4">
+                            <div><strong class="text-stone-800">${translations[lang].section1_card1_title.split(' ')[0]}:</strong> ${item.what}</div>
+                            <div><strong class="text-stone-800">${translations[lang].section1_card3_title.split(' ')[0]}:</strong> ${item.why}</div>
+                            <div><strong class="text-stone-800">${translations[lang].section4_subtitle.split(' ').slice(-3, -2)}:</strong> ${item.how}</div>
+                            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 bg-orange-100 text-orange-800 font-bold py-2 px-4 rounded-md hover:bg-orange-200 transition-colors">${translations[lang].toolkit_action_button}</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.action-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A') return;
+                    const content = card.querySelector('.action-card-content');
+                    const isOpened = content.style.maxHeight && content.style.maxHeight !== '0px';
+                    content.style.maxHeight = isOpened ? '0px' : content.scrollHeight + "px";
+                });
+            });
+        };
+
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
+        
+        const savedLang = localStorage.getItem('language') || 'en';
+        setLanguage(savedLang);
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
