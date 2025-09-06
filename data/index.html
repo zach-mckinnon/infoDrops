@@ -1,212 +1,569 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Resisting Techno-Fascism: A Guide for Citizens</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Calm Neutral -->
-    <!-- Application Structure Plan: The application maintains its five-part narrative flow. A language switcher (EN/ES) has been added to the header. All text content is now managed by a JavaScript translation object. A core `setLanguage` function updates all static HTML elements, and dynamically redraws the Chart.js chart, the quiz, and the toolkit cards with the selected language's content, making the entire application fully bilingual. -->
-    <!-- Visualization & Content Choices: 
-        1. Report Info: All textual content from the report. Goal: Provide full bilingual support. Viz/Method: A comprehensive JS object `translations` stores all English ('en') and Spanish ('es') strings. HTML elements are tagged with a `data-translate` key. Interaction: User clicks language buttons in the nav. Justification: This is a robust method for managing translations on a static site, allowing for instant, client-side language switching without a page reload, significantly improving accessibility.
-        2. Report Info: Dynamic components (chart, quiz). Goal: Ensure dynamic content is also translated. Viz/Method: The `setLanguage` function was extended to destroy and re-initialize the Chart.js instance and re-render the quiz/toolkit cards using the appropriate strings from the `translations` object. Interaction: Language switching seamlessly updates these components. Justification: This ensures a consistent, fully-translated user experience across the entire application.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="stylesheet" href="/minimal.css">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f7f4;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: -webkit-system-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f7f4 0%, #e7e5e4 100%);
+            color: #1c1917;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container { 
+            max-width: 100%; 
+            margin: 0 auto; 
+            padding: 1rem; 
+        }
+        
+        @media (min-width: 768px) { 
+            .container { max-width: 1200px; padding: 2rem; } 
+        }
+        
+        header {
+            background: rgba(231, 229, 228, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #d6d3d1;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #292524;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 767px) {
+            .nav-buttons { font-size: 0.75rem; gap: 0.25rem; }
+        }
+        
+        .nav-btn {
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: none;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            color: #44403c;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background: #c2410c;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #292524;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            color: #57534e;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.25;
             color: #1c1917;
         }
+        
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 3.75rem; }
+        }
+        
+        .hero p {
+            font-size: 1.125rem;
+            color: #57534e;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        
+        .cards-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+        
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .card {
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 0.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #9a3412;
+            margin-bottom: 0.75rem;
+        }
+        
+        .chart-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .chart-section {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
             height: 350px;
-            max-height: 450px;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex: 1;
         }
+        
         @media (min-width: 768px) {
-            .chart-container {
-                height: 450px;
-                max-height: 500px;
-            }
+            .chart-container { height: 450px; }
         }
-        .nav-link {
-            transition: all 0.2s ease-in-out;
+        
+        .chart-info {
+            flex: 1;
+            padding: 1rem;
         }
-        .nav-link.active, .nav-link:hover {
-            color: #c2410c;
-            transform: scale(1.05);
+        
+        .chart-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #9a3412;
+            margin-bottom: 0.75rem;
         }
-        .lang-btn {
-            transition: all 0.2s ease-in-out;
+        
+        .chart-fallback {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: #57534e;
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            border: 2px dashed #d6d3d1;
         }
-        .lang-btn.active {
-            background-color: #c2410c;
-            color: #ffffff;
+        
+        .quiz-container {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto;
         }
-        .action-card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-in-out;
+        
+        .quiz-question {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: #292524;
         }
-        .quiz-option {
-            transition: all 0.2s ease-in-out;
+        
+        .quiz-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .quiz-option:hover, .quiz-option.selected {
-            background-color: #fed7aa;
+        
+        .quiz-btn {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid #d6d3d1;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 120px;
+        }
+        
+        .quiz-btn:hover, .quiz-btn.selected {
+            background: #fed7aa;
             border-color: #f97316;
             transform: translateY(-2px);
         }
+        
+        .action-items {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+        
+        @media (min-width: 768px) {
+            .action-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .action-items {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .action-item {
+            background: white;
+            border-radius: 0.5rem;
+            border: 1px solid #e7e5e4;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        
+        .action-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .action-header {
+            padding: 1.5rem;
+        }
+        
+        .action-item h3 {
+            color: #9a3412;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            padding: 0 1.5rem;
+        }
+        
+        .action-content.expanded {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        .community-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .community-section {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+            }
+        }
+        
+        .community-column {
+            flex: 1;
+            padding: 1rem;
+        }
+        
+        .community-column h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .division-tactics h4 { color: #b91c1c; }
+        .resistance-acts h4 { color: #15803d; }
+        
+        .community-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .division-item {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            text-align: center;
+        }
+        
+        .resistance-item {
+            background: #dcfce7;
+            color: #166534;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            text-align: center;
+        }
+        
+        .community-divider {
+            font-size: 3rem;
+            color: #ea580c;
+            font-weight: 700;
+            text-align: center;
+            align-self: center;
+        }
+        
+        .lang-switch {
+            display: flex;
+            gap: 0.25rem;
+            background: rgba(248, 250, 252, 0.8);
+            padding: 0.25rem;
+            border-radius: 0.375rem;
+            border: 1px solid #d6d3d1;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: none;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .lang-btn.active {
+            background: #c2410c;
+            color: white;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #57534e;
+            font-size: 0.9rem;
+            border-top: 1px solid #e7e5e4;
+            margin-top: 3rem;
+            background: #f8f9fa;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #c2410c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden { display: none; }
+        
+        /* Performance optimizations for ESP32 */
+        .no-transitions * {
+            transition: none !important;
+        }
     </style>
 </head>
-<body class="antialiased">
-
-    <header class="bg-stone-200/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-        <nav class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="text-xl font-bold text-stone-800" data-translate="header_title">The Citizen's Guide</div>
-                <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-sm lg:text-base">
-                    <a href="#understanding" class="nav-link text-stone-700 font-medium" data-translate="nav_1">1. Warning</a>
-                    <a href="#identifying" class="nav-link text-stone-700 font-medium" data-translate="nav_2">2. Signs</a>
-                    <a href="#reality-check" class="nav-link text-stone-700 font-medium" data-translate="nav_3">3. Reality Check</a>
-                    <a href="#resisting" class="nav-link text-stone-700 font-medium" data-translate="nav_4">4. Toolkit</a>
-                    <a href="#community" class="nav-link text-stone-700 font-medium" data-translate="nav_5">5. Foundation</a>
-                    <div class="border-l border-stone-400 h-6 ml-4 pl-4 flex items-center space-x-2">
-                        <button id="lang-en" class="lang-btn px-3 py-1 rounded-md font-bold text-sm">EN</button>
-                        <button id="lang-es" class="lang-btn px-3 py-1 rounded-md font-bold text-sm">ES</button>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" data-translate="header_title">The Citizen's Guide</div>
+                <nav class="nav-buttons">
+                    <a href="#understanding" class="nav-btn" data-translate="nav_1">1. Warning</a>
+                    <a href="#identifying" class="nav-btn" data-translate="nav_2">2. Signs</a>
+                    <a href="#reality-check" class="nav-btn" data-translate="nav_3">3. Reality Check</a>
+                    <a href="#resisting" class="nav-btn" data-translate="nav_4">4. Toolkit</a>
+                    <a href="#community" class="nav-btn" data-translate="nav_5">5. Foundation</a>
+                    <div class="lang-switch">
+                        <button id="lang-en" class="lang-btn active">EN</button>
+                        <button id="lang-es" class="lang-btn">ES</button>
                     </div>
-                </div>
+                </nav>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container">
+        <div class="hero">
+            <h1 data-translate="main_title">Resisting the Digital Drift</h1>
+            <p data-translate="main_subtitle">A guide for the average citizen to understand the rise of techno-fascism, identify its presence, and discover effective ways to fight back.</p>
+        </div>
 
-        <section class="text-center mb-20">
-            <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight" data-translate="main_title">Resisting the Digital Drift</h1>
-            <p class="mt-4 max-w-3xl mx-auto text-lg text-stone-600" data-translate="main_subtitle">A guide for the average citizen to understand the rise of techno-fascism, identify its presence, and discover effective ways to fight back.</p>
-        </section>
-
-        <section id="understanding" class="mb-24 scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-800" data-translate="section1_title">1. Understanding the Warning</h2>
-                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section1_subtitle">This section defines the emerging threat of techno-fascism. It is not a historical reenactment but a new form of control that fuses corporate technology with authoritarian politics to monitor, manipulate, and suppress the public in unprecedented ways.</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-orange-800 mb-3" data-translate="section1_card1_title">What is Fascism?</h3>
-                    <p class="text-stone-700" data-translate="section1_card1_text">At its core, fascism is a political ideology characterized by a dictatorial leader, centralized autocracy, militarism, and the forcible suppression of opposition. It subordinates individual interests to the perceived good of the nation or state, often defined along ultranationalist or racial lines.</p>
+        <section id="understanding" class="section">
+            <h2 class="section-title" data-translate="section1_title">1. Understanding the Warning</h2>
+            <p class="section-subtitle" data-translate="section1_subtitle">This section defines the emerging threat of techno-fascism. It is not a historical reenactment but a new form of control that fuses corporate technology with authoritarian politics to monitor, manipulate, and suppress the public in unprecedented ways.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h3 data-translate="section1_card1_title">What is Fascism?</h3>
+                    <p data-translate="section1_card1_text">At its core, fascism is a political ideology characterized by a dictatorial leader, centralized autocracy, militarism, and the forcible suppression of opposition. It subordinates individual interests to the perceived good of the nation or state, often defined along ultranationalist or racial lines.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-orange-800 mb-3" data-translate="section1_card2_title">What makes it "Techno"?</h3>
-                    <p class="text-stone-700" data-translate="section1_card2_text">"Techno" refers to the use of modern technology as the primary tool for control. This includes mass surveillance, algorithmic manipulation of information, and data-driven methods to identify and silence dissent. Big Tech and the state become intertwined partners.</p>
+                <div class="card">
+                    <h3 data-translate="section1_card2_title">What makes it "Techno"?</h3>
+                    <p data-translate="section1_card2_text">"Techno" refers to the use of modern technology as the primary tool for control. This includes mass surveillance, algorithmic manipulation of information, and data-driven methods to identify and silence dissent. Big Tech and the state become intertwined partners.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1">
-                    <h3 class="text-xl font-bold text-orange-800 mb-3" data-translate="section1_card3_title">Why is it a Threat Now?</h3>
-                    <p class="text-stone-700" data-translate="section1_card3_text">The combination of vast corporate data collection, powerful AI, and growing political polarization creates a fertile ground for this ideology. It can emerge subtly, disguised as "efficiency," "national security," or "progress," while systematically eroding democratic norms.</p>
+                <div class="card">
+                    <h3 data-translate="section1_card3_title">Why is it a Threat Now?</h3>
+                    <p data-translate="section1_card3_text">The combination of vast corporate data collection, powerful AI, and growing political polarization creates a fertile ground for this ideology. It can emerge subtly, disguised as "efficiency," "national security," or "progress," while systematically eroding democratic norms.</p>
                 </div>
             </div>
         </section>
 
-        <section id="identifying" class="mb-24 scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-800" data-translate="section2_title">2. Identifying the Signs</h2>
-                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section2_subtitle">Fascist tendencies don't appear overnight. This interactive chart highlights key characteristics. Click on any segment to see how it connects to recent events. The levels (1-10) indicate the perceived prevalence of that trend in modern American society, with 10 being a critical concern.</p>
-            </div>
-
-            <div class="bg-white p-4 md:p-8 rounded-lg shadow-2xl border border-stone-200">
-                <div class="lg:flex lg:space-x-8">
-                    <div class="lg:w-1/2">
-                        <div class="chart-container">
-                            <canvas id="fascismChart"></canvas>
-                        </div>
-                        <div class="text-center mt-4 text-sm text-stone-500">
-                            <p data-translate="chart_explanation"><span class="font-bold">Chart Levels Explained:</span> The distance from the center represents perceived intensity. A score of <span class="font-bold">10</span> indicates a highly prevalent and critical trend, while a lower score like <span class="font-bold">3</span> suggests an emerging but less overt characteristic.</p>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 mt-8 lg:mt-0 flex flex-col justify-center">
-                        <h3 id="chart-title" class="text-2xl font-bold text-orange-800 mb-3" data-translate="chart_initial_title">Select a Characteristic</h3>
-                        <div id="chart-content" class="text-stone-700 space-y-3">
-                            <p data-translate="chart_initial_text">The chart on the left displays common warning signs. Interacting with it will reveal explanations and connect these abstract ideas to the real world, helping you develop a critical eye for news and political rhetoric.</p>
-                        </div>
+        <section id="identifying" class="section">
+            <h2 class="section-title" data-translate="section2_title">2. Identifying the Signs</h2>
+            <p class="section-subtitle" data-translate="section2_subtitle">Fascist tendencies don't appear overnight. This interactive chart highlights key characteristics. Click on any segment to see how it connects to recent events. The levels (1-10) indicate the perceived prevalence of that trend in modern American society, with 10 being a critical concern.</p>
+            
+            <div class="chart-section">
+                <div class="chart-container">
+                    <canvas id="fascismChart" width="400" height="300"></canvas>
+                </div>
+                
+                <div class="chart-info">
+                    <h3 id="chart-title" data-translate="chart_initial_title">Select a Characteristic</h3>
+                    <div id="chart-content">
+                        <p data-translate="chart_initial_text">The chart on the left displays common warning signs. Interacting with it will reveal explanations and connect these abstract ideas to the real world, helping you develop a critical eye for news and political rhetoric.</p>
+                        <p style="margin-top: 1rem;"><small data-translate="chart_explanation"><strong>Chart Levels Explained:</strong> The distance from the center represents perceived intensity. A score of <strong>10</strong> indicates a highly prevalent and critical trend, while a lower score like <strong>3</strong> suggests an emerging but less overt characteristic.</small></p>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <section id="reality-check" class="mb-24 scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-800" data-translate="section3_title">3. Reality Check Quiz</h2>
-                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section3_subtitle">How much do these trends affect your daily life and perceptions? Answer these questions to reflect on the current climate. This isn't a scientific test, but a tool for self-awareness.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-2xl border border-stone-200 max-w-3xl mx-auto">
-                <div id="quiz-container">
-                </div>
-                <div id="quiz-results" class="hidden text-center">
-                    <h3 class="text-2xl font-bold text-orange-800 mb-4" data-translate="quiz_results_title">Your Reflection</h3>
-                    <p id="results-text" class="text-stone-700 mb-6"></p>
-                    <a href="#resisting" class="inline-block bg-orange-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-700 transition-colors" data-translate="quiz_results_cta">See How You Can Take Action</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="resisting" class="mb-24 scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-800" data-translate="section4_title">4. The Citizen's Toolkit for Resistance</h2>
-                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section4_subtitle">Realizing the threat is the first step; taking action is the next. Here are concrete steps any citizen can take. Click each card to learn more.</p>
-            </div>
-            <div id="toolkit-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
-        </section>
-
-        <section id="community" class="scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-800" data-translate="section5_title">5. The Ultimate Foundation: Community</span></h2>
-                <p class="mt-2 text-md text-stone-600 max-w-2xl mx-auto" data-translate="section5_subtitle">Authoritarianism thrives when we are divided and isolated. The most powerful act of resistance is to build strong, resilient, and caring communities. When we know and support our neighbors, we create a social fabric that is incredibly difficult to tear apart.</p>
             </div>
             
-            <div class="bg-white p-8 rounded-lg shadow-2xl border border-stone-200">
-                <div class="flex flex-col md:flex-row items-center justify-around text-center">
-                    <div class="md:w-2/5 p-4">
-                        <h4 class="text-xl font-bold text-red-700 mb-4" data-translate="division_title">Tactics of Division</h4>
-                         <div class="space-y-3">
-                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_1">Fostering Isolation & Loneliness</p>
-                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_2">Promoting Scapegoating & "Othering"</p>
-                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_3">Spreading Fear & Distrust</p>
-                            <p class="bg-red-100 text-red-800 p-3 rounded-md" data-translate="division_4">Encouraging Extreme Individualism</p>
-                        </div>
-                    </div>
+            <div id="chart-fallback" class="chart-fallback">
+                <h3>📊 Fascism Warning Signs</h3>
+                <p>Key characteristics of techno-fascism and their current prevalence:</p>
+                <ul style="text-align: left; display: inline-block; margin-top: 1rem;">
+                    <li><strong>Powerful Nationalism:</strong> High concern (8/10)</li>
+                    <li><strong>Control of Media:</strong> Critical (9/10)</li>
+                    <li><strong>Disdain for Rights:</strong> Moderate concern (7/10)</li>
+                    <li><strong>Military Supremacy:</strong> High concern (8/10)</li>
+                    <li><strong>Corporate Fusion:</strong> Critical (10/10)</li>
+                    <li><strong>Suppression of Dissent:</strong> High concern (8/10)</li>
+                </ul>
+            </div>
+        </section>
 
-                    <div class="text-5xl my-8 md:my-0 text-orange-600 font-bold">&harr;</div>
+        <section id="reality-check" class="section">
+            <h2 class="section-title" data-translate="section3_title">3. Reality Check Quiz</h2>
+            <p class="section-subtitle" data-translate="section3_subtitle">How much do these trends affect your daily life and perceptions? Answer these questions to reflect on the current climate. This isn't a scientific test, but a tool for self-awareness.</p>
+            
+            <div class="quiz-container">
+                <div id="quiz-question" class="quiz-question"></div>
+                <div id="quiz-options" class="quiz-options"></div>
+                <div id="quiz-results" class="hidden">
+                    <h3 data-translate="quiz_results_title">Your Reflection</h3>
+                    <p id="quiz-score"></p>
+                    <a href="#resisting" class="nav-btn" style="margin-top: 1rem; display: inline-block;" data-translate="quiz_results_cta">See How You Can Take Action</a>
+                </div>
+            </div>
+        </section>
 
-                    <div class="md:w-2/5 p-4">
-                        <h4 class="text-xl font-bold text-green-700 mb-4" data-translate="resistance_title">Acts of Community Resistance</h4>
-                        <div class="space-y-3">
-                           <p class="bg-green-100 text-green-800 p-3 rounded-md" data-translate="resistance_1"><strong>Mutual Aid Network:</strong> Organize neighbors to share resources like food, childcare, or transportation, strengthening local bonds.</p>
-                            <p class="bg-green-100 text-green-800 p-3 rounded-md" data-translate="resistance_2"><strong>Local Skill Share:</strong> Host events where people teach each other practical skills (e.g., gardening, basic repairs), building self-sufficiency.</p>
-                            <p class="bg-green-100 text-green-800 p-3 rounded-md" data-translate="resistance_3"><strong>Support Local Groups:</strong> Participate in or donate to local organizations working on issues you care about, from libraries to food banks.</p>
-                        </div>
+        <section id="resisting" class="section">
+            <h2 class="section-title" data-translate="section4_title">4. The Citizen's Toolkit for Resistance</h2>
+            <p class="section-subtitle" data-translate="section4_subtitle">Realizing the threat is the first step; taking action is the next. Here are concrete steps any citizen can take. Click each card to learn more.</p>
+            
+            <div id="toolkit-container" class="action-items"></div>
+        </section>
+
+        <section id="community" class="section">
+            <h2 class="section-title" data-translate="section5_title">5. The Ultimate Foundation: Community</h2>
+            <p class="section-subtitle" data-translate="section5_subtitle">Authoritarianism thrives when we are divided and isolated. The most powerful act of resistance is to build strong, resilient, and caring communities. When we know and support our neighbors, we create a social fabric that is incredibly difficult to tear apart.</p>
+            
+            <div class="community-section">
+                <div class="community-column division-tactics">
+                    <h4 data-translate="division_title">Tactics of Division</h4>
+                    <div class="community-list">
+                        <div class="division-item" data-translate="division_1">Fostering Isolation & Loneliness</div>
+                        <div class="division-item" data-translate="division_2">Promoting Scapegoating & "Othering"</div>
+                        <div class="division-item" data-translate="division_3">Spreading Fear & Distrust</div>
+                        <div class="division-item" data-translate="division_4">Encouraging Extreme Individualism</div>
                     </div>
                 </div>
-                <p class="text-center mt-8 text-stone-600 max-w-3xl mx-auto" data-translate="section5_conclusion">Every time you share food, offer help, or organize a local cleanup, you perform a revolutionary act. You replace fear with solidarity and isolation with connection. This is the ground from which all other forms of resistance grow.</p>
+
+                <div class="community-divider">&harr;</div>
+
+                <div class="community-column resistance-acts">
+                    <h4 data-translate="resistance_title">Acts of Community Resistance</h4>
+                    <div class="community-list">
+                        <div class="resistance-item" data-translate="resistance_1"><strong>Mutual Aid Network:</strong> Organize neighbors to share resources like food, childcare, or transportation, strengthening local bonds.</div>
+                        <div class="resistance-item" data-translate="resistance_2"><strong>Local Skill Share:</strong> Host events where people teach each other practical skills (e.g., gardening, basic repairs), building self-sufficiency.</div>
+                        <div class="resistance-item" data-translate="resistance_3"><strong>Support Local Groups:</strong> Participate in or donate to local organizations working on issues you care about, from libraries to food banks.</div>
+                    </div>
+                </div>
             </div>
+            
+            <p style="text-align: center; margin-top: 2rem; max-width: 48rem; margin-left: auto; margin-right: auto; color: #57534e;" data-translate="section5_conclusion">Every time you share food, offer help, or organize a local cleanup, you perform a revolutionary act. You replace fear with solidarity and isolation with connection. This is the ground from which all other forms of resistance grow.</p>
         </section>
     </main>
 
-    <footer class="bg-stone-200 mt-16">
-        <div class="container mx-auto px-6 py-8 text-center text-stone-600">
-            <p data-translate="footer_text">This guide is for informational purposes. Stay informed, stay engaged, and stay connected.</p>
-        </div>
+    <footer>
+        <p data-translate="footer_text">This guide is for informational purposes. Stay informed, stay engaged, and stay connected.</p>
     </footer>
 
+    <script src="/chart.min.js"></script>
     <script>
+        // All your original translations and data
         const translations = {
             en: {
                 header_title: "The Citizen's Guide",
@@ -223,7 +580,7 @@
                 section1_card3_text: "The combination of vast corporate data collection, powerful AI, and growing political polarization creates a fertile ground for this ideology. It can emerge subtly, disguised as \"efficiency,\" \"national security,\" or \"progress,\" while systematically eroding democratic norms.",
                 section2_title: "2. Identifying the Signs",
                 section2_subtitle: "Fascist tendencies don't appear overnight. This interactive chart highlights key characteristics. Click on any segment to see how it connects to recent events. The levels (1-10) indicate the perceived prevalence of that trend in modern American society, with 10 being a critical concern.",
-                chart_explanation: '<span class="font-bold">Chart Levels Explained:</span> The distance from the center represents perceived intensity. A score of <span class="font-bold">10</span> indicates a highly prevalent and critical trend, while a lower score like <span class="font-bold">3</span> suggests an emerging but less overt characteristic.',
+                chart_explanation: '<strong>Chart Levels Explained:</strong> The distance from the center represents perceived intensity. A score of <strong>10</strong> indicates a highly prevalent and critical trend, while a lower score like <strong>3</strong> suggests an emerging but less overt characteristic.',
                 chart_initial_title: "Select a Characteristic",
                 chart_initial_text: "The chart on the left displays common warning signs. Interacting with it will reveal explanations and connect these abstract ideas to the real world, helping you develop a critical eye for news and political rhetoric.",
                 section3_title: "3. Reality Check Quiz",
@@ -264,7 +621,7 @@
                 section1_card3_text: "La combinación de la vasta recopilación de datos corporativos, una IA potente y una creciente polarización política crea un terreno fértil para esta ideología. Puede surgir sutilmente, disfrazado de \"eficiencia\", \"seguridad nacional\" o \"progreso\", mientras erosiona sistemáticamente las normas democráticas.",
                 section2_title: "2. Identificando las Señales",
                 section2_subtitle: "Las tendencias fascistas no aparecen de la noche a la mañana. Este gráfico interactivo destaca características clave. Haz clic en cualquier segmento para ver cómo se conecta con eventos recientes. Los niveles (1-10) indican la prevalencia percibida de esa tendencia en la sociedad estadounidense moderna, siendo 10 una preocupación crítica.",
-                chart_explanation: '<span class="font-bold">Explicación de los Niveles del Gráfico:</span> La distancia desde el centro representa la intensidad percibida. Una puntuación de <span class="font-bold">10</span> indica una tendencia muy prevalente y crítica, mientras que una puntuación más baja como <span class="font-bold">3</span> sugiere una característica emergente pero menos manifiesta.',
+                chart_explanation: '<strong>Explicación de los Niveles del Gráfico:</strong> La distancia desde el centro representa la intensidad percibida. Una puntuación de <strong>10</strong> indica una tendencia muy prevalente y crítica, mientras que una puntuación más baja como <strong>3</strong> sugiere una característica emergente pero menos manifiesta.',
                 chart_initial_title: "Selecciona una Característica",
                 chart_initial_text: "El gráfico de la izquierda muestra señales de advertencia comunes. Interactuar con él revelará explicaciones y conectará estas ideas abstractas con el mundo real, ayudándote a desarrollar un ojo crítico para las noticias y la retórica política.",
                 section3_title: "3. Cuestionario de Autoevaluación",
@@ -352,21 +709,95 @@
 
         const actionItems = {
             en: [
-                { title: '💻 Defend Your Digital Privacy', what: 'Take control of your personal data and reduce your digital footprint.', why: 'Tech companies and governments collect vast amounts of data. Limiting this collection makes it harder for them to track, manipulate, or profile you.', how: '<ul><li class="mb-1">Use encrypted messaging apps like Signal.</li><li class="mb-1">Switch to a privacy-focused browser like Brave or Firefox.</li><li>Install privacy extensions like uBlock Origin.</li></ul>', link: 'https://www.eff.org/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
-                { title: '🗳️ Engage in Local Politics', what: 'Vote in every election and pay attention to local government.', why: 'Local officials (school boards, city councils, DAs) have a huge impact on your daily life and civil liberties. National decay often starts with local apathy.', how: '<ul><li class="mb-1">Find out who your local representatives are.</li><li class="mb-1">Attend a town hall or city council meeting, even online.</li><li>Research candidates beyond the major races.</li></ul>', link: 'https://www.usa.gov/local-governments' },
-                { title: '📰 Support Independent Media', what: 'Fund journalism that is not beholden to corporate or state interests.', why: 'A free and independent press is essential for holding power accountable. Supporting them ensures that investigative journalism can continue.', how: '<ul><li class="mb-1">Subscribe to your local newspaper.</li><li class="mb-1">Donate to non-profit news organizations (e.g., ProPublica, The Markup).</li><li>Share their work and credit them.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
+                { title: '💻 Defend Your Digital Privacy', what: 'Take control of your personal data and reduce your digital footprint.', why: 'Tech companies and governments collect vast amounts of data. Limiting this collection makes it harder for them to track, manipulate, or profile you.', how: '<ul style="margin: 1rem 0;"><li>• Use encrypted messaging apps like Signal.</li><li>• Switch to a privacy-focused browser like Brave or Firefox.</li><li>• Install privacy extensions like uBlock Origin.</li></ul>', link: 'https://www.eff.org/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
+                { title: '🗳️ Engage in Local Politics', what: 'Vote in every election and pay attention to local government.', why: 'Local officials (school boards, city councils, DAs) have a huge impact on your daily life and civil liberties. National decay often starts with local apathy.', how: '<ul style="margin: 1rem 0;"><li>• Find out who your local representatives are.</li><li>• Attend a town hall or city council meeting, even online.</li><li>• Research candidates beyond the major races.</li></ul>', link: 'https://www.usa.gov/local-governments' },
+                { title: '📰 Support Independent Media', what: 'Fund journalism that is not beholden to corporate or state interests.', why: 'A free and independent press is essential for holding power accountable. Supporting them ensures that investigative journalism can continue.', how: '<ul style="margin: 1rem 0;"><li>• Subscribe to your local newspaper.</li><li>• Donate to non-profit news organizations (e.g., ProPublica, The Markup).</li><li>• Share their work and credit them.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
             ],
             es: [
-                { title: '💻 Defiende tu Privacidad Digital', what: 'Toma el control de tus datos personales y reduce tu huella digital.', why: 'Las empresas tecnológicas y los gobiernos recopilan grandes cantidades de datos. Limitar esta recopilación les dificulta rastrearte, manipularte o perfilarte.', how: '<ul><li class="mb-1">Usa apps de mensajería cifrada como Signal.</li><li class="mb-1">Cambia a un navegador centrado en la privacidad como Brave o Firefox.</li><li>Instala extensiones de privacidad como uBlock Origin.</li></ul>', link: 'https://www.eff.org/es/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
-                { title: '🗳️ Participa en la Política Local', what: 'Vota en todas las elecciones y presta atención al gobierno local.', why: 'Los funcionarios locales (juntas escolares, ayuntamientos) tienen un gran impacto en tu vida diaria y libertades civiles. El declive nacional a menudo comienza con la apatía local.', how: '<ul><li class="mb-1">Averigua quiénes son tus representantes locales.</li><li class="mb-1">Asiste a una reunión del ayuntamiento, incluso en línea.</li><li>Investiga a los candidatos más allá de las carreras principales.</li></ul>', link: 'https://www.usa.gov/es/gobiernos-locales' },
-                { title: '📰 Apoya a los Medios Independientes', what: 'Financia el periodismo que no depende de intereses corporativos o estatales.', why: 'Una prensa libre e independiente es esencial para que el poder rinda cuentas. Apoyarlos asegura que el periodismo de investigación pueda continuar.', how: '<ul><li class="mb-1">Suscríbete a tu periódico local.</li><li class="mb-1">Dona a organizaciones de noticias sin fines de lucro.</li><li>Comparte su trabajo y dales crédito.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
+                { title: '💻 Defiende tu Privacidad Digital', what: 'Toma el control de tus datos personales y reduce tu huella digital.', why: 'Las empresas tecnológicas y los gobiernos recopilan grandes cantidades de datos. Limitar esta recopilación les dificulta rastrearte, manipularte o perfilarte.', how: '<ul style="margin: 1rem 0;"><li>• Usa apps de mensajería cifrada como Signal.</li><li>• Cambia a un navegador centrado en la privacidad como Brave o Firefox.</li><li>• Instala extensiones de privacidad como uBlock Origin.</li></ul>', link: 'https://www.eff.org/es/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
+                { title: '🗳️ Participa en la Política Local', what: 'Vota en todas las elecciones y presta atención al gobierno local.', why: 'Los funcionarios locales (juntas escolares, ayuntamientos) tienen un gran impacto en tu vida diaria y libertades civiles. El declive nacional a menudo comienza con la apatía local.', how: '<ul style="margin: 1rem 0;"><li>• Averigua quiénes son tus representantes locales.</li><li>• Asiste a una reunión del ayuntamiento, incluso en línea.</li><li>• Investiga a los candidatos más allá de las carreras principales.</li></ul>', link: 'https://www.usa.gov/es/gobiernos-locales' },
+                { title: '📰 Apoya a los Medios Independientes', what: 'Financia el periodismo que no depende de intereses corporativos o estatales.', why: 'Una prensa libre e independiente es esencial para que el poder rinda cuentas. Apoyarlos asegura que el periodismo de investigación pueda continuar.', how: '<ul style="margin: 1rem 0;"><li>• Suscríbete a tu periódico local.</li><li>• Dona a organizaciones de noticias sin fines de lucro.</li><li>• Comparte su trabajo y dales crédito.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
             ]
         };
 
         let currentLang = 'en';
-        let fascismChart;
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let fascismChart = null;
 
-        const setLanguage = (lang) => {
+        // Initialize chart with proper error handling
+        function initChart() {
+            try {
+                const ctx = document.getElementById('fascismChart');
+                if (!ctx || !window.Chart) {
+                    showChartFallback();
+                    return;
+                }
+
+                const chartData = {
+                    labels: chartLabels[currentLang],
+                    datasets: [{
+                        data: [8, 9, 7, 8, 9, 10, 8, 9],
+                        backgroundColor: 'rgba(194, 65, 12, 0.2)',
+                        borderColor: 'rgba(194, 65, 12, 1)',
+                        pointBackgroundColor: 'rgba(194, 65, 12, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(194, 65, 12, 1)',
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }]
+                };
+
+                fascismChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 10,
+                                ticks: { display: false },
+                                grid: { color: 'rgba(0,0,0,0.1)' },
+                                pointLabels: { 
+                                    font: { size: 11, weight: 'bold' },
+                                    color: '#44403c'
+                                }
+                            }
+                        },
+                        onClick: (evt, elements) => {
+                            if (elements.length > 0) {
+                                const index = elements[0].index;
+                                document.getElementById('chart-title').textContent = contentData[currentLang][index].title;
+                                document.getElementById('chart-content').innerHTML = `<p>${contentData[currentLang][index].content}</p>`;
+                            }
+                        }
+                    }
+                });
+                
+                // Remove loading indicator
+                const loading = document.querySelector('.loading');
+                if (loading) loading.remove();
+                
+            } catch (error) {
+                console.error('Chart initialization failed:', error);
+                showChartFallback();
+            }
+        }
+
+        function showChartFallback() {
+            document.querySelector('.chart-container').style.display = 'none';
+            document.getElementById('chart-fallback').style.display = 'block';
+        }
+
+        // Language switching with chart redraw
+        function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('language', lang);
 
@@ -380,130 +811,119 @@
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             document.getElementById('lang-es').classList.toggle('active', lang === 'es');
 
-            drawChart(lang);
-            renderToolkit(lang);
-            resetQuiz(lang);
-        };
-
-        const drawChart = (lang) => {
+            // Redraw chart with new language
             if (fascismChart) {
                 fascismChart.destroy();
+                setTimeout(initChart, 100);
             }
-            const chartConfig = {
-                type: 'radar',
-                data: {
-                    labels: chartLabels[lang],
-                    datasets: [{ data: [8, 9, 7, 8, 9, 10, 8, 9], backgroundColor: 'rgba(234, 88, 12, 0.2)', borderColor: 'rgba(194, 65, 12, 1)', pointBackgroundColor: 'rgba(194, 65, 12, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(194, 65, 12, 1)', borderWidth: 3 }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    scales: { r: { angleLines: { color: 'rgba(0, 0, 0, 0.1)' }, grid: { color: 'rgba(0, 0, 0, 0.1)' }, pointLabels: { font: { size: 11, weight: 'bold' }, color: '#44403c' }, ticks: { display: false, beginAtZero: true, max: 10, stepSize: 2 } } },
-                    plugins: { legend: { display: false }, tooltip: { enabled: true, callbacks: { label: (c) => chartLabels[lang][c.dataIndex] } } }
-                }
-            };
-            const ctx = document.getElementById('fascismChart').getContext('2d');
-            fascismChart = new Chart(ctx, chartConfig);
+            
+            renderToolkit(lang);
+            resetQuiz(lang);
+        }
 
-            document.getElementById('fascismChart').onclick = (evt) => {
-                const points = fascismChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
-                if (points.length) {
-                    const index = points[0].index;
-                    document.getElementById('chart-title').textContent = contentData[lang][index].title;
-                    document.getElementById('chart-content').innerHTML = `<p>${contentData[lang][index].content}</p>`;
-                }
-            };
-        };
-
-        let currentQuestionIndex = 0;
-        let score = 0;
-        const quizContainer = document.getElementById('quiz-container');
-
-        const renderQuestion = () => {
-            if (currentQuestionIndex >= quizQuestions[currentLang].length) {
-                showResults();
+        // Quiz functionality
+        function renderQuestion() {
+            if (currentQuestion >= quizQuestions[currentLang].length) {
+                showQuizResults();
                 return;
             }
-            const q = quizQuestions[currentLang][currentQuestionIndex];
-            quizContainer.innerHTML = `
-                <p class="text-lg font-semibold text-stone-800 mb-6 text-center">${q.question}</p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <button class="quiz-option p-4 border-2 border-stone-300 rounded-lg font-bold" data-value="1">${translations[currentLang].quiz_agree}</button>
-                    <button class="quiz-option p-4 border-2 border-stone-300 rounded-lg font-bold" data-value="0">${translations[currentLang].quiz_disagree}</button>
-                </div>
+            
+            const q = quizQuestions[currentLang][currentQuestion];
+            document.getElementById('quiz-question').textContent = q.question;
+            
+            const optionsHtml = `
+                <button class="quiz-btn" onclick="nextQuestion(1)">${translations[currentLang].quiz_agree}</button>
+                <button class="quiz-btn" onclick="nextQuestion(0)">${translations[currentLang].quiz_disagree}</button>
             `;
-            quizContainer.querySelectorAll('.quiz-option').forEach(button => {
-                button.onclick = (e) => {
-                    score += parseInt(e.target.dataset.value) * q.points;
-                    currentQuestionIndex++;
-                    renderQuestion();
-                };
-            });
-        };
+            document.getElementById('quiz-options').innerHTML = optionsHtml;
+        }
 
-        const showResults = () => {
-            quizContainer.classList.add('hidden');
+        function nextQuestion(points) {
+            quizScore += points * quizQuestions[currentLang][currentQuestion].points;
+            currentQuestion++;
+            renderQuestion();
+        }
+
+        function showQuizResults() {
+            document.getElementById('quiz-options').style.display = 'none';
+            document.getElementById('quiz-question').style.display = 'none';
             document.getElementById('quiz-results').classList.remove('hidden');
-            const resultsTextEl = document.getElementById('results-text');
+            
             const resultsContent = quizResultsText[currentLang];
-            if (score >= 4) { resultsTextEl.textContent = resultsContent.high; } 
-            else if (score >= 2) { resultsTextEl.textContent = resultsContent.medium; } 
-            else { resultsTextEl.textContent = resultsContent.low; }
-        };
+            let resultText;
+            if (quizScore >= 4) resultText = resultsContent.high;
+            else if (quizScore >= 2) resultText = resultsContent.medium;
+            else resultText = resultsContent.low;
+            
+            document.getElementById('quiz-score').textContent = resultText;
+        }
 
-        const resetQuiz = (lang) => {
-            currentQuestionIndex = 0;
-            score = 0;
-            quizContainer.classList.remove('hidden');
+        function resetQuiz(lang) {
+            currentQuestion = 0;
+            quizScore = 0;
+            document.getElementById('quiz-options').style.display = 'flex';
+            document.getElementById('quiz-question').style.display = 'block';
             document.getElementById('quiz-results').classList.add('hidden');
             renderQuestion();
-        };
+        }
         
-        const renderToolkit = (lang) => {
+        // Render toolkit cards
+        function renderToolkit(lang) {
             const toolkitContainer = document.getElementById('toolkit-container');
             toolkitContainer.innerHTML = actionItems[lang].map(item => `
-                <div class="action-card bg-white rounded-lg shadow-lg border border-stone-200 cursor-pointer overflow-hidden">
-                    <div class="p-6"> <h3 class="text-xl font-bold text-orange-800">${item.title}</h3> </div>
-                    <div class="action-card-content">
-                        <div class="px-6 pb-6 text-stone-700 space-y-4">
-                            <div><strong class="text-stone-800">${translations[lang].section1_card1_title.split(' ')[0]}:</strong> ${item.what}</div>
-                            <div><strong class="text-stone-800">${translations[lang].section1_card3_title.split(' ')[0]}:</strong> ${item.why}</div>
-                            <div><strong class="text-stone-800">${translations[lang].section4_subtitle.split(' ').slice(-3, -2)}:</strong> ${item.how}</div>
-                            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 bg-orange-100 text-orange-800 font-bold py-2 px-4 rounded-md hover:bg-orange-200 transition-colors">${translations[lang].toolkit_action_button}</a>
+                <div class="action-item" onclick="toggleAction(this)">
+                    <div class="action-header">
+                        <h3>${item.title}</h3>
+                        <p style="color: #57534e; margin-top: 0.5rem;">${item.what}</p>
+                    </div>
+                    <div class="action-content">
+                        <div style="color: #44403c; margin-bottom: 1rem;">
+                            <strong>Why:</strong> ${item.why}
                         </div>
+                        <div style="color: #44403c; margin-bottom: 1rem;">
+                            <strong>How:</strong> ${item.how}
+                        </div>
+                        <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 0.5rem 1rem; background: #c2410c; color: white; text-decoration: none; border-radius: 0.25rem; font-weight: 600;">${translations[lang].toolkit_action_button}</a>
                     </div>
                 </div>
             `).join('');
+        }
 
-            document.querySelectorAll('.action-card').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'A') return;
-                    const content = card.querySelector('.action-card-content');
-                    const isOpened = content.style.maxHeight && content.style.maxHeight !== '0px';
-                    content.style.maxHeight = isOpened ? '0px' : content.scrollHeight + "px";
+        function toggleAction(element) {
+            const content = element.querySelector('.action-content');
+            content.classList.toggle('expanded');
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add loading indicator to chart
+            document.querySelector('.chart-container').innerHTML = '<div class="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div><canvas id="fascismChart" width="400" height="300"></canvas>';
+            
+            // Initialize chart after brief delay
+            setTimeout(initChart, 500);
+            
+            // Set up language buttons
+            document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
+            
+            // Load saved language or default to English
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+            
+            // Performance optimization for ESP32
+            if (navigator.userAgent.includes('ESP32') || window.innerWidth < 768) {
+                document.body.classList.add('no-transitions');
+            }
+            
+            // Set up smooth scrolling navigation
+            document.querySelectorAll('.nav-btn[href^="#"]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 });
-            });
-        };
-
-        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-        document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
-        
-        const savedLang = localStorage.getItem('language') || 'en';
-        setLanguage(savedLang);
-
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                if (pageYOffset >= section.offsetTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
             });
         });
     </script>

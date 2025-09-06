@@ -7,9 +7,8 @@
 
 #define LDR_PIN A2  // Use GPIO 2 (A2) - safe analog pin on ESP32-C3
 #define LIGHT_THRESHOLD 1800
-#define PORTAL_TIMEOUT_MS (45 * 60 * 1000)  // 45 minutes in milliseconds
+// No timeout - run continuously during daylight hours
 
-unsigned long portalStartTime = 0;
 bool portalActive = false;
 
 WebServer server(80);
@@ -195,9 +194,8 @@ void setup()
   {
     Serial.println("Light detected - starting captive portal...");
     startCaptivePortal();
-    portalStartTime = millis();
     portalActive = true;
-    Serial.println("Portal started - will run for 45 minutes...");
+    Serial.println("Portal started - will run continuously during daylight hours...");
   }
   else
   {
@@ -213,19 +211,24 @@ void loop()
     dnsServer.processNextRequest();
     server.handleClient();
     
-    // Check if 45 minutes have passed
-    if (millis() - portalStartTime >= PORTAL_TIMEOUT_MS) {
-      Serial.println("45 minutes elapsed - shutting down portal");
-      portalActive = false;
-      WiFi.mode(WIFI_OFF);  // Turn off WiFi to save power
-      enterDeepSleep();
+    // Check light levels periodically to conserve power during darkness
+    static unsigned long lastLightCheck = 0;
+    if (millis() - lastLightCheck >= 60000) {  // Check every minute
+      int lightValue = analogRead(LDR_PIN);
+      if (lightValue < LIGHT_THRESHOLD) {
+        Serial.println("Light level dropped - shutting down portal for power conservation");
+        portalActive = false;
+        WiFi.mode(WIFI_OFF);
+        enterDeepSleep();
+      }
+      lastLightCheck = millis();
     }
     
-    // Optional: Print status every 5 minutes
+    // Print status every 30 minutes during operation
     static unsigned long lastStatusPrint = 0;
-    if (millis() - lastStatusPrint >= 300000) {  // 5 minutes
-      unsigned long elapsed = (millis() - portalStartTime) / 60000;  // minutes
-      Serial.printf("Portal active for %lu minutes\n", elapsed);
+    if (millis() - lastStatusPrint >= 1800000) {  // 30 minutes
+      Serial.printf("Portal running continuously - uptime: %lu minutes\n", millis() / 60000);
+      Serial.printf("Current light level: %d\n", analogRead(LDR_PIN));
       lastStatusPrint = millis();
     }
   }
