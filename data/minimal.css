@@ -47,14 +47,14 @@ body { font-family: -webkit-system-font, -apple-system, BlinkMacSystemFont, "Seg
   .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .md\\:flex-row { flex-direction: row; }
   .md\\:my-0 { margin-top: 0; margin-bottom: 0; }
-  .md\\:w-2\\/5 { width: 40%; }
+  .md\\:w-2\/5 { width: 40%; }
 }
 
 @media (min-width: 1024px) {
   .lg\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lg\\:flex { display: flex; }
   .lg\\:space-x-8 > :not([hidden]) ~ :not([hidden]) { margin-left: 2rem; }
-  .lg\\:w-1\\/2 { width: 50%; }
+  .lg\\:w-1\/2 { width: 50%; }
   .lg\\:mt-0 { margin-top: 0; }
   .lg\\:text-base { font-size: 1rem; line-height: 1.5rem; }
   .lg\\:space-x-6 > :not([hidden]) ~ :not([hidden]) { margin-left: 1.5rem; }
@@ -160,4 +160,4 @@ body { font-family: -webkit-system-font, -apple-system, BlinkMacSystemFont, "Seg
 .scroll-mt-24 { scroll-margin-top: 6rem; }
 
 /* Special opacity backgrounds */
-.bg-stone-200\\/80 { background-color: rgba(231, 229, 228, 0.8); }
+.bg-stone-200\/80 { background-color: rgba(231, 229, 228, 0.8); }

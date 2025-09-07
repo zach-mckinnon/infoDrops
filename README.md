@@ -1,224 +1,115 @@
-# InfoDrops: Community Information Beacon
+# InfoDrops: A Community Information Beacon
 
-A discrete, solar-powered device for sharing critical information in communities facing information suppression or during emergencies.
-
-## ⚠️ Important Legal and Ethical Notice
-
-**This project is designed for educational and legitimate resistance purposes only.** It is intended to help communities access critical information during times of:
-
-- Natural disasters or emergencies
-- Information suppression by authoritarian regimes
-- Limited internet access situations
-- Community organizing and mutual aid efforts
-
-**Users must:**
-
-- Comply with all local laws and regulations
-- Use only for peaceful, non-violent resistance
-- Respect others' rights and property
-- Consider the safety of themselves and their community
-
-## 🎯 Mission Statement
-
-InfoDrops empowers communities to maintain access to vital information during times of crisis or information suppression. By creating a network of discrete, solar-powered information beacons, we enable:
-
-- **Democratic Education**: Access to resources about recognizing and resisting authoritarianism
-- **Community Building**: Tools and information for organizing mutual aid networks
-- **Emergency Preparedness**: Critical resources during natural disasters or connectivity outages
-- **Digital Rights**: Education about privacy protection and digital security
-
-## 🔧 How It Works
-
-### The Device
-
-- **ESP32-C3 SuperMini**: Ultra-compact microcontroller with WiFi capabilities
-- **Light-Activated**: Device activates only when exposed to sufficient light (flashlight, sunlight)
-- **Captive Portal**: Creates a free WiFi network that automatically opens the information portal
-- **Solar Powered**: Can be paired with small solar panels for autonomous operation
-- **Discrete**: Small form factor allows for inconspicuous placement
-
-### The Portal
-
-- **Offline Operation**: All content stored locally, no internet required
-- **Mobile Optimized**: Responsive design works perfectly on smartphones
-
-## 🚀 Quick Start Guide
-
-### Hardware Required
-
-- ESP32-C3 SuperMini development board
-- Light-dependent resistor (LDR) connected to GPIO A2
-- Optional: Small solar panel and battery for autonomous operation
-- Enclosure for weather protection (if deploying outdoors)
-
-### Software Setup
-
-1. Install PlatformIO in VS Code
-2. Clone this repository
-3. Upload the filesystem image (contains the web portal)
-4. Compile and upload the firmware
-5. Device will create "A_Free_Community" WiFi network when activated
-
-### Deployment
-
-1. **Test First**: Verify operation in a safe, controlled environment
-2. **Choose Location**: Consider foot traffic, safety, and legal implications
-3. **Power Source**: Use battery pack or small solar panel for remote deployment
-4. **Monitor**: Check device periodically for functionality and safety
-
-## ⚖️ Legal and Safety Considerations
-
-### Legal Framework
-
-- **Public Spaces**: Generally legal to operate low-power WiFi in public areas
-- **Private Property**: Obtain permission before placement
-- **Broadcasting Laws**: Complies with standard WiFi regulations (2.4GHz unlicensed band)
-- **Content Laws**: Default content focuses on education and legal resistance methods
-
-### Safety Guidelines
-
-- **Personal Safety**: Never deploy if it puts you or others at risk
-- **Operational Security**: Consider using anonymous hardware purchases and deployment
-- **Content Review**: Customize content to ensure compliance with local laws
-- **Community Impact**: Ensure deployment serves and doesn't endanger the community
-
-### Risk Mitigation
-
-- Device runs continuously during daylight hours, automatically entering sleep mode at night
-- Light activation prevents accidental operation
-- No logging or tracking of users
-- Can be quickly retrieved if necessary
-
-## 🛠️ Customization Guide
-
-### Modifying Content
-
-1. Edit files in the `data/` folder
-2. **HTML**: `data/index.html` contains the main portal content
-3. **Styling**: `data/minimal.css` for visual customization
-4. **Assets**: Add images, documents, or other resources to `data/`
-
-### Hardware Modifications
-
-- **Solar Power**: Connect small solar panel through charge controller
-- **Extended Battery**: Use larger battery for longer operation
-- **Environmental Sensing**: Add temperature, humidity, or other sensors
-- **Security**: Add tamper detection or self-destruct capabilities
-
-### Deployment Variations
-
-- **Event Support**: Provide information during protests or gatherings
-- **Emergency Response**: Deploy during natural disasters for critical info
-- **Community Centers**: Permanent installation in libraries, cafes, community spaces
-- **Mobile Units**: Portable versions for rapid deployment
-
-## 🌍 Use Cases and Applications
-
-### Crisis Response
-
-- **Information Blackouts**: Maintain access to news and resources
-- **Natural Disasters**: Emergency contact info, shelter locations, safety guidelines
-- **Infrastructure Failures**: Communications backup during network outages
-
-### Community Organizing
-
-- **Mutual Aid Networks**: Resource sharing and community support information
-- **Local Politics**: Voter guides, candidate information, meeting schedules
-- **Skills Sharing**: Community workshops, tool libraries, skill exchanges
-
-### Educational Outreach
-
-- **Digital Literacy**: Privacy tools, security practices, media literacy
-- **Civic Education**: Democratic processes, rights awareness, legal resources
-- **Historical Context**: Documentation of authoritarianism and resistance movements
-
-## 🔒 Privacy and Security
-
-### User Privacy
-
-- **No Tracking**: Device doesn't log IP addresses or user activity
-- **Anonymous Access**: No registration or personal information required
-- **Local Operation**: All content served locally, no external connections
-
-### Device Security
-
-- **Minimal Attack Surface**: Simple, focused functionality
-- **Open Source**: All code available for security review
-- **Physical Security**: Designed for discreet deployment and easy retrieval
-
-## 🤝 Contributing
-
-This project welcomes contributions from developers, activists, educators, and community organizers.
-
-### How to Help
-
-- **Content Development**: Create educational materials, translations
-- **Technical Improvements**: Enhance hardware design, optimize software
-- **Documentation**: Improve setup guides, safety protocols
-- **Testing**: Validate functionality in different environments
-- **Community Outreach**: Share knowledge, provide feedback
-
-### Contribution Guidelines
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes with clear commit messages
-4. Test thoroughly
-5. Submit a pull request with detailed description
-
-## 📚 Additional Resources
-
-### Technical Documentation
-
-- [Hardware Assembly Guide](HARDWARE.md)
-- [Software Configuration](docs/SOFTWARE.md)
-- [Deployment Best Practices](docs/DEPLOYMENT.md)
-- [Troubleshooting Guide](docs/TROUBLESHOOTING.md)
-
-## ⚡ Technical Specifications
-
-### Power Consumption
-
-- **Active Mode**: ~80mA @ 3.3V (WiFi + web server)
-- **Sleep Mode**: <1µA (deep sleep between activations)
-- **Battery Life**: 8-12 hours on 2000mAh battery (active use)
-- **Solar Requirements**: 1-2W panel sufficient for daily operation
-
-### Network Specifications
-
-- **WiFi Standard**: 802.11 b/g/n (2.4GHz)
-- **Network Name**: "A_Free_Community" (customizable)
-- **Captive Portal**: Automatic redirect to information page
-- **Range**: 50-100 meters typical (varies by environment)
-- **Concurrent Users**: Up to 4 simultaneous connections
-
-### Content Capacity
-
-- **Flash Memory**: 4MB total (2MB available for content)
-- **Current Usage**: ~220KB (room for significant expansion)
-- **Supported Formats**: HTML, CSS, JS, images (PNG, JPG), documents (PDF)
-
-## 🔄 Version History
-
-### v1.0 (Current)
-
-- ESP32-C3 SuperMini support
-- Light-activated operation
-- Mobile-optimized portal
-- Continuous daylight operation with automatic nighttime sleep
-
-### Support Contacts
-
-- **Technical Issues**: [Create GitHub Issue](https://github.com/user/infodrops/issues)
-
-## 📄 License and Disclaimer
-
-This project is released under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
-
-**Disclaimer**: This software is provided "as is" without warranty. Users are responsible for complying with applicable laws and ensuring safe, ethical use. The developers are not liable for any misuse or consequences of deployment.
+A discrete, solar-powered device for sharing critical information when the internet isn't an option.
 
 ---
 
-_The price of liberty is eternal vigilance. In the digital age, that vigilance includes ensuring our communities have access to the information and tools they need to resist authoritarianism and build stronger, more connected societies._
+## ⚠️ Important Legal and Ethical Notice
+
+**This project is for educational and legitimate resistance purposes only.** Its goal is to provide access to information during emergencies, connectivity outages, or periods of information suppression.
+
+**Your Responsibilities:**
+
+1. **Comply with local laws.** You are solely responsible for how you use this device.
+2. **Use for peaceful purposes only.** This tool is for sharing information, not inciting violence.
+3. **Respect property.** Do not deploy on private property without permission.
+4. **Prioritize safety.** Never deploy a device if it puts you or your community at risk.
+
+## 🎯 Mission
+
+To empower communities with access to vital, offline information during a crisis. InfoDrops creates a network of discrete, solar-powered beacons to support **democratic education**, **community organizing**, **emergency preparedness**, and **digital rights**.
+
+## 🔧 How It Works
+
+Think of an InfoDrop as a tiny, digital lighthouse. It requires no internet connection. When you're nearby, you connect to its free Wi-Fi, and a webpage automatically opens on your phone with the stored information.
+
+- **The Device**: A tiny, low-power `ESP32-C3` microcontroller creates a local Wi-Fi network.
+- **The Portal**: This network uses a **captive portal**—the same technology hotels and airports use for Wi-Fi logins—to automatically direct your phone's browser to the locally-stored content.
+- **The Power**: It can be powered by a simple USB power bank for portable use or a small solar panel for long-term, autonomous deployment.
+
+## 🚀 Quick Start Guide
+
+### 1. Hardware Required
+
+| Component                  | Portable Setup (Basic) | Deployed Setup (Advanced) | Purpose                                      |
+| -------------------------- | :--------------------: | :-----------------------: | -------------------------------------------- |
+| **ESP32-C3 SuperMini**     |      **Required**      |       **Required**        | The brain of the device.                     |
+| **USB-C Power Bank**       |      **Required**      |         Optional          | Easy, portable power source.                 |
+| **Solar Panel & Battery**  |           -            |       **Required**        | For long-term, autonomous operation.         |
+| **Light Sensor (LDR)**     |           -            |         Optional          | Activates device only during daylight hours. |
+| **Weatherproof Enclosure** |           -            |         Optional          | Protects the device when installed outdoors. |
+
+### 2. Software Setup
+
+1. **Install** the [PlatformIO IDE extension](https://platformio.org/install/ide?install=vscode) in VS Code.
+2. **Clone** this project's repository to your computer.
+3. **Upload Filesystem Image**: This step loads the web portal content (`index.html`, `style.css`, etc.) onto the device's memory.
+4. **Compile & Upload Firmware**: This step loads the main program code onto the device.
+5. **Activate**: Power on the device. It will begin broadcasting a Wi-Fi network named **"A_Free_Community"**.
+
+## 📱 Usage Modes
+
+You can use the device in two primary ways. Choose your mode by editing the `main.cpp` file before uploading the firmware.
+
+| Mode          | Portable Mode (`USE_LIGHT_SENSOR = false`)                         | Deployed Mode (`USE_LIGHT_SENSOR = true`)                                  |
+| ------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| **Purpose**   | Temporary info sharing at events, meetings, or protests.           | Long-term, autonomous installations in public spaces.                      |
+| **Power**     | USB power bank.                                                    | Solar panel and battery.                                                   |
+| **Operation** | Runs continuously as long as it has power.                         | Activates automatically in daylight and sleeps at night to conserve power. |
+| **Hardware**  | Just the ESP32-C3 and a power bank.                                | Requires a solar setup and an optional light sensor (LDR).                 |
+| **Best For**  | Quick, mobile deployment where you can retrieve the device easily. | "Set it and forget it" deployments in a stable, secure location.           |
+
+## ⚖️ Safety & Legal Considerations
+
+- **Public vs. Private Space**: Operating low-power Wi-Fi in public spaces is generally permissible, but always check local regulations. **Obtain permission for placement on private property.**
+- **Operational Security (OpSec)**: For sensitive deployments, consider anonymous hardware purchases and take precautions to protect your identity.
+- **Content is Key**: The default content focuses on legal resistance methods and educational resources. You are responsible for any content you add or modify. Ensure it complies with local laws and serves your community constructively.
+- **No User Tracking**: The device is designed for privacy. It **does not log IP addresses or track user activity**.
+
+## 🛠️ Customization
+
+1. **Edit Content**: Modify the files in the `data/` folder. The main page is `index.html`.
+2. **Change Styles**: Customize the look and feel by editing `data/minimal.css`.
+3. **Add Files**: Add images, PDFs, and other resources into the `data/` folder. Remember to update the filesystem image after making changes.
+
+## 🌍 Use Cases
+
+| Category                 | Examples                                                                            |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| **Crisis Response**      | Emergency contacts, shelter locations, safety guides during natural disasters.      |
+| **Community Organizing** | Mutual aid resources, voter guides, schedules for local meetings.                   |
+| **Educational Outreach** | Digital privacy tools, civic education, historical documents.                       |
+| **Information Access**   | A backup communication channel during internet blackouts or infrastructure failure. |
+
+## ⚡ Technical Specifications
+
+| Feature               | Specification                                  |
+| --------------------- | ---------------------------------------------- |
+| **Power Consumption** | ~80mA (Active), <1µA (Deep Sleep)              |
+| **WiFi Standard**     | 802.11 b/g/n (2.4GHz)                          |
+| **WiFi Range**        | ~50-100 meters (line of sight)                 |
+| **Concurrent Users**  | Up to 4 recommended                            |
+| **Content Storage**   | ~2MB available for HTML, CSS, images, and PDFs |
+
+## 🤝 How to Contribute
+
+We welcome contributions! You can help by:
+
+- **Developing Content**: Create educational materials or translate existing ones.
+- **Improving Code**: Optimize the software or add new features.
+- **Writing Documentation**: Improve setup guides and safety protocols.
+- **Testing**: Report bugs and validate functionality.
+
+Please see our contribution guidelines for details on submitting a pull request.
+
+## 📄 License
+
+This project is released under the **GNU General Public License v3.0**.
+
+**Disclaimer**: This software is provided "as is" without warranty. The developers are not liable for any misuse. You are responsible for using this tool ethically, legally, and safely.
+
+---
+
+> _The price of liberty is eternal vigilance. In the digital age, that vigilance includes ensuring our communities have access to the information and tools they need to resist authoritarianism and build stronger, more connected societies._
 
 **Stay informed. Stay connected. Stay free.**

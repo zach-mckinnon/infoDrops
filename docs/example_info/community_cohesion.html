@@ -8,18 +8,40 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        /* Techno-Resistance Aesthetic - WCAG AA Compliant */
         body { 
-            font-family: -webkit-system-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            color: #1c1917;
+            font-family: 'Courier New', Courier, 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 25%, #1a2a1a 75%, #1a1a1a 100%);
+            background-attachment: fixed;
+            color: #f5f5f5;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle Grid Overlay - Reduced for accessibility */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(220, 38, 38, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220, 38, 38, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
         }
         
         .container { 
             max-width: 100%; 
-            margin: 0 auto; 
-            padding: 1rem; 
+            margin: 0 auto;
+            padding: 1rem;
+            position: relative;
+            z-index: 2;
         }
         
         @media (min-width: 768px) { 
@@ -27,13 +49,14 @@
         }
         
         header {
-            background: rgba(224, 242, 254, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #bae6fd;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a1a1a 100%);
+            border-bottom: 2px solid #ff4444;
+            border-top: 2px solid #ff4444;
             position: sticky;
             top: 0;
             z-index: 100;
             padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
         
         .header-content {
@@ -47,7 +70,10 @@
         .logo {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #0369a1;
+            color: #ffeb3b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
         }
         
         .nav-buttons {
@@ -59,42 +85,76 @@
         
         .nav-btn {
             padding: 0.5rem 0.75rem;
-            background: transparent;
-            border: none;
-            border-radius: 0.25rem;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 0;
             text-decoration: none;
-            color: #0284c7;
-            font-weight: 500;
-            transition: all 0.2s;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
             cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
         
         .nav-btn:hover, .nav-btn.active {
-            background: #0284c7;
-            color: white;
-            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+            border-color: #ffeb3b;
         }
         
         .section {
             margin: 2rem 0;
             padding: 1.5rem;
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
         
         .hero {
             text-align: center;
             padding: 3rem 1rem;
             margin-bottom: 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #3a1a1a 100%);
+            border: 3px solid #ff4444;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+            animation: scanline 3s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
         .hero h1 {
             font-size: 2.25rem;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: 1rem;
             line-height: 1.25;
-            color: #1c1917;
+            color: #ff4444;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+            position: relative;
+            z-index: 2;
         }
         
         @media (min-width: 768px) {
@@ -103,45 +163,61 @@
         
         .hero p {
             font-size: 1.125rem;
-            color: #475569;
+            color: #f5f5f5;
             max-width: 48rem;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.6;
         }
         
         .section-title {
             font-size: 1.875rem;
-            font-weight: 700;
-            color: #1e293b;
+            font-weight: 900;
+            color: #ff4444;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
+            padding: 0.5rem 0;
+            text-align: center;
         }
         
         .section-subtitle {
-            color: #64748b;
+            color: #e5e5e5;
             margin-bottom: 2rem;
             font-size: 1rem;
             font-style: italic;
+            text-align: center;
+            line-height: 1.6;
         }
         
         .part-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #0369a1;
+            color: #ffeb3b;
             margin: 2rem 0 1rem 0;
-            border-left: 4px solid #0284c7;
+            border-left: 4px solid #ff4444;
             padding-left: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .chapter-title {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #1e293b;
+            color: #f5f5f5;
             margin: 1.5rem 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .content-text {
-            color: #374151;
+            color: #e5e5e5;
             margin-bottom: 1.5rem;
             text-align: justify;
+            line-height: 1.6;
         }
         
         .stats-grid {
@@ -158,75 +234,101 @@
         }
         
         .stat-card {
-            background: #f1f5f9;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
             padding: 1.5rem;
-            border-radius: 0.75rem;
+            border: 2px solid #ff4444;
+            border-radius: 4px;
             text-align: center;
-            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 68, 68, 0.3);
+            border-color: #ffeb3b;
         }
         
         .stat-number {
             font-size: 2rem;
             font-weight: 800;
-            color: #dc2626;
+            color: #ff4444;
             display: block;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
         }
         
         .stat-label {
-            color: #64748b;
+            color: #f5f5f5;
             font-size: 0.875rem;
             margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .highlight-box {
-            background: #dbeafe;
-            border-left: 4px solid #3b82f6;
+            background: linear-gradient(135deg, #3a2a2a 0%, #4a3a2a 100%);
+            border-left: 4px solid #ffeb3b;
             padding: 1rem;
             margin: 1.5rem 0;
-            border-radius: 0.5rem;
+            border-radius: 4px;
+            border: 2px solid #ff4444;
+            color: #f5f5f5;
         }
         
         .warning-box {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+            background: linear-gradient(135deg, #3a3a2a 0%, #4a4a2a 100%);
+            border-left: 4px solid #ffeb3b;
             padding: 1rem;
             margin: 1.5rem 0;
-            border-radius: 0.5rem;
+            border-radius: 4px;
+            border: 2px solid #ffeb3b;
+            color: #f5f5f5;
         }
         
         .action-ladder {
-            background: #f0fdf4;
-            border: 1px solid #16a34a;
-            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 100%);
+            border: 2px solid #ffeb3b;
+            border-radius: 4px;
             padding: 2rem;
             margin: 2rem 0;
+            box-shadow: 0 0 20px rgba(255, 235, 59, 0.2);
         }
         
         .action-ladder h3 {
-            color: #166534;
+            color: #ffeb3b;
             margin-bottom: 1rem;
             font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
         }
         
         .ladder-tier {
-            background: white;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
             padding: 1.5rem;
             margin: 1rem 0;
-            border-radius: 0.5rem;
-            border-left: 4px solid #16a34a;
+            border-radius: 4px;
+            border: 2px solid #ffeb3b;
+            transition: all 0.3s;
+        }
+        
+        .ladder-tier:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 235, 59, 0.3);
         }
         
         .tier-number {
             display: inline-block;
             width: 2rem;
             height: 2rem;
-            background: #16a34a;
-            color: white;
+            background: linear-gradient(135deg, #ffeb3b 0%, #ffd700 100%);
+            color: #000000;
             border-radius: 50%;
             text-align: center;
             font-weight: bold;
             margin-right: 1rem;
             line-height: 2rem;
+            text-shadow: none;
+            border: 2px solid #ff4444;
         }
         
         .tier-title {
@@ -299,11 +401,13 @@
         footer {
             text-align: center;
             padding: 2rem;
-            color: #64748b;
+            color: #e5e5e5;
             font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
+            border-top: 2px solid #ff4444;
             margin-top: 3rem;
-            background: #f8fafc;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         /* Performance optimizations for ESP32 */

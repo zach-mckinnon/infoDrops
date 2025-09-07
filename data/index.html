@@ -8,18 +8,40 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        /* Techno-Resistance Aesthetic - WCAG AA Compliant */
         body { 
-            font-family: -webkit-system-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #f8f7f4 0%, #e7e5e4 100%);
-            color: #1c1917;
+            font-family: 'Courier New', Courier, 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 25%, #1a2a1a 75%, #1a1a1a 100%);
+            background-attachment: fixed;
+            color: #f5f5f5;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle Grid Overlay - Reduced for accessibility */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(220, 38, 38, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220, 38, 38, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
         }
         
         .container { 
             max-width: 100%; 
             margin: 0 auto; 
-            padding: 1rem; 
+            padding: 1rem;
+            position: relative;
+            z-index: 2;
         }
         
         @media (min-width: 768px) { 
@@ -27,13 +49,14 @@
         }
         
         header {
-            background: rgba(231, 229, 228, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #d6d3d1;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a1a1a 100%);
+            border-bottom: 2px solid #ff4444;
+            border-top: 2px solid #ff4444;
             position: sticky;
             top: 0;
             z-index: 100;
             padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
         
         .header-content {
@@ -47,7 +70,10 @@
         .logo {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #292524;
+            color: #ffeb3b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
         }
         
         .nav-buttons {
@@ -63,57 +89,83 @@
         
         .nav-btn {
             padding: 0.5rem 0.75rem;
-            background: transparent;
-            border: none;
-            border-radius: 0.25rem;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 0;
             text-decoration: none;
-            color: #44403c;
-            font-weight: 500;
-            transition: all 0.2s;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
             cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
         
         .nav-btn:hover, .nav-btn.active {
-            background: #c2410c;
-            color: white;
-            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+            border-color: #ffeb3b;
         }
         
         .section {
             margin: 2rem 0;
             padding: 1.5rem;
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+            border: 2px solid #dc2626;
+            border-radius: 0;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
         
         .section-title {
             font-size: 1.875rem;
-            font-weight: 700;
-            color: #292524;
+            font-weight: 900;
+            color: #ff4444;
             margin-bottom: 1rem;
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
+            padding: 0.5rem 0;
         }
         
         .section-subtitle {
-            color: #57534e;
+            color: #e5e5e5;
             text-align: center;
             margin-bottom: 2rem;
             font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            line-height: 1.6;
         }
         
         .hero {
             text-align: center;
             padding: 3rem 1rem;
             margin-bottom: 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #3a1a1a 100%);
+            border: 3px solid #ff4444;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
         }
         
         .hero h1 {
             font-size: 2.25rem;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: 1rem;
             line-height: 1.25;
-            color: #1c1917;
+            color: #ff4444;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+            position: relative;
+            z-index: 2;
         }
         
         @media (min-width: 768px) {
@@ -122,9 +174,13 @@
         
         .hero p {
             font-size: 1.125rem;
-            color: #57534e;
+            color: #f5f5f5;
             max-width: 48rem;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.6;
         }
         
         .cards-grid {
@@ -147,22 +203,48 @@
         
         .card {
             padding: 1.5rem;
-            background: white;
-            border: 1px solid #e7e5e4;
-            border-radius: 0.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 4px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
+            border-color: #ffeb3b;
         }
         
         .card h3 {
             font-size: 1.25rem;
-            font-weight: 600;
-            color: #9a3412;
+            font-weight: 700;
+            color: #ffeb3b;
             margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card p {
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff4444, #ffeb3b, #ff4444);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover::before {
+            transform: translateX(0);
         }
         
         .chart-section {
@@ -182,10 +264,11 @@
             position: relative;
             width: 100%;
             height: 350px;
-            background: white;
-            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 4px;
             padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
             flex: 1;
         }
         
@@ -216,19 +299,23 @@
         }
         
         .quiz-container {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
             padding: 2rem;
-            border-radius: 0.75rem;
+            border: 2px solid #ff4444;
+            border-radius: 4px;
             text-align: center;
             max-width: 48rem;
             margin: 0 auto;
+            box-shadow: 0 0 30px rgba(255, 68, 68, 0.2);
         }
         
         .quiz-question {
             font-size: 1.125rem;
-            font-weight: 500;
+            font-weight: 700;
             margin-bottom: 2rem;
-            color: #292524;
+            color: #ffeb3b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .quiz-options {
@@ -240,19 +327,31 @@
         
         .quiz-btn {
             padding: 1rem 2rem;
-            background: white;
-            border: 2px solid #d6d3d1;
-            border-radius: 0.5rem;
-            font-weight: 600;
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a3a3a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #f5f5f5;
             cursor: pointer;
-            transition: all 0.2s;
-            min-width: 120px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .quiz-btn:hover, .quiz-btn.selected {
-            background: #fed7aa;
-            border-color: #f97316;
+        .quiz-btn:hover {
+            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
+            color: #ffffff;
+            border-color: #ffeb3b;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+        }
+        
+        .quiz-btn.selected {
+            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
+            color: #ffffff;
+            border-color: #ffeb3b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
         }
         
         .action-items {
@@ -330,13 +429,21 @@
         
         .community-column h4 {
             font-size: 1.125rem;
-            font-weight: 700;
+            font-weight: 900;
             margin-bottom: 1rem;
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
-        .division-tactics h4 { color: #b91c1c; }
-        .resistance-acts h4 { color: #15803d; }
+        .division-tactics h4 { 
+            color: #dc2626;
+            text-shadow: 0 0 10px rgba(220, 38, 38, 0.6);
+        }
+        .resistance-acts h4 { 
+            color: #fcd34d;
+            text-shadow: 0 0 10px rgba(252, 211, 77, 0.6);
+        }
         
         .community-list {
             display: flex;
@@ -345,19 +452,25 @@
         }
         
         .division-item {
-            background: #fee2e2;
-            color: #991b1b;
+            background: linear-gradient(135deg, #2a1a1a 0%, #3a1a1a 100%);
+            color: #ff6b6b;
             padding: 0.75rem;
-            border-radius: 0.375rem;
+            border: 1px solid #dc2626;
             text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .resistance-item {
-            background: #dcfce7;
-            color: #166534;
+            background: linear-gradient(135deg, #1a2a1a 0%, #1a3a1a 100%);
+            color: #fcd34d;
             padding: 0.75rem;
-            border-radius: 0.375rem;
+            border: 1px solid #fcd34d;
             text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .community-divider {
@@ -371,44 +484,49 @@
         .lang-switch {
             display: flex;
             gap: 0.25rem;
-            background: rgba(248, 250, 252, 0.8);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
             padding: 0.25rem;
-            border-radius: 0.375rem;
-            border: 1px solid #d6d3d1;
+            border: 1px solid #dc2626;
         }
         
         .lang-btn {
             padding: 0.5rem 0.75rem;
             background: transparent;
-            border: none;
-            border-radius: 0.25rem;
-            font-weight: 600;
+            border: 1px solid #666666;
+            color: #e0e0e0;
+            font-weight: 700;
             font-size: 0.875rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .lang-btn.active {
-            background: #c2410c;
-            color: white;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: #ffffff;
+            border-color: #fcd34d;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
         }
         
         footer {
             text-align: center;
             padding: 2rem;
-            color: #57534e;
+            color: #e5e5e5;
             font-size: 0.9rem;
-            border-top: 1px solid #e7e5e4;
+            border-top: 2px solid #ff4444;
             margin-top: 3rem;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .loading {
             display: inline-block;
             width: 20px;
             height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #c2410c;
+            border: 3px solid #333333;
+            border-top: 3px solid #dc2626;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -430,13 +548,13 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo" data-translate="header_title">The Citizen's Guide</div>
+                <div class="logo" data-translate="header_title">WAKE UP GUIDE</div>
                 <nav class="nav-buttons">
-                    <a href="#understanding" class="nav-btn" data-translate="nav_1">1. Warning</a>
-                    <a href="#identifying" class="nav-btn" data-translate="nav_2">2. Signs</a>
-                    <a href="#reality-check" class="nav-btn" data-translate="nav_3">3. Reality Check</a>
-                    <a href="#resisting" class="nav-btn" data-translate="nav_4">4. Toolkit</a>
-                    <a href="#community" class="nav-btn" data-translate="nav_5">5. Foundation</a>
+                    <a href="#understanding" class="nav-btn" data-translate="nav_1">1. Wake Up</a>
+                    <a href="#identifying" class="nav-btn" data-translate="nav_2">2. See It</a>
+                    <a href="#reality-check" class="nav-btn" data-translate="nav_3">3. Proof</a>
+                    <a href="#resisting" class="nav-btn" data-translate="nav_4">4. Fight Back</a>
+                    <a href="#community" class="nav-btn" data-translate="nav_5">5. Unite</a>
                     <div class="lang-switch">
                         <button id="lang-en" class="lang-btn active">EN</button>
                         <button id="lang-es" class="lang-btn">ES</button>
@@ -447,34 +565,42 @@
     </header>
 
     <main class="container">
+        <section class="distress-banner" style="background: #1a1a1a; color: #fef2f2; padding: 1.5rem; text-align: center; border: 2px dashed #dc2626; margin-bottom: 2rem;">
+  <h1 style="font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; color: #dc2626; text-shadow: 0 0 20px rgba(220, 38, 38, 0.8); position: relative; z-index: 2;">⚠️ YOU'VE FOUND SOMETHING IMPORTANT</h1>
+  <p style="font-size: 1rem; color: #fef2f2; margin-top: 0.75rem;">Someone in your community placed this here because <strong>you need to know what's happening.</strong><br>
+  This isn't the internet — it's a local device sharing critical information.</p>
+  <p style="font-size: 0.875rem; color: #fca5a5; margin-top: 0.5rem;"><em>No tracking. No ads. No corporate control. Just what you need to know.</em></p>
+</section>
         <div class="hero">
-            <h1 data-translate="main_title">Resisting the Digital Drift</h1>
-            <p data-translate="main_subtitle">A guide for the average citizen to understand the rise of techno-fascism, identify its presence, and discover effective ways to fight back.</p>
-        </div>
+  <h1>THEY DON'T WANT YOU TO READ THIS</h1>
+  <p>
+    Your phone, your apps, your data — they're being used to control you. This guide shows you <strong>exactly how</strong> and <strong>what you can do about it.</strong> Takes 10 minutes to read. Could change everything.
+  </p>
+</div>
 
         <section id="understanding" class="section">
-            <h2 class="section-title" data-translate="section1_title">1. Understanding the Warning</h2>
-            <p class="section-subtitle" data-translate="section1_subtitle">This section defines the emerging threat of techno-fascism. It is not a historical reenactment but a new form of control that fuses corporate technology with authoritarian politics to monitor, manipulate, and suppress the public in unprecedented ways.</p>
+            <h2 class="section-title" data-translate="section1_title">1. WAKE UP CALL</h2>
+            <p class="section-subtitle" data-translate="section1_subtitle">Something dangerous is happening right now. Tech companies and politicians are working together to control what you see, think, and do. Here's how to spot it before it's too late.</p>
             
             <div class="cards-grid">
                 <div class="card">
                     <h3 data-translate="section1_card1_title">What is Fascism?</h3>
-                    <p data-translate="section1_card1_text">At its core, fascism is a political ideology characterized by a dictatorial leader, centralized autocracy, militarism, and the forcible suppression of opposition. It subordinates individual interests to the perceived good of the nation or state, often defined along ultranationalist or racial lines.</p>
+                    <p data-translate="section1_card1_text">A system where a small group uses fear and control to stay in power. They silence opponents, use violence or threats, and convince people to give up freedom for "safety" or "unity." Sound familiar?</p>
                 </div>
                 <div class="card">
-                    <h3 data-translate="section1_card2_title">What makes it "Techno"?</h3>
-                    <p data-translate="section1_card2_text">"Techno" refers to the use of modern technology as the primary tool for control. This includes mass surveillance, algorithmic manipulation of information, and data-driven methods to identify and silence dissent. Big Tech and the state become intertwined partners.</p>
+                    <h3 data-translate="section1_card2_title">Why "Techno"?</h3>
+                    <p data-translate="section1_card2_text">Instead of jackboots, they use your phone. Instead of propaganda posters, they use targeted ads. Your data tells them everything about you, and algorithms control what you see. Big Tech + Government = New Kind of Control.</p>
                 </div>
                 <div class="card">
-                    <h3 data-translate="section1_card3_title">Why is it a Threat Now?</h3>
-                    <p data-translate="section1_card3_text">The combination of vast corporate data collection, powerful AI, and growing political polarization creates a fertile ground for this ideology. It can emerge subtly, disguised as "efficiency," "national security," or "progress," while systematically eroding democratic norms.</p>
+                    <h3 data-translate="section1_card3_title">Why Right Now?</h3>
+                    <p data-translate="section1_card3_text">They know everything about you: where you go, who you talk to, what you buy, what makes you angry or scared. AI can predict your behavior better than you can. Perfect storm: maximum surveillance + social division = total control.</p>
                 </div>
             </div>
         </section>
 
         <section id="identifying" class="section">
-            <h2 class="section-title" data-translate="section2_title">2. Identifying the Signs</h2>
-            <p class="section-subtitle" data-translate="section2_subtitle">Fascist tendencies don't appear overnight. This interactive chart highlights key characteristics. Click on any segment to see how it connects to recent events. The levels (1-10) indicate the perceived prevalence of that trend in modern American society, with 10 being a critical concern.</p>
+            <h2 class="section-title" data-translate="section2_title">2. SPOT THE PATTERNS</h2>
+            <p class="section-subtitle" data-translate="section2_subtitle">It's happening step by step, right in front of us. This chart shows the warning signs we're seeing RIGHT NOW. Click any section to see real examples from the last few years. Scale of 1-10 shows how bad it's gotten.</p>
             
             <div class="chart-section">
                 <div class="chart-container">
@@ -484,8 +610,8 @@
                 <div class="chart-info">
                     <h3 id="chart-title" data-translate="chart_initial_title">Select a Characteristic</h3>
                     <div id="chart-content">
-                        <p data-translate="chart_initial_text">The chart on the left displays common warning signs. Interacting with it will reveal explanations and connect these abstract ideas to the real world, helping you develop a critical eye for news and political rhetoric.</p>
-                        <p style="margin-top: 1rem;"><small data-translate="chart_explanation"><strong>Chart Levels Explained:</strong> The distance from the center represents perceived intensity. A score of <strong>10</strong> indicates a highly prevalent and critical trend, while a lower score like <strong>3</strong> suggests an emerging but less overt characteristic.</small></p>
+                        <p data-translate="chart_initial_text">Each section shows a different tactic they're using. Click on any part to see specific examples you've probably noticed but didn't connect. Once you see the pattern, you can't unsee it.</p>
+                        <p style="margin-top: 1rem;"><small data-translate="chart_explanation"><strong>How to read this:</strong> Distance from center = how bad it is. <strong>10 = Red Alert</strong> (happening everywhere), <strong>5 = Watch Out</strong> (getting worse), <strong>1 = Early Warning</strong> (just starting).</small></p>
                     </div>
                 </div>
             </div>
@@ -505,8 +631,8 @@
         </section>
 
         <section id="reality-check" class="section">
-            <h2 class="section-title" data-translate="section3_title">3. Reality Check Quiz</h2>
-            <p class="section-subtitle" data-translate="section3_subtitle">How much do these trends affect your daily life and perceptions? Answer these questions to reflect on the current climate. This isn't a scientific test, but a tool for self-awareness.</p>
+            <h2 class="section-title" data-translate="section3_title">3. ARE YOU LIVING IT?</h2>
+            <p class="section-subtitle" data-translate="section3_subtitle">Time for brutal honesty. How much of this is already happening in YOUR life? Answer these questions about what you see every day. The results might shock you.</p>
             
             <div class="quiz-container">
                 <div id="quiz-question" class="quiz-question"></div>
@@ -514,21 +640,21 @@
                 <div id="quiz-results" class="hidden">
                     <h3 data-translate="quiz_results_title">Your Reflection</h3>
                     <p id="quiz-score"></p>
-                    <a href="#resisting" class="nav-btn" style="margin-top: 1rem; display: inline-block;" data-translate="quiz_results_cta">See How You Can Take Action</a>
+                    <a href="#resisting" class="nav-btn" style="margin-top: 1rem; display: inline-block;" data-translate="quiz_results_cta">FIGHT BACK →</a>
                 </div>
             </div>
         </section>
 
         <section id="resisting" class="section">
-            <h2 class="section-title" data-translate="section4_title">4. The Citizen's Toolkit for Resistance</h2>
-            <p class="section-subtitle" data-translate="section4_subtitle">Realizing the threat is the first step; taking action is the next. Here are concrete steps any citizen can take. Click each card to learn more.</p>
+            <h2 class="section-title" data-translate="section4_title">4. FIGHT BACK NOW</h2>
+            <p class="section-subtitle" data-translate="section4_subtitle">You're not powerless. Here's exactly what you can do TODAY to protect yourself and others. Start with any one of these — every action matters.</p>
             
             <div id="toolkit-container" class="action-items"></div>
         </section>
 
         <section id="community" class="section">
-            <h2 class="section-title" data-translate="section5_title">5. The Ultimate Foundation: Community</h2>
-            <p class="section-subtitle" data-translate="section5_subtitle">Authoritarianism thrives when we are divided and isolated. The most powerful act of resistance is to build strong, resilient, and caring communities. When we know and support our neighbors, we create a social fabric that is incredibly difficult to tear apart.</p>
+            <h2 class="section-title" data-translate="section5_title">5. UNITE OR LOSE</h2>
+            <p class="section-subtitle" data-translate="section5_subtitle">They win when we're alone, scared, and fighting each other. We win when we stick together. Your neighbors are not your enemies \u2014 the people trying to divide you are. Here's how to build the communities that can't be broken.</p>
             
             <div class="community-section">
                 <div class="community-column division-tactics">
@@ -558,6 +684,9 @@
     </main>
 
     <footer>
+        <p style="margin-top: 1rem; font-style: italic; font-size: 0.875rem;">
+  “Those who trade liberty for convenience seldom realize when they’ve already lost both.”
+</p>
         <p data-translate="footer_text">This guide is for informational purposes. Stay informed, stay engaged, and stay connected.</p>
     </footer>
 
