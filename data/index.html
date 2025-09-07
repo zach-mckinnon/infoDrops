@@ -247,55 +247,73 @@
             transform: translateX(0);
         }
         
-        .chart-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        @media (min-width: 1024px) {
-            .chart-section {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-        
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            border: 2px solid #ff4444;
-            border-radius: 4px;
-            padding: 1rem;
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
-            flex: 1;
+        .warning-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            margin-top: 2rem;
         }
         
         @media (min-width: 768px) {
-            .chart-container { height: 450px; }
+            .warning-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
-        .chart-info {
-            flex: 1;
-            padding: 1rem;
+        .warning-item {
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 4px;
+            padding: 1.5rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .chart-info h3 {
-            font-size: 1.5rem;
+        .warning-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.3);
+            border-color: #ffeb3b;
+        }
+        
+        .warning-level {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: #ffffff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: #9a3412;
-            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .chart-fallback {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-            color: #57534e;
-            background: #f8f9fa;
-            border-radius: 0.5rem;
-            border: 2px dashed #d6d3d1;
+        .warning-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #ffeb3b;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-right: 4rem;
+        }
+        
+        .warning-description {
+            color: #f5f5f5;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .warning-item.expanded .warning-description {
+            opacity: 1;
+            max-height: 200px;
+            margin-top: 0.75rem;
         }
         
         .quiz-container {
@@ -545,24 +563,12 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo" data-translate="header_title">WAKE UP GUIDE</div>
-                <nav class="nav-buttons">
-                    <a href="#understanding" class="nav-btn" data-translate="nav_1">1. Wake Up</a>
-                    <a href="#identifying" class="nav-btn" data-translate="nav_2">2. See It</a>
-                    <a href="#reality-check" class="nav-btn" data-translate="nav_3">3. Proof</a>
-                    <a href="#resisting" class="nav-btn" data-translate="nav_4">4. Fight Back</a>
-                    <a href="#community" class="nav-btn" data-translate="nav_5">5. Unite</a>
-                    <div class="lang-switch">
-                        <button id="lang-en" class="lang-btn active">EN</button>
-                        <button id="lang-es" class="lang-btn">ES</button>
-                    </div>
-                </nav>
-            </div>
+    <div style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
+        <div class="lang-switch">
+            <button id="lang-en" class="lang-btn active">EN</button>
+            <button id="lang-es" class="lang-btn">ES</button>
         </div>
-    </header>
+    </div>
 
     <main class="container">
         <section class="distress-banner" style="background: #1a1a1a; color: #fef2f2; padding: 1.5rem; text-align: center; border: 2px dashed #dc2626; margin-bottom: 2rem;">
@@ -600,33 +606,44 @@
 
         <section id="identifying" class="section">
             <h2 class="section-title" data-translate="section2_title">2. SPOT THE PATTERNS</h2>
-            <p class="section-subtitle" data-translate="section2_subtitle">It's happening step by step, right in front of us. This chart shows the warning signs we're seeing RIGHT NOW. Click any section to see real examples from the last few years. Scale of 1-10 shows how bad it's gotten.</p>
+            <p class="section-subtitle" data-translate="section2_subtitle">It's happening step by step, right in front of us. These warning signs are what we're seeing RIGHT NOW. Click any section to see real examples from the last few years.</p>
             
-            <div class="chart-section">
-                <div class="chart-container">
-                    <canvas id="fascismChart" width="400" height="300"></canvas>
+            <div class="warning-grid">
+                <div class="warning-item" onclick="toggleWarning(this)">
+                    <div class="warning-level">CRITICAL</div>
+                    <div class="warning-title">Control of Media</div>
+                    <div class="warning-description">Efforts to discredit mainstream media ('fake news'), amplified by social media algorithms that create echo chambers and spread disinformation. The goal is to control the narrative.</div>
                 </div>
                 
-                <div class="chart-info">
-                    <h3 id="chart-title" data-translate="chart_initial_title">Select a Characteristic</h3>
-                    <div id="chart-content">
-                        <p data-translate="chart_initial_text">Each section shows a different tactic they're using. Click on any part to see specific examples you've probably noticed but didn't connect. Once you see the pattern, you can't unsee it.</p>
-                        <p style="margin-top: 1rem;"><small data-translate="chart_explanation"><strong>How to read this:</strong> Distance from center = how bad it is. <strong>10 = Red Alert</strong> (happening everywhere), <strong>5 = Watch Out</strong> (getting worse), <strong>1 = Early Warning</strong> (just starting).</small></p>
-                    </div>
+                <div class="warning-item" onclick="toggleWarning(this)">
+                    <div class="warning-level">CRITICAL</div>
+                    <div class="warning-title">Corporate/State Fusion</div>
+                    <div class="warning-description">Powerful tech corporations provide tools for surveillance and social control in exchange for favorable regulation and massive contracts, merging state and corporate power.</div>
                 </div>
-            </div>
-            
-            <div id="chart-fallback" class="chart-fallback">
-                <h3>📊 Fascism Warning Signs</h3>
-                <p>Key characteristics of techno-fascism and their current prevalence:</p>
-                <ul style="text-align: left; display: inline-block; margin-top: 1rem;">
-                    <li><strong>Powerful Nationalism:</strong> High concern (8/10)</li>
-                    <li><strong>Control of Media:</strong> Critical (9/10)</li>
-                    <li><strong>Disdain for Rights:</strong> Moderate concern (7/10)</li>
-                    <li><strong>Military Supremacy:</strong> High concern (8/10)</li>
-                    <li><strong>Corporate Fusion:</strong> Critical (10/10)</li>
-                    <li><strong>Suppression of Dissent:</strong> High concern (8/10)</li>
-                </ul>
+                
+                <div class="warning-item" onclick="toggleWarning(this)">
+                    <div class="warning-level">HIGH</div>
+                    <div class="warning-title">Powerful Nationalism</div>
+                    <div class="warning-description">Constant appeals to patriotism, often defined against a perceived 'enemy.' Recent examples include rhetoric casting immigrants as invaders and demonizing political opponents as traitors.</div>
+                </div>
+                
+                <div class="warning-item" onclick="toggleWarning(this)">
+                    <div class="warning-level">HIGH</div>
+                    <div class="warning-title">Suppression of Dissent</div>
+                    <div class="warning-description">Political opponents, intellectuals, and protestors are cast as enemies of the state. This ranges from online harassment to using the legal system to target critics, creating a climate of fear.</div>
+                </div>
+                
+                <div class="warning-item" onclick="toggleWarning(this)">
+                    <div class="warning-level">HIGH</div>
+                    <div class="warning-title">Military Supremacy</div>
+                    <div class="warning-description">An outsized portion of the budget is allocated to military/law enforcement, who are glorified. Paramilitary groups may be encouraged. This creates a culture of force where dissent equals criminality.</div>
+                </div>
+                
+                <div class="warning-item" onclick="toggleWarning(this)">
+                    <div class="warning-level">MODERATE</div>
+                    <div class="warning-title">Disdain for Rights</div>
+                    <div class="warning-description">Civil liberties are framed as obstacles to security. Seen in expansion of surveillance powers, justification of police brutality, and rhetoric that dehumanizes minority groups.</div>
+                </div>
             </div>
         </section>
 
@@ -690,7 +707,6 @@
         <p data-translate="footer_text">This guide is for informational purposes. Stay informed, stay engaged, and stay connected.</p>
     </footer>
 
-    <script src="/chart.min.js"></script>
     <script>
         // All your original translations and data
         const translations = {
@@ -778,33 +794,7 @@
             }
         };
 
-        const contentData = {
-            en: [
-                { title: "Powerful, Exclusionary Nationalism", content: "This involves a constant appeal to patriotism, often defined against a perceived 'enemy.' Recent examples include rhetoric casting immigrants as invaders and demonizing political opponents as traitors." },
-                { title: "Control of Mass Media & Information", content: "This is characterized by efforts to discredit mainstream media ('fake news'), amplified by social media algorithms that create echo chambers and spread disinformation. The goal is to control the narrative." },
-                { title: "Disdain for Human Rights & Due Process", content: "Civil liberties are framed as an obstacle to security. This can be seen in the expansion of state surveillance powers, justification of police brutality, and rhetoric that dehumanizes minority groups." },
-                { title: "Supremacy of the Military & Police", content: "An outsized portion of the budget is allocated to military/law enforcement, who are glorified. Paramilitary groups may be encouraged. This creates a culture of force where dissent is equated with criminality." },
-                { title: "Rampant Cronyism & Corruption", content: "The leader and their allies use political power to enrich themselves, appointing loyal but unqualified individuals to powerful posts. This blurs the line between public service and personal gain." },
-                { title: "Intertwined Corporate & State Power", content: "In techno-fascism, this is key. Powerful tech corporations provide tools for surveillance and social control in exchange for favorable regulation and massive contracts, merging state and corporate power." },
-                { title: "Suppression of Dissent & Opposition", content: "Political opponents, intellectuals, and protestors are cast as enemies of the state. This can range from online harassment to using the legal system to target critics, creating a climate of fear." },
-                { title: "Obsession with National Security", content: "Fear is used as a primary motivator. A constant state of threat—from terrorism, immigration, crime—is manufactured to justify eroding civil liberties and expanding executive power." }
-            ],
-            es: [
-                { title: "Nacionalismo Poderoso y Excluyente", content: "Implica un llamado constante al patriotismo, a menudo definido en contra de un 'enemigo' percibido. Ejemplos recientes incluyen retórica que presenta a los inmigrantes como invasores y demoniza a los oponentes políticos como traidores." },
-                { title: "Control de los Medios de Comunicación e Información", content: "Se caracteriza por esfuerzos para desacreditar a los medios tradicionales ('noticias falsas'), amplificados por algoritmos de redes sociales que crean cámaras de eco y difunden desinformación. El objetivo es controlar la narrativa." },
-                { title: "Desdén por los Derechos Humanos y el Debido Proceso", content: "Las libertades civiles se presentan como un obstáculo para la seguridad. Se ve en la expansión de los poderes de vigilancia estatal, la justificación de la brutalidad policial y la retórica que deshumaniza a grupos minoritarios." },
-                { title: "Supremacía del Ejército y la Policía", content: "Se asigna una parte desproporcionada del presupuesto a militares/policías, quienes son glorificados. Se puede alentar a grupos paramilitares. Esto crea una cultura de fuerza donde la disidencia se equipara a la criminalidad." },
-                { title: "Amiguismo y Corrupción Rampantes", content: "El líder y sus aliados usan el poder político para enriquecerse, nombrando a individuos leales pero no calificados para puestos poderosos. Esto difumina la línea entre el servicio público y el beneficio personal." },
-                { title: "Fusión del Poder Corporativo y Estatal", content: "En el tecnofascismo, esto es clave. Poderosas corporaciones tecnológicas proporcionan herramientas para la vigilancia y el control social a cambio de una regulación favorable y contratos masivos, fusionando el poder estatal y corporativo." },
-                { title: "Supresión de la Disidencia y la Oposición", content: "Opositores políticos, intelectuales y manifestantes son presentados como enemigos del estado. Esto puede ir desde el acoso en línea hasta el uso del sistema legal para atacar a los críticos, creando un clima de miedo." },
-                { title: "Obsesión con la Seguridad Nacional", content: "El miedo se usa como un motivador principal. Se fabrica o exagera un estado constante de amenaza —terrorismo, inmigración, crimen— para justificar la erosión de las libertades civiles y la expansión del poder ejecutivo." }
-            ]
-        };
 
-        const chartLabels = {
-            en: ['Powerful Nationalism', 'Control of Media', 'Disdain for Rights', 'Military Supremacy', 'Rampant Cronyism', 'Corp/State Fusion', 'Suppression of Dissent', 'Security Obsession'],
-            es: ['Nacionalismo Fuerte', 'Control de Medios', 'Desdén por Derechos', 'Supremacía Militar', 'Amiguismo Rampante', 'Fusión Corp/Estado', 'Supresión de Disidencia', 'Obsesión Seguridad']
-        };
 
         const quizQuestions = {
             en: [
@@ -852,80 +842,20 @@
         let currentLang = 'en';
         let currentQuestion = 0;
         let quizScore = 0;
-        let fascismChart = null;
-
-        // Initialize chart with proper error handling
-        function initChart() {
-            try {
-                const ctx = document.getElementById('fascismChart');
-                if (!ctx || !window.Chart) {
-                    showChartFallback();
-                    return;
+        // Toggle warning item expansion
+        function toggleWarning(element) {
+            // Close other expanded items
+            document.querySelectorAll('.warning-item.expanded').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('expanded');
                 }
-
-                const chartData = {
-                    labels: chartLabels[currentLang],
-                    datasets: [{
-                        data: [8, 9, 7, 8, 9, 10, 8, 9],
-                        backgroundColor: 'rgba(194, 65, 12, 0.2)',
-                        borderColor: 'rgba(194, 65, 12, 1)',
-                        pointBackgroundColor: 'rgba(194, 65, 12, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(194, 65, 12, 1)',
-                        borderWidth: 3,
-                        pointRadius: 6,
-                        pointHoverRadius: 8
-                    }]
-                };
-
-                fascismChart = new Chart(ctx, {
-                    type: 'radar',
-                    data: chartData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false }
-                        },
-                        scales: {
-                            r: {
-                                beginAtZero: true,
-                                max: 10,
-                                ticks: { display: false },
-                                grid: { color: 'rgba(0,0,0,0.1)' },
-                                pointLabels: { 
-                                    font: { size: 11, weight: 'bold' },
-                                    color: '#44403c'
-                                }
-                            }
-                        },
-                        onClick: (evt, elements) => {
-                            if (elements.length > 0) {
-                                const index = elements[0].index;
-                                document.getElementById('chart-title').textContent = contentData[currentLang][index].title;
-                                document.getElementById('chart-content').innerHTML = `<p>${contentData[currentLang][index].content}</p>`;
-                            }
-                        }
-                    }
-                });
-                
-                // Remove loading indicator
-                const loading = document.querySelector('.loading');
-                if (loading) loading.remove();
-                
-            } catch (error) {
-                console.error('Chart initialization failed:', error);
-                showChartFallback();
-            }
+            });
+            
+            // Toggle this item
+            element.classList.toggle('expanded');
         }
 
-        function showChartFallback() {
-            document.querySelector('.chart-container').style.display = 'none';
-            document.getElementById('chart-fallback').style.display = 'block';
-        }
-
-        // Language switching with chart redraw
+        // Language switching
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('language', lang);
@@ -939,12 +869,6 @@
 
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             document.getElementById('lang-es').classList.toggle('active', lang === 'es');
-
-            // Redraw chart with new language
-            if (fascismChart) {
-                fascismChart.destroy();
-                setTimeout(initChart, 100);
-            }
             
             renderToolkit(lang);
             resetQuiz(lang);
@@ -1025,12 +949,6 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            // Add loading indicator to chart
-            document.querySelector('.chart-container').innerHTML = '<div class="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div><canvas id="fascismChart" width="400" height="300"></canvas>';
-            
-            // Initialize chart after brief delay
-            setTimeout(initChart, 500);
-            
             // Set up language buttons
             document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
             document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
@@ -1043,17 +961,6 @@
             if (navigator.userAgent.includes('ESP32') || window.innerWidth < 768) {
                 document.body.classList.add('no-transitions');
             }
-            
-            // Set up smooth scrolling navigation
-            document.querySelectorAll('.nav-btn[href^="#"]').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
         });
     </script>
 </body>
