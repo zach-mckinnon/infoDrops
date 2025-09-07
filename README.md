@@ -113,3 +113,5 @@ This project is released under the **GNU General Public License v3.0**.
 > _The price of liberty is eternal vigilance. In the digital age, that vigilance includes ensuring our communities have access to the information and tools they need to resist authoritarianism and build stronger, more connected societies._
 
 **Stay informed. Stay connected. Stay free.**
+
+[Buy me a coffee](https://buymeacoffee.com/neurospicy_dev)
