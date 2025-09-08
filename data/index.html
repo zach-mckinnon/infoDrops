@@ -1,967 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Resisting Techno-Fascism: A Guide for Citizens</title>
-    <link rel="stylesheet" href="/minimal.css">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        /* Techno-Resistance Aesthetic - WCAG AA Compliant */
-        body { 
-            font-family: 'Courier New', Courier, 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 25%, #1a2a1a 75%, #1a1a1a 100%);
-            background-attachment: fixed;
-            color: #f5f5f5;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        /* Subtle Grid Overlay - Reduced for accessibility */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(220, 38, 38, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(220, 38, 38, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .container { 
-            max-width: 100%; 
-            margin: 0 auto; 
-            padding: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        @media (min-width: 768px) { 
-            .container { max-width: 1200px; padding: 2rem; } 
-        }
-        
-        header {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a1a1a 100%);
-            border-bottom: 2px solid #ff4444;
-            border-top: 2px solid #ff4444;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #ffeb3b;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            font-size: 0.875rem;
-        }
-        
-        @media (max-width: 767px) {
-            .nav-buttons { font-size: 0.75rem; gap: 0.25rem; }
-        }
-        
-        .nav-btn {
-            padding: 0.5rem 0.75rem;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            border: 2px solid #ff4444;
-            border-radius: 0;
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        }
-        
-        .nav-btn:hover, .nav-btn.active {
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-            border-color: #ffeb3b;
-        }
-        
-        .section {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
-            border: 2px solid #dc2626;
-            border-radius: 0;
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-        
-        .section-title {
-            font-size: 1.875rem;
-            font-weight: 900;
-            color: #ff4444;
-            margin-bottom: 1rem;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
-            padding: 0.5rem 0;
-        }
-        
-        .section-subtitle {
-            color: #e5e5e5;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #3a1a1a 100%);
-            border: 3px solid #ff4444;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            line-height: 1.25;
-            color: #ff4444;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
-            position: relative;
-            z-index: 2;
-        }
-        
-        @media (min-width: 768px) {
-            .hero h1 { font-size: 3.75rem; }
-        }
-        
-        .hero p {
-            font-size: 1.125rem;
-            color: #f5f5f5;
-            max-width: 48rem;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-            line-height: 1.6;
-        }
-        
-        .cards-grid {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: 1fr;
-        }
-        
-        @media (min-width: 768px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .cards-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .card {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            border: 2px solid #ff4444;
-            border-radius: 4px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
-            border-color: #ffeb3b;
-        }
-        
-        .card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #ffeb3b;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .card p {
-            color: #f5f5f5;
-            line-height: 1.6;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ff4444, #ffeb3b, #ff4444);
-            transform: translateX(-100%);
-            transition: transform 0.3s;
-        }
-        
-        .card:hover::before {
-            transform: translateX(0);
-        }
-        
-        .warning-grid {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: 1fr;
-            margin-top: 2rem;
-        }
-        
-        @media (min-width: 768px) {
-            .warning-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        .warning-item {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            border: 2px solid #ff4444;
-            border-radius: 4px;
-            padding: 1.5rem;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .warning-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.3);
-            border-color: #ffeb3b;
-        }
-        
-        .warning-level {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-            color: #ffffff;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .warning-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #ffeb3b;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-right: 4rem;
-        }
-        
-        .warning-description {
-            color: #f5f5f5;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .warning-item.expanded .warning-description {
-            opacity: 1;
-            max-height: 200px;
-            margin-top: 0.75rem;
-        }
-        
-        .quiz-container {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            padding: 2rem;
-            border: 2px solid #ff4444;
-            border-radius: 4px;
-            text-align: center;
-            max-width: 48rem;
-            margin: 0 auto;
-            box-shadow: 0 0 30px rgba(255, 68, 68, 0.2);
-        }
-        
-        .quiz-question {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: #ffeb3b;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .quiz-options {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .quiz-btn {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #3a3a3a 0%, #4a3a3a 100%);
-            border: 2px solid #ff4444;
-            border-radius: 4px;
-            font-weight: 700;
-            color: #f5f5f5;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .quiz-btn:hover {
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: #ffffff;
-            border-color: #ffeb3b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
-        }
-        
-        .quiz-btn.selected {
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: #ffffff;
-            border-color: #ffeb3b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
-        }
-        
-        .action-items {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: 1fr;
-        }
-        
-        @media (min-width: 768px) {
-            .action-items {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .action-items {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .action-item {
-            background: white;
-            border-radius: 0.5rem;
-            border: 1px solid #e7e5e4;
-            cursor: pointer;
-            transition: all 0.3s;
-            overflow: hidden;
-        }
-        
-        .action-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-        
-        .action-header {
-            padding: 1.5rem;
-        }
-        
-        .action-item h3 {
-            color: #9a3412;
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .action-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-in-out;
-            padding: 0 1.5rem;
-        }
-        
-        .action-content.expanded {
-            max-height: 500px;
-            padding: 0 1.5rem 1.5rem;
-        }
-        
-        .community-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        @media (min-width: 768px) {
-            .community-section {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-around;
-            }
-        }
-        
-        .community-column {
-            flex: 1;
-            padding: 1rem;
-        }
-        
-        .community-column h4 {
-            font-size: 1.125rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .division-tactics h4 { 
-            color: #dc2626;
-            text-shadow: 0 0 10px rgba(220, 38, 38, 0.6);
-        }
-        .resistance-acts h4 { 
-            color: #fcd34d;
-            text-shadow: 0 0 10px rgba(252, 211, 77, 0.6);
-        }
-        
-        .community-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        
-        .division-item {
-            background: linear-gradient(135deg, #2a1a1a 0%, #3a1a1a 100%);
-            color: #ff6b6b;
-            padding: 0.75rem;
-            border: 1px solid #dc2626;
-            text-align: center;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .resistance-item {
-            background: linear-gradient(135deg, #1a2a1a 0%, #1a3a1a 100%);
-            color: #fcd34d;
-            padding: 0.75rem;
-            border: 1px solid #fcd34d;
-            text-align: center;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .community-divider {
-            font-size: 3rem;
-            color: #ea580c;
-            font-weight: 700;
-            text-align: center;
-            align-self: center;
-        }
-        
-        .lang-switch {
-            display: flex;
-            gap: 0.25rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
-            padding: 0.25rem;
-            border: 1px solid #dc2626;
-        }
-        
-        .lang-btn {
-            padding: 0.5rem 0.75rem;
-            background: transparent;
-            border: 1px solid #666666;
-            color: #e0e0e0;
-            font-weight: 700;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .lang-btn.active {
-            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-            color: #ffffff;
-            border-color: #fcd34d;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #e5e5e5;
-            font-size: 0.9rem;
-            border-top: 2px solid #ff4444;
-            margin-top: 3rem;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #333333;
-            border-top: 3px solid #dc2626;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .hidden { display: none; }
-        
-        /* Performance optimizations for ESP32 */
-        .no-transitions * {
-            transition: none !important;
-        }
-    </style>
-</head>
-<body>
-    <div style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
-        <div class="lang-switch">
-            <button id="lang-en" class="lang-btn active">EN</button>
-            <button id="lang-es" class="lang-btn">ES</button>
-        </div>
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no"
+		/>
+		<title>RESISTANCE GUIDE [v.1.0]</title>
+		<style>
+			/* --- CORE STYLES - MINIMAL & FAST --- */
+			:root {
+				--bg-color: #0d0d0d;
+				--text-color: #e0e0e0;
+				--accent-color: #ff4136;
+				--highlight-color: #f0e68c;
+			}
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				background-color: var(--bg-color);
+				color: var(--text-color);
+				font-family: 'Courier New', Courier, monospace;
+				line-height: 1.6;
+				padding: 1rem;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			/* --- SEMANTIC ELEMENT STYLING --- */
+			header,
+			section,
+			footer {
+				border: 1px solid var(--accent-color);
+				margin-bottom: 1.5rem;
+				padding: 1rem;
+			}
+			header {
+				border-width: 2px;
+				text-align: center;
+			}
+			h1,
+			h2,
+			h3 {
+				color: var(--accent-color);
+				text-transform: uppercase;
+				margin-bottom: 0.5rem;
+			}
+			h1 {
+				font-size: 1.5rem;
+			}
+			h2 {
+				font-size: 1.2rem;
+				border-bottom: 1px solid var(--accent-color);
+				padding-bottom: 0.5rem;
+				margin-top: 1rem;
+			}
+			p {
+				margin-bottom: 1rem;
+			}
+			a {
+				color: var(--highlight-color);
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+				background-color: #333;
+			}
+			strong {
+				color: var(--highlight-color);
+				font-weight: bold;
+			}
 
-    <main class="container">
-        <section class="distress-banner" style="background: #1a1a1a; color: #fef2f2; padding: 1.5rem; text-align: center; border: 2px dashed #dc2626; margin-bottom: 2rem;">
-  <h1 style="font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; color: #dc2626; text-shadow: 0 0 20px rgba(220, 38, 38, 0.8); position: relative; z-index: 2;">⚠️ YOU'VE FOUND SOMETHING IMPORTANT</h1>
-  <p style="font-size: 1rem; color: #fef2f2; margin-top: 0.75rem;">Someone in your community placed this here because <strong>you need to know what's happening.</strong><br>
-  This isn't the internet — it's a local device sharing critical information.</p>
-  <p style="font-size: 0.875rem; color: #fca5a5; margin-top: 0.5rem;"><em>No tracking. No ads. No corporate control. Just what you need to know.</em></p>
-</section>
-        <div class="hero">
-  <h1>THEY DON'T WANT YOU TO READ THIS</h1>
-  <p>
-    Your phone, your apps, your data — they're being used to control you. This guide shows you <strong>exactly how</strong> and <strong>what you can do about it.</strong> Takes 10 minutes to read. Could change everything.
-  </p>
-</div>
+			/* --- LANGUAGE SWITCHER --- */
+			.lang-switch {
+				text-align: center;
+				margin-bottom: 1rem;
+			}
+			.lang-btn {
+				background: none;
+				border: 1px solid var(--text-color);
+				color: var(--text-color);
+				font-family: inherit;
+				font-size: 0.9rem;
+				padding: 0.3rem 0.6rem;
+				cursor: pointer;
+			}
+			.lang-btn.active {
+				background-color: var(--accent-color);
+				border-color: var(--accent-color);
+				color: var(--bg-color);
+				font-weight: bold;
+			}
 
-        <section id="understanding" class="section">
-            <h2 class="section-title" data-translate="section1_title">1. WAKE UP CALL</h2>
-            <p class="section-subtitle" data-translate="section1_subtitle">Something dangerous is happening right now. Tech companies and politicians are working together to control what you see, think, and do. Here's how to spot it before it's too late.</p>
-            
-            <div class="cards-grid">
-                <div class="card">
-                    <h3 data-translate="section1_card1_title">What is Fascism?</h3>
-                    <p data-translate="section1_card1_text">A system where a small group uses fear and control to stay in power. They silence opponents, use violence or threats, and convince people to give up freedom for "safety" or "unity." Sound familiar?</p>
-                </div>
-                <div class="card">
-                    <h3 data-translate="section1_card2_title">Why "Techno"?</h3>
-                    <p data-translate="section1_card2_text">Instead of jackboots, they use your phone. Instead of propaganda posters, they use targeted ads. Your data tells them everything about you, and algorithms control what you see. Big Tech + Government = New Kind of Control.</p>
-                </div>
-                <div class="card">
-                    <h3 data-translate="section1_card3_title">Why Right Now?</h3>
-                    <p data-translate="section1_card3_text">They know everything about you: where you go, who you talk to, what you buy, what makes you angry or scared. AI can predict your behavior better than you can. Perfect storm: maximum surveillance + social division = total control.</p>
-                </div>
-            </div>
-        </section>
+			/* --- INTERACTIVE DETAILS/SUMMARY (ACCORDION) --- */
+			details {
+				border: 1px solid #555;
+				margin-bottom: 0.5rem;
+			}
+			details[open] {
+				border-color: var(--highlight-color);
+			}
+			summary {
+				background-color: #222;
+				color: var(--highlight-color);
+				padding: 0.75rem;
+				cursor: pointer;
+				font-weight: bold;
+				outline: none;
+			}
+			.details-content {
+				padding: 1rem;
+				border-top: 1px solid #555;
+			}
+			.details-content ul {
+				list-style: none;
+				padding-left: 0;
+			}
+			.details-content li {
+				margin-bottom: 0.5rem;
+			}
+			.details-content li::before {
+				content: '» ';
+				color: var(--accent-color);
+			}
 
-        <section id="identifying" class="section">
-            <h2 class="section-title" data-translate="section2_title">2. SPOT THE PATTERNS</h2>
-            <p class="section-subtitle" data-translate="section2_subtitle">It's happening step by step, right in front of us. These warning signs are what we're seeing RIGHT NOW. Click any section to see real examples from the last few years.</p>
-            
-            <div class="warning-grid">
-                <div class="warning-item" onclick="toggleWarning(this)">
-                    <div class="warning-level">CRITICAL</div>
-                    <div class="warning-title">Control of Media</div>
-                    <div class="warning-description">Efforts to discredit mainstream media ('fake news'), amplified by social media algorithms that create echo chambers and spread disinformation. The goal is to control the narrative.</div>
-                </div>
-                
-                <div class="warning-item" onclick="toggleWarning(this)">
-                    <div class="warning-level">CRITICAL</div>
-                    <div class="warning-title">Corporate/State Fusion</div>
-                    <div class="warning-description">Powerful tech corporations provide tools for surveillance and social control in exchange for favorable regulation and massive contracts, merging state and corporate power.</div>
-                </div>
-                
-                <div class="warning-item" onclick="toggleWarning(this)">
-                    <div class="warning-level">HIGH</div>
-                    <div class="warning-title">Powerful Nationalism</div>
-                    <div class="warning-description">Constant appeals to patriotism, often defined against a perceived 'enemy.' Recent examples include rhetoric casting immigrants as invaders and demonizing political opponents as traitors.</div>
-                </div>
-                
-                <div class="warning-item" onclick="toggleWarning(this)">
-                    <div class="warning-level">HIGH</div>
-                    <div class="warning-title">Suppression of Dissent</div>
-                    <div class="warning-description">Political opponents, intellectuals, and protestors are cast as enemies of the state. This ranges from online harassment to using the legal system to target critics, creating a climate of fear.</div>
-                </div>
-                
-                <div class="warning-item" onclick="toggleWarning(this)">
-                    <div class="warning-level">HIGH</div>
-                    <div class="warning-title">Military Supremacy</div>
-                    <div class="warning-description">An outsized portion of the budget is allocated to military/law enforcement, who are glorified. Paramilitary groups may be encouraged. This creates a culture of force where dissent equals criminality.</div>
-                </div>
-                
-                <div class="warning-item" onclick="toggleWarning(this)">
-                    <div class="warning-level">MODERATE</div>
-                    <div class="warning-title">Disdain for Rights</div>
-                    <div class="warning-description">Civil liberties are framed as obstacles to security. Seen in expansion of surveillance powers, justification of police brutality, and rhetoric that dehumanizes minority groups.</div>
-                </div>
-            </div>
-        </section>
+			/* --- UTILITY CLASSES --- */
+			.text-center {
+				text-align: center;
+			}
+			.subtitle {
+				color: #aaa;
+				font-size: 0.9rem;
+				margin-top: -0.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="lang-switch">
+				<button
+					id="lang-en"
+					class="lang-btn"
+					data-translate="lang_en"
+				>
+					English
+				</button>
+				<button
+					id="lang-es"
+					class="lang-btn"
+					data-translate="lang_es"
+				>
+					Español
+				</button>
+			</div>
+			<h1 data-translate="main_title">Resisting the Digital Drift</h1>
+			<p
+				class="subtitle"
+				data-translate="main_subtitle"
+			>
+				A lightweight guide for the average citizen.
+			</p>
+		</header>
 
-        <section id="reality-check" class="section">
-            <h2 class="section-title" data-translate="section3_title">3. ARE YOU LIVING IT?</h2>
-            <p class="section-subtitle" data-translate="section3_subtitle">Time for brutal honesty. How much of this is already happening in YOUR life? Answer these questions about what you see every day. The results might shock you.</p>
-            
-            <div class="quiz-container">
-                <div id="quiz-question" class="quiz-question"></div>
-                <div id="quiz-options" class="quiz-options"></div>
-                <div id="quiz-results" class="hidden">
-                    <h3 data-translate="quiz_results_title">Your Reflection</h3>
-                    <p id="quiz-score"></p>
-                    <a href="#resisting" class="nav-btn" style="margin-top: 1rem; display: inline-block;" data-translate="quiz_results_cta">FIGHT BACK →</a>
-                </div>
-            </div>
-        </section>
+		<main>
+			<section id="understanding">
+				<h2 data-translate="section1_title">1. Understanding the Warning</h2>
+				<p data-translate="section1_subtitle">
+					This is a new form of control that fuses corporate technology with
+					authoritarian politics to monitor, manipulate, and suppress the
+					public.
+				</p>
 
-        <section id="resisting" class="section">
-            <h2 class="section-title" data-translate="section4_title">4. FIGHT BACK NOW</h2>
-            <p class="section-subtitle" data-translate="section4_subtitle">You're not powerless. Here's exactly what you can do TODAY to protect yourself and others. Start with any one of these — every action matters.</p>
-            
-            <div id="toolkit-container" class="action-items"></div>
-        </section>
+				<details>
+					<summary data-translate="section1_card1_title">
+						What is Fascism?
+					</summary>
+					<div class="details-content">
+						<p data-translate="section1_card1_text">
+							A system where a small group uses fear and control to stay in
+							power. They silence opponents, use threats, and convince people to
+							give up freedom for "safety."
+						</p>
+					</div>
+				</details>
 
-        <section id="community" class="section">
-            <h2 class="section-title" data-translate="section5_title">5. UNITE OR LOSE</h2>
-            <p class="section-subtitle" data-translate="section5_subtitle">They win when we're alone, scared, and fighting each other. We win when we stick together. Your neighbors are not your enemies \u2014 the people trying to divide you are. Here's how to build the communities that can't be broken.</p>
-            
-            <div class="community-section">
-                <div class="community-column division-tactics">
-                    <h4 data-translate="division_title">Tactics of Division</h4>
-                    <div class="community-list">
-                        <div class="division-item" data-translate="division_1">Fostering Isolation & Loneliness</div>
-                        <div class="division-item" data-translate="division_2">Promoting Scapegoating & "Othering"</div>
-                        <div class="division-item" data-translate="division_3">Spreading Fear & Distrust</div>
-                        <div class="division-item" data-translate="division_4">Encouraging Extreme Individualism</div>
-                    </div>
-                </div>
+				<details>
+					<summary data-translate="section1_card2_title">
+						What makes it "Techno"?
+					</summary>
+					<div class="details-content">
+						<p data-translate="section1_card2_text">
+							Instead of jackboots, they use your phone. Instead of propaganda
+							posters, they use targeted ads. Your data tells them everything
+							about you, and algorithms control what you see. Big Tech +
+							Government = New Kind of Control.
+						</p>
+					</div>
+				</details>
 
-                <div class="community-divider">&harr;</div>
+				<details>
+					<summary data-translate="section1_card3_title">
+						Why is it a Threat Now?
+					</summary>
+					<div class="details-content">
+						<p data-translate="section1_card3_text">
+							They know everything: where you go, who you talk to, what you buy,
+							what makes you angry. AI can predict your behavior better than you
+							can. Perfect storm: maximum surveillance + social division = total
+							control.
+						</p>
+					</div>
+				</details>
+			</section>
 
-                <div class="community-column resistance-acts">
-                    <h4 data-translate="resistance_title">Acts of Community Resistance</h4>
-                    <div class="community-list">
-                        <div class="resistance-item" data-translate="resistance_1"><strong>Mutual Aid Network:</strong> Organize neighbors to share resources like food, childcare, or transportation, strengthening local bonds.</div>
-                        <div class="resistance-item" data-translate="resistance_2"><strong>Local Skill Share:</strong> Host events where people teach each other practical skills (e.g., gardening, basic repairs), building self-sufficiency.</div>
-                        <div class="resistance-item" data-translate="resistance_3"><strong>Support Local Groups:</strong> Participate in or donate to local organizations working on issues you care about, from libraries to food banks.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <p style="text-align: center; margin-top: 2rem; max-width: 48rem; margin-left: auto; margin-right: auto; color: #57534e;" data-translate="section5_conclusion">Every time you share food, offer help, or organize a local cleanup, you perform a revolutionary act. You replace fear with solidarity and isolation with connection. This is the ground from which all other forms of resistance grow.</p>
-        </section>
-    </main>
+			<section id="resisting">
+				<h2 data-translate="section4_title">2. The Citizen's Toolkit</h2>
+				<p
+					class="subtitle"
+					data-translate="section4_subtitle"
+				>
+					Taking action is the next step. Here are concrete steps any citizen
+					can take.
+				</p>
 
-    <footer>
-        <p style="margin-top: 1rem; font-style: italic; font-size: 0.875rem;">
-  “Those who trade liberty for convenience seldom realize when they’ve already lost both.”
-</p>
-        <p data-translate="footer_text">This guide is for informational purposes. Stay informed, stay engaged, and stay connected.</p>
-    </footer>
+				<details>
+					<summary data-translate="toolkit_item1_title">
+						Defend Your Digital Privacy
+					</summary>
+					<div class="details-content">
+						<h3 data-translate="toolkit_why">Why it Matters:</h3>
+						<p data-translate="toolkit_item1_why">
+							Limiting data collection makes it harder for them to track,
+							manipulate, or profile you.
+						</p>
+						<h3 data-translate="toolkit_how">How to do it:</h3>
+						<ul>
+							<li data-translate="toolkit_item1_how1">
+								Use encrypted messaging apps like Signal.
+							</li>
+							<li data-translate="toolkit_item1_how2">
+								Switch to a privacy-focused browser like Brave or Firefox.
+							</li>
+							<li data-translate="toolkit_item1_how3">
+								Use a privacy-respecting search engine like DuckDuckGo.
+							</li>
+						</ul>
+					</div>
+				</details>
 
-    <script>
-        // All your original translations and data
-        const translations = {
-            en: {
-                header_title: "The Citizen's Guide",
-                nav_1: "1. Warning", nav_2: "2. Signs", nav_3: "3. Reality Check", nav_4: "4. Toolkit", nav_5: "5. Foundation",
-                main_title: "Resisting the Digital Drift",
-                main_subtitle: "A guide for the average citizen to understand the rise of techno-fascism, identify its presence, and discover effective ways to fight back.",
-                section1_title: "1. Understanding the Warning",
-                section1_subtitle: "This section defines the emerging threat of techno-fascism. It is not a historical reenactment but a new form of control that fuses corporate technology with authoritarian politics to monitor, manipulate, and suppress the public in unprecedented ways.",
-                section1_card1_title: "What is Fascism?",
-                section1_card1_text: "At its core, fascism is a political ideology characterized by a dictatorial leader, centralized autocracy, militarism, and the forcible suppression of opposition. It subordinates individual interests to the perceived good of the nation or state, often defined along ultranationalist or racial lines.",
-                section1_card2_title: 'What makes it "Techno"?',
-                section1_card2_text: '"Techno" refers to the use of modern technology as the primary tool for control. This includes mass surveillance, algorithmic manipulation of information, and data-driven methods to identify and silence dissent. Big Tech and the state become intertwined partners.',
-                section1_card3_title: "Why is it a Threat Now?",
-                section1_card3_text: "The combination of vast corporate data collection, powerful AI, and growing political polarization creates a fertile ground for this ideology. It can emerge subtly, disguised as \"efficiency,\" \"national security,\" or \"progress,\" while systematically eroding democratic norms.",
-                section2_title: "2. Identifying the Signs",
-                section2_subtitle: "Fascist tendencies don't appear overnight. This interactive chart highlights key characteristics. Click on any segment to see how it connects to recent events. The levels (1-10) indicate the perceived prevalence of that trend in modern American society, with 10 being a critical concern.",
-                chart_explanation: '<strong>Chart Levels Explained:</strong> The distance from the center represents perceived intensity. A score of <strong>10</strong> indicates a highly prevalent and critical trend, while a lower score like <strong>3</strong> suggests an emerging but less overt characteristic.',
-                chart_initial_title: "Select a Characteristic",
-                chart_initial_text: "The chart on the left displays common warning signs. Interacting with it will reveal explanations and connect these abstract ideas to the real world, helping you develop a critical eye for news and political rhetoric.",
-                section3_title: "3. Reality Check Quiz",
-                section3_subtitle: "How much do these trends affect your daily life and perceptions? Answer these questions to reflect on the current climate. This isn't a scientific test, but a tool for self-awareness.",
-                quiz_results_title: "Your Reflection",
-                quiz_results_cta: "See How You Can Take Action",
-                section4_title: "4. The Citizen's Toolkit for Resistance",
-                section4_subtitle: "Realizing the threat is the first step; taking action is the next. Here are concrete steps any citizen can take. Click each card to learn more.",
-                section5_title: "5. The Ultimate Foundation: Community",
-                section5_subtitle: "Authoritarianism thrives when we are divided and isolated. The most powerful act of resistance is to build strong, resilient, and caring communities. When we know and support our neighbors, we create a social fabric that is incredibly difficult to tear apart.",
-                division_title: "Tactics of Division",
-                division_1: "Fostering Isolation & Loneliness",
-                division_2: 'Promoting Scapegoating & "Othering"',
-                division_3: "Spreading Fear & Distrust",
-                division_4: "Encouraging Extreme Individualism",
-                resistance_title: "Acts of Community Resistance",
-                resistance_1: "<strong>Mutual Aid Network:</strong> Organize neighbors to share resources like food, childcare, or transportation, strengthening local bonds.",
-                resistance_2: "<strong>Local Skill Share:</strong> Host events where people teach each other practical skills (e.g., gardening, basic repairs), building self-sufficiency.",
-                resistance_3: "<strong>Support Local Groups:</strong> Participate in or donate to local organizations working on issues you care about, from libraries to food banks.",
-                section5_conclusion: "Every time you share food, offer help, or organize a local cleanup, you perform a revolutionary act. You replace fear with solidarity and isolation with connection. This is the ground from which all other forms of resistance grow.",
-                footer_text: "This guide is for informational purposes. Stay informed, stay engaged, and stay connected.",
-                quiz_agree: "Agree",
-                quiz_disagree: "Disagree",
-                toolkit_action_button: "Take Action Now &rarr;"
-            },
-            es: {
-                header_title: "La Guía del Ciudadano",
-                nav_1: "1. Advertencia", nav_2: "2. Señales", nav_3: "3. Autoevaluación", nav_4: "4. Herramientas", nav_5: "5. Fundación",
-                main_title: "Resistiendo la Deriva Digital",
-                main_subtitle: "Una guía para el ciudadano promedio para comprender el auge del tecnofascismo, identificar su presencia y descubrir formas efectivas de contraatacar.",
-                section1_title: "1. Entendiendo la Advertencia",
-                section1_subtitle: "Esta sección define la amenaza emergente del tecnofascismo. No es una recreación histórica, sino una nueva forma de control que fusiona la tecnología corporativa con políticas autoritarias para monitorear, manipular y reprimir al público de maneras sin precedentes.",
-                section1_card1_title: "¿Qué es el Fascismo?",
-                section1_card1_text: "En esencia, el fascismo es una ideología política caracterizada por un líder dictatorial, autocracia centralizada, militarismo y la supresión forzada de la oposición. Subordina los intereses individuales al bien percibido de la nación o el estado, a menudo definido en líneas ultranacionalistas o raciales.",
-                section1_card2_title: '¿Qué lo hace "Tecno"?',
-                section1_card2_text: '"Tecno" se refiere al uso de la tecnología moderna como la principal herramienta de control. Esto incluye la vigilancia masiva, la manipulación algorítmica de la información y métodos basados en datos para identificar y silenciar la disidencia. Las grandes tecnológicas y el estado se convierten en socios entrelazados.',
-                section1_card3_title: "¿Por qué es una Amenaza Ahora?",
-                section1_card3_text: "La combinación de la vasta recopilación de datos corporativos, una IA potente y una creciente polarización política crea un terreno fértil para esta ideología. Puede surgir sutilmente, disfrazado de \"eficiencia\", \"seguridad nacional\" o \"progreso\", mientras erosiona sistemáticamente las normas democráticas.",
-                section2_title: "2. Identificando las Señales",
-                section2_subtitle: "Las tendencias fascistas no aparecen de la noche a la mañana. Este gráfico interactivo destaca características clave. Haz clic en cualquier segmento para ver cómo se conecta con eventos recientes. Los niveles (1-10) indican la prevalencia percibida de esa tendencia en la sociedad estadounidense moderna, siendo 10 una preocupación crítica.",
-                chart_explanation: '<strong>Explicación de los Niveles del Gráfico:</strong> La distancia desde el centro representa la intensidad percibida. Una puntuación de <strong>10</strong> indica una tendencia muy prevalente y crítica, mientras que una puntuación más baja como <strong>3</strong> sugiere una característica emergente pero menos manifiesta.',
-                chart_initial_title: "Selecciona una Característica",
-                chart_initial_text: "El gráfico de la izquierda muestra señales de advertencia comunes. Interactuar con él revelará explicaciones y conectará estas ideas abstractas con el mundo real, ayudándote a desarrollar un ojo crítico para las noticias y la retórica política.",
-                section3_title: "3. Cuestionario de Autoevaluación",
-                section3_subtitle: "¿Cuánto afectan estas tendencias tu vida diaria y tus percepciones? Responde estas preguntas para reflexionar sobre el clima actual. No es una prueba científica, sino una herramienta para la autoconciencia.",
-                quiz_results_title: "Tu Reflexión",
-                quiz_results_cta: "Descubre Cómo Puedes Actuar",
-                section4_title: "4. Herramientas de Resistencia Ciudadana",
-                section4_subtitle: "Darse cuenta de la amenaza es el primer paso; actuar es el siguiente. Aquí hay pasos concretos que cualquier ciudadano puede tomar. Haz clic en cada tarjeta para saber más.",
-                section5_title: "5. La Fundación Definitiva: La Comunidad",
-                section5_subtitle: "El autoritarismo prospera cuando estamos divididos y aislados. El acto de resistencia más poderoso es construir comunidades fuertes, resilientes y solidarias. Cuando conocemos y apoyamos a nuestros vecinos, creamos un tejido social increíblemente difícil de romper.",
-                division_title: "Tácticas de División",
-                division_1: "Fomentar el Aislamiento y la Soledad",
-                division_2: 'Promover Chivos Expiatorios y la "Otredad"',
-                division_3: "Difundir el Miedo y la Desconfianza",
-                division_4: "Fomentar el Individualismo Extremo",
-                resistance_title: "Actos de Resistencia Comunitaria",
-                resistance_1: "<strong>Red de Ayuda Mutua:</strong> Organiza a los vecinos para compartir recursos como comida, cuidado de niños o transporte, fortaleciendo los lazos locales.",
-                resistance_2: "<strong>Intercambio de Habilidades Locales:</strong> Organiza eventos donde las personas se enseñen habilidades prácticas (ej. jardinería, reparaciones básicas), construyendo autosuficiencia.",
-                resistance_3: "<strong>Apoya a Grupos Locales:</strong> Participa o dona a organizaciones locales que trabajan en temas que te importan, desde bibliotecas hasta bancos de alimentos.",
-                section5_conclusion: "Cada vez que compartes comida, ofreces ayuda u organizas una limpieza local, realizas un acto revolucionario. Reemplazas el miedo con solidaridad y el aislamiento con conexión. Este es el terreno del que crecen todas las demás formas de resistencia.",
-                footer_text: "Esta guía es para fines informativos. Mantente informado, participativo y conectado.",
-                quiz_agree: "De acuerdo",
-                quiz_disagree: "En desacuerdo",
-                toolkit_action_button: "Actúa Ahora &rarr;"
-            }
-        };
+				<details>
+					<summary data-translate="toolkit_item2_title">
+						Engage in Local Politics
+					</summary>
+					<div class="details-content">
+						<h3 data-translate="toolkit_why">Why it Matters:</h3>
+						<p data-translate="toolkit_item2_why">
+							Local officials (school boards, city councils) have a huge impact
+							on your daily life. National decay often starts with local apathy.
+						</p>
+						<h3 data-translate="toolkit_how">How to do it:</h3>
+						<ul>
+							<li data-translate="toolkit_item2_how1">
+								Vote in EVERY election, especially local ones.
+							</li>
+							<li data-translate="toolkit_item2_how2">
+								Attend a town hall or city council meeting, even online.
+							</li>
+							<li data-translate-="toolkit_item2_how3">
+								Learn who your local representatives are.
+							</li>
+						</ul>
+					</div>
+				</details>
 
+				<details>
+					<summary data-translate="toolkit_item3_title">
+						Support Independent Media
+					</summary>
+					<div class="details-content">
+						<h3 data-translate="toolkit_why">Why it Matters:</h3>
+						<p data-translate="toolkit_item3_why">
+							A free press is essential for holding power accountable.
+							Supporting them ensures real journalism can continue.
+						</p>
+						<h3 data-translate="toolkit_how">How to do it:</h3>
+						<ul>
+							<li data-translate="toolkit_item3_how1">
+								Subscribe to your local newspaper.
+							</li>
+							<li data-translate="toolkit_item3_how2">
+								Donate to non-profit news organizations.
+							</li>
+							<li data-translate="toolkit_item3_how3">
+								Share their work and give them credit.
+							</li>
+						</ul>
+					</div>
+				</details>
+			</section>
 
+			<section id="community">
+				<h2 data-translate="section5_title">3. The Foundation: Community</h2>
+				<p
+					class="subtitle"
+					data-translate="section5_subtitle"
+				>
+					Authoritarianism thrives when we are divided and isolated. The most
+					powerful act of resistance is building community.
+				</p>
+				<p data-translate="section5_conclusion">
+					Every time you share food, offer help, or organize a local cleanup,
+					you perform a revolutionary act. You replace fear with solidarity.
+					This is the ground from which all other resistance grows.
+				</p>
+			</section>
+		</main>
 
-        const quizQuestions = {
-            en: [
-                { question: "When I see news online, I often feel it's designed to make me angry or afraid.", points: 1 },
-                { question: "I feel like my online activities and private conversations are probably being monitored.", points: 1 },
-                { question: "It seems harder to have a respectful political conversation with people who disagree with me.", points: 1 },
-                { question: "I sometimes hear political leaders talk about the media or their opponents as 'enemies of the people'.", points: 1 },
-                { question: "I've noticed a growing sense of distrust towards my neighbors or people in my community.", points: 1 }
-            ],
-            es: [
-                { question: "Cuando veo noticias en línea, a menudo siento que están diseñadas para enojarme o asustarme.", points: 1 },
-                { question: "Siento que mis actividades en línea y conversaciones privadas probablemente están siendo monitoreadas.", points: 1 },
-                { question: "Parece más difícil tener una conversación política respetuosa con personas que no están de acuerdo conmigo.", points: 1 },
-                { question: "A veces escucho a líderes políticos hablar de los medios o de sus oponentes como 'enemigos del pueblo'.", points: 1 },
-                { question: "He notado una creciente desconfianza hacia mis vecinos o la gente de mi comunidad.", points: 1 }
-            ]
-        };
-        
-        const quizResultsText = {
-            en: {
-                high: "It seems you're highly aware of the divisive and concerning trends in our current digital and political landscape. This awareness is a critical first step. The toolkit below will offer concrete ways to channel that awareness into positive action.",
-                medium: "You're noticing some of the key warning signs. These feelings of unease and division are common and valid. The next sections can help you put a name to these trends and find constructive ways to respond.",
-                low: "It's good that these issues may not be at the forefront of your daily experience. However, remaining vigilant and informed is crucial for everyone. The toolkit below offers proactive ways to strengthen our democracy."
-            },
-            es: {
-                high: "Parece que eres muy consciente de las tendencias divisorias y preocupantes en nuestro panorama digital y político actual. Esta conciencia es un primer paso crítico. Las herramientas a continuación ofrecerán formas concretas de canalizar esa conciencia en acción positiva.",
-                medium: "Estás notando algunas de las señales de advertencia clave. Estos sentimientos de inquietud y división son comunes y válidos. Las siguientes secciones pueden ayudarte a nombrar estas tendencias y encontrar formas constructivas de responder.",
-                low: "Es bueno que estos problemas no estén en primer plano en tu experiencia diaria. Sin embargo, mantenerse vigilante e informado es crucial para todos. Las herramientas a continuación ofrecen formas proactivas de fortalecer nuestra democracia."
-            }
-        };
+		<footer>
+			<p
+				class="text-center"
+				data-translate="footer_text"
+			>
+				Stay informed. Stay engaged. Stay connected.
+			</p>
+		</footer>
 
-        const actionItems = {
-            en: [
-                { title: '💻 Defend Your Digital Privacy', what: 'Take control of your personal data and reduce your digital footprint.', why: 'Tech companies and governments collect vast amounts of data. Limiting this collection makes it harder for them to track, manipulate, or profile you.', how: '<ul style="margin: 1rem 0;"><li>• Use encrypted messaging apps like Signal.</li><li>• Switch to a privacy-focused browser like Brave or Firefox.</li><li>• Install privacy extensions like uBlock Origin.</li></ul>', link: 'https://www.eff.org/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
-                { title: '🗳️ Engage in Local Politics', what: 'Vote in every election and pay attention to local government.', why: 'Local officials (school boards, city councils, DAs) have a huge impact on your daily life and civil liberties. National decay often starts with local apathy.', how: '<ul style="margin: 1rem 0;"><li>• Find out who your local representatives are.</li><li>• Attend a town hall or city council meeting, even online.</li><li>• Research candidates beyond the major races.</li></ul>', link: 'https://www.usa.gov/local-governments' },
-                { title: '📰 Support Independent Media', what: 'Fund journalism that is not beholden to corporate or state interests.', why: 'A free and independent press is essential for holding power accountable. Supporting them ensures that investigative journalism can continue.', how: '<ul style="margin: 1rem 0;"><li>• Subscribe to your local newspaper.</li><li>• Donate to non-profit news organizations (e.g., ProPublica, The Markup).</li><li>• Share their work and credit them.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
-            ],
-            es: [
-                { title: '💻 Defiende tu Privacidad Digital', what: 'Toma el control de tus datos personales y reduce tu huella digital.', why: 'Las empresas tecnológicas y los gobiernos recopilan grandes cantidades de datos. Limitar esta recopilación les dificulta rastrearte, manipularte o perfilarte.', how: '<ul style="margin: 1rem 0;"><li>• Usa apps de mensajería cifrada como Signal.</li><li>• Cambia a un navegador centrado en la privacidad como Brave o Firefox.</li><li>• Instala extensiones de privacidad como uBlock Origin.</li></ul>', link: 'https://www.eff.org/es/deeplinks/2022/03/how-change-your-settings-protect-your-privacy-online' },
-                { title: '🗳️ Participa en la Política Local', what: 'Vota en todas las elecciones y presta atención al gobierno local.', why: 'Los funcionarios locales (juntas escolares, ayuntamientos) tienen un gran impacto en tu vida diaria y libertades civiles. El declive nacional a menudo comienza con la apatía local.', how: '<ul style="margin: 1rem 0;"><li>• Averigua quiénes son tus representantes locales.</li><li>• Asiste a una reunión del ayuntamiento, incluso en línea.</li><li>• Investiga a los candidatos más allá de las carreras principales.</li></ul>', link: 'https://www.usa.gov/es/gobiernos-locales' },
-                { title: '📰 Apoya a los Medios Independientes', what: 'Financia el periodismo que no depende de intereses corporativos o estatales.', why: 'Una prensa libre e independiente es esencial para que el poder rinda cuentas. Apoyarlos asegura que el periodismo de investigación pueda continuar.', how: '<ul style="margin: 1rem 0;"><li>• Suscríbete a tu periódico local.</li><li>• Dona a organizaciones de noticias sin fines de lucro.</li><li>• Comparte su trabajo y dales crédito.</li></ul>', link: 'https://rebuildlocalnews.org/support-local-news/' }
-            ]
-        };
+		<script>
+			// --- TRANSLATION SCRIPT - ZERO DEPENDENCIES ---
+			const translations = {
+				en: {
+					lang_en: 'English',
+					lang_es: 'Español',
+					main_title: 'Resisting the Digital Drift',
+					main_subtitle: 'A lightweight guide for the average citizen.',
+					section1_title: '1. Understanding the Warning',
+					section1_subtitle:
+						'This is a new form of control that fuses corporate technology with authoritarian politics to monitor, manipulate, and suppress the public.',
+					section1_card1_title: 'What is Fascism?',
+					section1_card1_text:
+						'A system where a small group uses fear and control to stay in power. They silence opponents, use threats, and convince people to give up freedom for "safety."',
+					section1_card2_title: 'What makes it "Techno"?',
+					section1_card2_text:
+						'Instead of jackboots, they use your phone. Instead of propaganda posters, they use targeted ads. Your data tells them everything about you, and algorithms control what you see. Big Tech + Government = New Kind of Control.',
+					section1_card3_title: 'Why is it a Threat Now?',
+					section1_card3_text:
+						'They know everything: where you go, who you talk to, what you buy, what makes you angry. AI can predict your behavior better than you can. Perfect storm: maximum surveillance + social division = total control.',
+					section4_title: "2. The Citizen's Toolkit",
+					section4_subtitle:
+						'Taking action is the next step. Here are concrete steps any citizen can take.',
+					toolkit_why: 'Why it Matters:',
+					toolkit_how: 'How to do it:',
+					toolkit_item1_title: 'Defend Your Digital Privacy',
+					toolkit_item1_why:
+						'Limiting data collection makes it harder for them to track, manipulate, or profile you.',
+					toolkit_item1_how1: 'Use encrypted messaging apps like Signal.',
+					toolkit_item1_how2:
+						'Switch to a privacy-focused browser like Brave or Firefox.',
+					toolkit_item1_how3:
+						'Use a privacy-respecting search engine like DuckDuckGo.',
+					toolkit_item2_title: 'Engage in Local Politics',
+					toolkit_item2_why:
+						'Local officials (school boards, city councils) have a huge impact on your daily life. National decay often starts with local apathy.',
+					toolkit_item2_how1: 'Vote in EVERY election, especially local ones.',
+					toolkit_item2_how2:
+						'Attend a town hall or city council meeting, even online.',
+					toolkit_item2_how3: 'Learn who your local representatives are.',
+					toolkit_item3_title: 'Support Independent Media',
+					toolkit_item3_why:
+						'A free press is essential for holding power accountable. Supporting them ensures real journalism can continue.',
+					toolkit_item3_how1: 'Subscribe to your local newspaper.',
+					toolkit_item3_how2: 'Donate to non-profit news organizations.',
+					toolkit_item3_how3: 'Share their work and give them credit.',
+					section5_title: '3. The Foundation: Community',
+					section5_subtitle:
+						'Authoritarianism thrives when we are divided and isolated. The most powerful act of resistance is building community.',
+					section5_conclusion:
+						'Every time you share food, offer help, or organize a local cleanup, you perform a revolutionary act. You replace fear with solidarity. This is the ground from which all other resistance grows.',
+					footer_text: 'Stay informed. Stay engaged. Stay connected.',
+				},
+				es: {
+					lang_en: 'English',
+					lang_es: 'Español',
+					main_title: 'Resistiendo la Deriva Digital',
+					main_subtitle: 'Una guía ligera para el ciudadano común.',
+					section1_title: '1. Entendiendo la Advertencia',
+					section1_subtitle:
+						'Esta es una nueva forma de control que fusiona la tecnología corporativa con políticas autoritarias para monitorear, manipular y reprimir al público.',
+					section1_card1_title: '¿Qué es el Fascismo?',
+					section1_card1_text:
+						'Un sistema donde un grupo pequeño usa el miedo y el control para mantenerse en el poder. Silencian a los oponentes, usan amenazas y convencen a la gente de renunciar a la libertad por "seguridad".',
+					section1_card2_title: '¿Qué lo hace "Tecno"?',
+					section1_card2_text:
+						'En lugar de botas militares, usan tu teléfono. En lugar de carteles de propaganda, usan anuncios dirigidos. Tus datos les dicen todo sobre ti y los algoritmos controlan lo que ves. Big Tech + Gobierno = Nuevo Tipo de Control.',
+					section1_card3_title: '¿Por qué es una Amenaza Ahora?',
+					section1_card3_text:
+						'Lo saben todo: a dónde vas, con quién hablas, qué compras, qué te enoja. La IA puede predecir tu comportamiento mejor que tú. La tormenta perfecta: vigilancia máxima + división social = control total.',
+					section4_title: '2. Herramientas del Ciudadano',
+					section4_subtitle:
+						'Tomar acción es el siguiente paso. Aquí hay pasos concretos que cualquier ciudadano puede tomar.',
+					toolkit_why: 'Por qué Importa:',
+					toolkit_how: 'Cómo Hacerlo:',
+					toolkit_item1_title: 'Defiende tu Privacidad Digital',
+					toolkit_item1_why:
+						'Limitar la recopilación de datos les dificulta rastrearte, manipularte o perfilarte.',
+					toolkit_item1_how1:
+						'Usa aplicaciones de mensajería cifrada como Signal.',
+					toolkit_item1_how2:
+						'Cambia a un navegador centrado en la privacidad como Brave o Firefox.',
+					toolkit_item1_how3:
+						'Usa un motor de búsqueda que respete la privacidad como DuckDuckGo.',
+					toolkit_item2_title: 'Participa en la Política Local',
+					toolkit_item2_why:
+						'Los funcionarios locales (juntas escolares, ayuntamientos) tienen un gran impacto en tu vida diaria. La decadencia nacional a menudo comienza con la apatía local.',
+					toolkit_item2_how1:
+						'Vota en CADA elección, especialmente en las locales.',
+					toolkit_item2_how2:
+						'Asiste a una reunión del ayuntamiento, incluso en línea.',
+					toolkit_item2_how3: 'Aprende quiénes son tus representantes locales.',
+					toolkit_item3_title: 'Apoya a los Medios Independientes',
+					toolkit_item3_why:
+						'Una prensa libre es esencial para que el poder rinda cuentas. Apoyarlos asegura que el periodismo real pueda continuar.',
+					toolkit_item3_how1: 'Suscríbete a tu periódico local.',
+					toolkit_item3_how2:
+						'Dona a organizaciones de noticias sin fines de lucro.',
+					toolkit_item3_how3: 'Comparte su trabajo y dales crédito.',
+					section5_title: '3. La Fundación: La Comunidad',
+					section5_subtitle:
+						'El autoritarismo prospera cuando estamos divididos y aislados. El acto de resistencia más poderoso es construir una comunidad.',
+					section5_conclusion:
+						'Cada vez que compartes comida, ofreces ayuda u organizas una limpieza local, realizas un acto revolucionario. Reemplazas el miedo con la solidaridad. Este es el terreno del que crece toda otra resistencia.',
+					footer_text:
+						'Mantente informado. Mantente participativo. Mantente conectado.',
+				},
+			};
 
-        let currentLang = 'en';
-        let currentQuestion = 0;
-        let quizScore = 0;
-        // Toggle warning item expansion
-        function toggleWarning(element) {
-            // Close other expanded items
-            document.querySelectorAll('.warning-item.expanded').forEach(item => {
-                if (item !== element) {
-                    item.classList.remove('expanded');
-                }
-            });
-            
-            // Toggle this item
-            element.classList.toggle('expanded');
-        }
+			let currentLang = 'en';
 
-        // Language switching
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('language', lang);
+			const setLanguage = (lang) => {
+				if (!translations[lang]) return;
+				currentLang = lang;
 
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.dataset.translate;
-                if (translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
-            });
+				// Set active button style
+				document
+					.getElementById('lang-en')
+					.classList.toggle('active', lang === 'en');
+				document
+					.getElementById('lang-es')
+					.classList.toggle('active', lang === 'es');
 
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-es').classList.toggle('active', lang === 'es');
-            
-            renderToolkit(lang);
-            resetQuiz(lang);
-        }
+				// Update all elements with data-translate attribute
+				document.querySelectorAll('[data-translate]').forEach((el) => {
+					const key = el.dataset.translate;
+					if (translations[lang][key]) {
+						el.textContent = translations[lang][key];
+					}
+				});
+			};
 
-        // Quiz functionality
-        function renderQuestion() {
-            if (currentQuestion >= quizQuestions[currentLang].length) {
-                showQuizResults();
-                return;
-            }
-            
-            const q = quizQuestions[currentLang][currentQuestion];
-            document.getElementById('quiz-question').textContent = q.question;
-            
-            const optionsHtml = `
-                <button class="quiz-btn" onclick="nextQuestion(1)">${translations[currentLang].quiz_agree}</button>
-                <button class="quiz-btn" onclick="nextQuestion(0)">${translations[currentLang].quiz_disagree}</button>
-            `;
-            document.getElementById('quiz-options').innerHTML = optionsHtml;
-        }
+			// Event listeners for language buttons
+			document
+				.getElementById('lang-en')
+				.addEventListener('click', () => setLanguage('en'));
+			document
+				.getElementById('lang-es')
+				.addEventListener('click', () => setLanguage('es'));
 
-        function nextQuestion(points) {
-            quizScore += points * quizQuestions[currentLang][currentQuestion].points;
-            currentQuestion++;
-            renderQuestion();
-        }
-
-        function showQuizResults() {
-            document.getElementById('quiz-options').style.display = 'none';
-            document.getElementById('quiz-question').style.display = 'none';
-            document.getElementById('quiz-results').classList.remove('hidden');
-            
-            const resultsContent = quizResultsText[currentLang];
-            let resultText;
-            if (quizScore >= 4) resultText = resultsContent.high;
-            else if (quizScore >= 2) resultText = resultsContent.medium;
-            else resultText = resultsContent.low;
-            
-            document.getElementById('quiz-score').textContent = resultText;
-        }
-
-        function resetQuiz(lang) {
-            currentQuestion = 0;
-            quizScore = 0;
-            document.getElementById('quiz-options').style.display = 'flex';
-            document.getElementById('quiz-question').style.display = 'block';
-            document.getElementById('quiz-results').classList.add('hidden');
-            renderQuestion();
-        }
-        
-        // Render toolkit cards
-        function renderToolkit(lang) {
-            const toolkitContainer = document.getElementById('toolkit-container');
-            toolkitContainer.innerHTML = actionItems[lang].map(item => `
-                <div class="action-item" onclick="toggleAction(this)">
-                    <div class="action-header">
-                        <h3>${item.title}</h3>
-                        <p style="color: #57534e; margin-top: 0.5rem;">${item.what}</p>
-                    </div>
-                    <div class="action-content">
-                        <div style="color: #44403c; margin-bottom: 1rem;">
-                            <strong>Why:</strong> ${item.why}
-                        </div>
-                        <div style="color: #44403c; margin-bottom: 1rem;">
-                            <strong>How:</strong> ${item.how}
-                        </div>
-                        <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 0.5rem 1rem; background: #c2410c; color: white; text-decoration: none; border-radius: 0.25rem; font-weight: 600;">${translations[lang].toolkit_action_button}</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function toggleAction(element) {
-            const content = element.querySelector('.action-content');
-            content.classList.toggle('expanded');
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set up language buttons
-            document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-            document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
-            
-            // Load saved language or default to English
-            const savedLang = localStorage.getItem('language') || 'en';
-            setLanguage(savedLang);
-            
-            // Performance optimization for ESP32
-            if (navigator.userAgent.includes('ESP32') || window.innerWidth < 768) {
-                document.body.classList.add('no-transitions');
-            }
-        });
-    </script>
-</body>
+			// Initial language set
+			setLanguage(currentLang);
+		</script>
+	</body>
 </html>
