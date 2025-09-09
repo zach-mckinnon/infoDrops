@@ -12,6 +12,7 @@ This directory contains example HTML files for the InfoDrops device, along with 
 The `minimal.css` file includes **six pre-built themes** you can apply by adding the appropriate class to your `<body>` tag:
 
 ### 1. `theme-dark` (Default)
+
 - **Style**: Clean, modern dark theme with red accents
 - **Colors**: Black backgrounds (#0d0d0d), light text (#e0e0e0), red borders (#ff4136)
 - **Font**: Courier New (monospace)
@@ -19,13 +20,15 @@ The `minimal.css` file includes **six pre-built themes** you can apply by adding
 - **Example**: `<body class="theme-dark">`
 
 ### 2. `theme-dossier` (Classified Document)
-- **Style**: Official government document aesthetic 
+
+- **Style**: Official government document aesthetic
 - **Colors**: White background (#ffffff), dark text (#111111), red accents (#c00000)
 - **Font**: Georgia serif with Courier New headers
 - **Use for**: Official information, serious documentation, formal announcements
 - **Example**: `<body class="theme-dossier">`
 
 ### 3. `theme-light` (Community Friendly)
+
 - **Style**: Warm, approachable community design
 - **Colors**: Cream background (#f5f2e9), dark brown text (#3d3522), green accents (#2a7f62)
 - **Font**: Serif with sans-serif headers
@@ -33,6 +36,7 @@ The `minimal.css` file includes **six pre-built themes** you can apply by adding
 - **Example**: `<body class="theme-light">`
 
 ### 4. `theme-chill` (Relaxed Aesthetic)
+
 - **Style**: Cool, relaxed vibe with purple/blue color scheme
 - **Colors**: Dark navy background (#1a1a2e), light text (#e0e0e0), purple accents (#9d8eee)
 - **Font**: Segoe UI (modern sans-serif)
@@ -40,6 +44,7 @@ The `minimal.css` file includes **six pre-built themes** you can apply by adding
 - **Example**: `<body class="theme-chill">`
 
 ### 5. `theme-professional` (Corporate Clean)
+
 - **Style**: Clean, corporate, professional appearance
 - **Colors**: Light gray background (#f4f7fa), dark text (#333), blue accents (#0056b3)
 - **Font**: Arial (clean sans-serif)
@@ -47,6 +52,7 @@ The `minimal.css` file includes **six pre-built themes** you can apply by adding
 - **Example**: `<body class="theme-professional">`
 
 ### 6. `theme-undercover` (Hacker/Secret Agent)
+
 - **Style**: Matrix-style green-on-black terminal aesthetic
 - **Colors**: Pure black background (#000), bright green text (#0f0), glowing text effects
 - **Font**: Lucida Console (monospace terminal font)
@@ -55,14 +61,14 @@ The `minimal.css` file includes **six pre-built themes** you can apply by adding
 
 ## 🎭 Theme Comparison Quick Reference
 
-| Theme | Background | Text | Accent | Font | Best For |
-|-------|------------|------|---------|------|----------|
-| `dark` | Black | Light Gray | Red | Courier New | Technical, general |
-| `dossier` | White | Black | Dark Red | Georgia + Courier | Official, formal |
-| `light` | Cream | Brown | Green | Serif | Community, friendly |
-| `chill` | Navy | Light Gray | Purple | Segoe UI | Creative, relaxed |
-| `professional` | Light Gray | Dark Gray | Blue | Arial | Business, corporate |
-| `undercover` | Black | Bright Green | White | Lucida Console | Security, dramatic |
+| Theme          | Background | Text         | Accent   | Font              | Best For            |
+| -------------- | ---------- | ------------ | -------- | ----------------- | ------------------- |
+| `dark`         | Black      | Light Gray   | Red      | Courier New       | Technical, general  |
+| `dossier`      | White      | Black        | Dark Red | Georgia + Courier | Official, formal    |
+| `light`        | Cream      | Brown        | Green    | Serif             | Community, friendly |
+| `chill`        | Navy       | Light Gray   | Purple   | Segoe UI          | Creative, relaxed   |
+| `professional` | Light Gray | Dark Gray    | Blue     | Arial             | Business, corporate |
+| `undercover`   | Black      | Bright Green | White    | Lucida Console    | Security, dramatic  |
 
 ## 📝 HTML Template Structure
 
@@ -293,15 +299,6 @@ const translations = {
 2. **Add language switching functionality** (see example files for complete code)
 
 3. **Mark translatable elements** with `data-translate="key"`
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-- **Styling not applied**: Check that CSS path is correct (`../../data/minimal.css`)
-- **Theme not working**: Ensure body class matches available theme names exactly
-- **Mobile display problems**: Add the viewport meta tag as shown in template
-- **Translation not working**: Verify `data-translate` attributes match translation keys
 
 ### File Paths
 
