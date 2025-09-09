@@ -55,10 +55,11 @@ Simple fixes for common problems.
 - Make sure all files are in the `data/` folder
 - Check that file paths start with "/" 
 
-**Charts/JavaScript Not Working:**
+**Website/JavaScript Not Working:**
 - Press F12 in browser to see errors
-- Make sure `chart.min.js` and `minimal.css` are uploaded
+- Make sure `minimal.css` is uploaded
 - Try different browsers
+- Clear browser cache
 
 ## 🔧 Programming Problems
 

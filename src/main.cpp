@@ -16,7 +16,10 @@
 #define LIGHT_THRESHOLD 1800 // Adjust based on your LDR and environment
 #endif
 
+#define WIFI_NAME "A_Free_Community"
+
 bool portalActive = false;
+unsigned long visitCount = 0;
 
 WebServer server(80);
 DNSServer dnsServer;
@@ -100,7 +103,7 @@ void startCaptivePortal()
 
   Serial.println("Starting WiFi Access Point...");
 
-  bool apStarted = WiFi.softAP("A_Free_Community", "", 1, 0, 4);
+  bool apStarted = WiFi.softAP(WIFI_NAME, "", 1, 0, 4);
 
   if (apStarted)
   {
@@ -152,6 +155,29 @@ void startCaptivePortal()
                           "<!DOCTYPE html><html><head><title>Connected</title></head>"
                           "<body><h1>Successfully Connected!</h1>"
                           "<p>You can now close this page and use the internet.</p></body></html>"); });
+
+  // Serve CSS file
+  server.on("/minimal.css", HTTP_GET, []() {
+    server.sendHeader("Cache-Control", "public, max-age=3600");
+    server.sendHeader("Content-Type", "text/css");
+    
+    File file = SPIFFS.open("/minimal.css", "r");
+    if (file) {
+      server.streamFile(file, "text/css");
+      file.close();
+    } else {
+      server.send(404, "text/plain", "CSS file not found");
+    }
+  });
+
+  // Visit counter endpoint
+  server.on("/visit", HTTP_GET, []() {
+    visitCount++;
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    server.sendHeader("Content-Type", "text/plain");
+    server.send(200, "text/plain", String(visitCount));
+  });
+
 
   // Main portal pages
   server.on("/", HTTP_GET, handleRoot);
