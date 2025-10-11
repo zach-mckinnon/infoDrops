@@ -6,7 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0, user-scalable=no"
 		/>
-		<title>Becoming an Informed Citizen</title>
+		<title>Digital Privacy & Surveillance</title>
 		<link
 			rel="stylesheet"
 			href="./minimal.css"
@@ -14,553 +14,1467 @@
 	</head>
 	<body class="theme-dossier">
 		<header>
-			<h1>Becoming an Informed Citizen</h1>
-			<p class="subtitle">The Antidote to Misinformation in the Digital Age</p>
+			<div class="lang-switch">
+				<button
+					id="lang-en"
+					class="lang-btn"
+					data-translate="lang_en"
+				>
+					English
+				</button>
+				<button
+					id="lang-es"
+					class="lang-btn"
+					data-translate="lang_es"
+				>
+					Español
+				</button>
+			</div>
+			<h1 data-translate="main_title">
+				Digital Privacy in the Surveillance Age
+			</h1>
+			<p
+				class="subtitle"
+				data-translate="main_subtitle"
+			>
+				A Citizen's Guide to Understanding and Protecting Your Digital Rights
+			</p>
 		</header>
 
 		<main>
-			<!-- INTRODUCTION WITH ALERT -->
+			<!-- INTRODUCTION -->
 			<section>
-				<h2>Why This Matters Now</h2>
 				<div class="alert alert-warning">
-					<strong>Critical Alert:</strong> In an era of unprecedented
-					information flow, the ability to distinguish truth from fiction is not
-					just important—it's essential for democracy itself.
+					<strong data-translate="alert_title">Important Information:</strong>
+					<span data-translate="alert_text"
+						>Digital surveillance has expanded significantly in recent years.
+						Understanding these trends is the first step toward protecting your
+						privacy and civil liberties.</span
+					>
 				</div>
-
-				<p>
-					To "wake up to what is really going on," it's essential to develop
-					strong media literacy skills and seek out credible information. This
-					guide provides practical tools for navigating our complex information
-					landscape.
-				</p>
 			</section>
 
-			<!-- KEY STATISTICS WITH STAT CARDS -->
+			<!-- SURVEILLANCE BY THE NUMBERS -->
 			<section>
-				<h2>The Information Crisis: By The Numbers</h2>
+				<h2 data-translate="stats_title">
+					Digital Surveillance: Key Statistics
+				</h2>
 				<div class="card-grid">
 					<div class="stat-card">
-						<span class="stat-number">$36T</span>
-						<div class="stat-label">National Debt</div>
+						<span class="stat-number">10,000+</span>
+						<div
+							class="stat-label"
+							data-translate="stat1_label"
+						>
+							Surveillance Tech Deployments (US, documented)
+						</div>
 					</div>
 					<div class="stat-card">
-						<span class="stat-number">67%</span>
-						<div class="stat-label">Americans Worried About Economy</div>
+						<span class="stat-number">50+</span>
+						<div
+							class="stat-label"
+							data-translate="stat2_label"
+						>
+							Major Airports Using Facial Recognition
+						</div>
 					</div>
 					<div class="stat-card">
-						<span class="stat-number">35%</span>
-						<div class="stat-label">Concerned About Immigration Policy</div>
-					</div>
-				</div>
-				<p
-					style="
-						text-align: center;
-						margin-top: 1rem;
-						font-size: 0.9rem;
-						opacity: 0.8;
-					"
-				>
-					<em
-						>Understanding the real issues requires access to credible
-						information</em
-					>
-				</p>
-			</section>
-
-			<!-- CREDIBILITY ASSESSMENT WITH PROGRESS BARS -->
-			<section>
-				<h2>Hallmarks of a Credible News Source</h2>
-				<p>
-					Quality journalism exhibits these characteristics. Use this checklist
-					to evaluate your news sources:
-				</p>
-
-				<div class="card">
-					<h3><span class="badge">1</span> Transparency</h3>
-					<p>They are open about their funding, leadership, and mission.</p>
-					<div class="progress-bar">
+						<span class="stat-number">Millions</span>
 						<div
-							class="progress-fill"
-							style="width: 90%"
-						></div>
-						<span class="progress-label">Essential</span>
+							class="stat-label"
+							data-translate="stat3_label"
+						>
+							Americans' Faces in Recognition Databases
+						</div>
 					</div>
-				</div>
-
-				<div class="card">
-					<h3><span class="badge">2</span> Standards</h3>
-					<p>They adhere to a publicly available code of ethics.</p>
-					<div class="progress-bar">
+					<div class="stat-card">
+						<span class="stat-number">Billions</span>
 						<div
-							class="progress-fill"
-							style="width: 85%"
-						></div>
-						<span class="progress-label">Critical</span>
+							class="stat-label"
+							data-translate="stat4_label"
+						>
+							Personal Records Exposed in Data Breaches Annually
+						</div>
 					</div>
 				</div>
-
-				<div class="card">
-					<h3><span class="badge">3</span> Corrections</h3>
-					<p>They openly and promptly correct errors in their reporting.</p>
-					<div class="progress-bar">
-						<div
-							class="progress-fill"
-							style="width: 95%"
-						></div>
-						<span class="progress-label">Vital</span>
-					</div>
-				</div>
-
-				<div class="card">
-					<h3><span class="badge">4</span> Objectivity</h3>
-					<p>They distinguish between news reporting and opinion pieces.</p>
-					<div class="progress-bar">
-						<div
-							class="progress-fill"
-							style="width: 88%"
-						></div>
-						<span class="progress-label">Important</span>
-					</div>
-				</div>
-			</section>
-
-			<!-- COMPARISON VIEW -->
-			<section>
-				<h2>Credible vs. Questionable Sources</h2>
-				<div class="comparison">
-					<div class="comparison-side">
-						<div class="comparison-title">🚫 Red Flags</div>
-						<ul>
-							<li>No "About Us" section</li>
-							<li>Hidden ownership</li>
-							<li>Emotional, inflammatory headlines</li>
-							<li>No corrections policy</li>
-							<li>Mixes news and opinion without labeling</li>
-						</ul>
-					</div>
-					<div class="comparison-side">
-						<div class="comparison-title">✓ Green Lights</div>
-						<ul>
-							<li>Clear mission statement</li>
-							<li>Transparent funding</li>
-							<li>Balanced, factual reporting</li>
-							<li>Public ethics code</li>
-							<li>Clearly labeled opinion sections</li>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-			<!-- MISINFORMATION DETECTION WITH TOOLTIPS AND CARDS -->
-			<section>
-				<h2>Spotting Misinformation: Essential Skills</h2>
 
 				<div class="alert alert-info">
-					<strong>Pro Tip:</strong> Misinformation often preys on emotions like
-					<span class="tooltip">
-						fear and anger
-						<span class="tooltip-text"
-							>Emotional manipulation bypasses critical thinking</span
-						> </span
-					>. Be skeptical of content designed to provoke strong reactions.
-				</div>
-
-				<div class="card-grid">
-					<div class="card">
-						<h3>✓ Check Multiple Sources</h3>
-						<p>
-							Corroborate information across reputable outlets with differing
-							perspectives.
-						</p>
-						<span class="badge">Essential</span>
-					</div>
-
-					<div class="card">
-						<h3>🔍 Investigate the Source</h3>
-						<p>
-							Look into the "About Us" section. Use tools like
-							<span class="tooltip">
-								Media Bias/Fact Check
-								<span class="tooltip-text"
-									>Free tool for checking source reliability</span
-								> </span
-							>.
-						</p>
-						<span class="badge">Important</span>
-					</div>
-
-					<div class="card">
-						<h3>📊 Use Fact-Checkers</h3>
-						<p>
-							Utilize FactCheck.org, PolitiFact, and Snopes for verification.
-						</p>
-						<span class="badge">Critical</span>
-					</div>
-
-					<div class="card">
-						<h3>😤 Beware Emotional Manipulation</h3>
-						<p>
-							Pause when you feel strong emotions. That's often intentional
-							manipulation.
-						</p>
-						<span class="badge">Key Skill</span>
-					</div>
-
-					<div class="card">
-						<h3>🖼️ Reverse Image Search</h3>
-						<p>
-							Use Google Reverse Image Search to verify authenticity of visuals.
-						</p>
-						<span class="badge">Useful</span>
-					</div>
-
-					<div class="card">
-						<h3>📰 Read Beyond Headlines</h3>
-						<p>
-							Headlines are designed for clicks. Always read the full article.
-						</p>
-						<span class="badge">Must Do</span>
-					</div>
+					<strong data-translate="stat_context_title">Context:</strong>
+					<span data-translate="stat_context_text"
+						>The Electronic Frontier Foundation's Atlas of Surveillance has
+						documented over 10,000 police surveillance technology deployments
+						across the US. Facial recognition technology is increasingly used at
+						airports, borders, and by law enforcement. Data breaches continue to
+						expose billions of personal records each year.</span
+					>
 				</div>
 			</section>
 
-			<!-- BAR CHART FOR MEDIA LITERACY SKILLS -->
+			<!-- BAR CHART: SURVEILLANCE GROWTH -->
 			<section>
-				<h2>Media Literacy Skills Assessment</h2>
-				<p>Rate your current skill level in these critical areas:</p>
-
+				<h2 data-translate="growth_title">
+					Surveillance Technology Adoption Trends
+				</h2>
 				<div class="bar-chart">
 					<div class="bar">
-						<div class="bar-label">Source Evaluation</div>
+						<div
+							class="bar-label"
+							data-translate="growth_bar1"
+						>
+							Major Airports Using Biometric Screening
+						</div>
 						<div class="bar-track">
 							<div
 								class="bar-fill"
-								style="width: 70%"
+								style="width: 75%"
 							>
-								<span class="bar-value">70%</span>
+								<span class="bar-value">Growing</span>
 							</div>
 						</div>
 					</div>
 					<div class="bar">
-						<div class="bar-label">Fact Checking</div>
+						<div
+							class="bar-label"
+							data-translate="growth_bar2"
+						>
+							Law Enforcement Access to Recognition Tech
+						</div>
 						<div class="bar-track">
 							<div
 								class="bar-fill"
 								style="width: 65%"
 							>
-								<span class="bar-value">65%</span>
+								<span class="bar-value">Expanding</span>
 							</div>
 						</div>
 					</div>
 					<div class="bar">
-						<div class="bar-label">Bias Recognition</div>
+						<div
+							class="bar-label"
+							data-translate="growth_bar3"
+						>
+							States With Privacy Protections
+						</div>
 						<div class="bar-track">
 							<div
 								class="bar-fill"
-								style="width: 55%"
+								style="width: 30%"
 							>
-								<span class="bar-value">55%</span>
+								<span class="bar-value">Limited</span>
 							</div>
 						</div>
 					</div>
 					<div class="bar">
-						<div class="bar-label">Emotional Awareness</div>
+						<div
+							class="bar-label"
+							data-translate="growth_bar4"
+						>
+							Data Breach Incidents
+						</div>
 						<div class="bar-track">
 							<div
 								class="bar-fill"
 								style="width: 80%"
 							>
-								<span class="bar-value">80%</span>
+								<span class="bar-value">Increasing</span>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="alert alert-success">
-					<strong>Goal:</strong> Aim for 80%+ in all categories to become a
-					resilient, informed citizen.
-				</div>
-			</section>
-
-			<!-- TIMELINE FOR CIVIC ENGAGEMENT -->
-			<section>
-				<h2>Your Civic Engagement Journey</h2>
-				<p>Building an informed, engaged citizenry is a progressive journey:</p>
-
-				<div class="timeline">
-					<div class="timeline-item">
-						<div class="timeline-date">Week 1-2</div>
-						<div class="timeline-content">
-							<strong>Audit Your News Diet</strong> - Identify your current
-							sources and evaluate their credibility using the checklist above.
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-date">Week 3-4</div>
-						<div class="timeline-content">
-							<strong>Diversify Your Sources</strong> - Add 2-3 credible sources
-							with different perspectives to your regular reading.
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-date">Month 2</div>
-						<div class="timeline-content">
-							<strong>Practice Fact-Checking</strong> - Before sharing anything
-							on social media, verify it using fact-checking websites.
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-date">Month 3</div>
-						<div class="timeline-content">
-							<strong>Engage Locally</strong> - Attend one local government
-							meeting (city council, school board, town hall).
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-date">Ongoing</div>
-						<div class="timeline-content">
-							<strong>Stay Active</strong> - Contact representatives, volunteer,
-							and maintain your media literacy practices.
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- BRIDGING DIVIDES SECTION -->
-			<section>
-				<h2>Bridging Divides: Productive Conversation Strategies</h2>
-
-				<p>
-					In a polarized society, coming together requires conscious effort to
-					engage in constructive dialogue.
+				<p
+					style="
+						font-size: 0.9rem;
+						opacity: 0.8;
+						text-align: center;
+						margin-top: 1rem;
+					"
+				>
+					<em data-translate="growth_note"
+						>These trends illustrate the expanding digital surveillance
+						infrastructure and the need for stronger privacy protections.</em
+					>
 				</p>
-
-				<details open>
-					<summary>🤝 Seek to Understand, Not to Win</summary>
-					<div class="details-content">
-						<p>
-							Approach conversations with genuine curiosity about the other
-							person's perspective. Ask open-ended questions to understand their
-							"why."
-						</p>
-					</div>
-				</details>
-
-				<details>
-					<summary>💬 Use "I" Statements</summary>
-					<div class="details-content">
-						<p>
-							Express your own feelings and beliefs without attacking. Say
-							<strong>"I am concerned about..."</strong> rather than
-							<strong>"You are wrong because..."</strong>
-						</p>
-						<div class="comparison">
-							<div class="comparison-side">
-								<div class="comparison-title">❌ Don't Say</div>
-								<p>"You're wrong about that policy."</p>
-							</div>
-							<div class="comparison-side">
-								<div class="comparison-title">✓ Do Say</div>
-								<p>
-									"I'm concerned about the impact of that policy because..."
-								</p>
-							</div>
-						</div>
-					</div>
-				</details>
-
-				<details>
-					<summary>🎯 Find Shared Values</summary>
-					<div class="details-content">
-						<p>
-							Even with differing views, people often share core values like
-							safety, family, and prosperity. Build on common ground.
-						</p>
-					</div>
-				</details>
-
-				<details>
-					<summary>🧘 Stay Calm and Respectful</summary>
-					<div class="details-content">
-						<p>
-							Avoid raising your voice or making personal attacks. If
-							conversation becomes heated, it's okay to take a break.
-						</p>
-						<div class="alert alert-warning">
-							<strong>Remember:</strong> The goal is understanding, not winning
-							an argument.
-						</div>
-					</div>
-				</details>
-
-				<details>
-					<summary>👂 Listen Actively</summary>
-					<div class="details-content">
-						<p>
-							Pay attention without planning your rebuttal. Acknowledge their
-							points before responding.
-						</p>
-					</div>
-				</details>
 			</section>
 
-			<!-- TAKING ACTION -->
-			<section>
-				<h2>Taking Action: Getting Involved</h2>
-
-				<p>
-					Understanding issues is the first step; taking action is the next.
-					Here's how to make a difference:
+			<!-- UNDERSTANDING THE CHALLENGES -->
+			<section id="understanding">
+				<h2 data-translate="section1_title">
+					Part I: Understanding Digital Surveillance
+				</h2>
+				<p data-translate="section1_text">
+					Modern surveillance combines government security measures with
+					corporate data collection practices. Understanding these systems is
+					essential for protecting your privacy and civil liberties in the
+					digital age.
 				</p>
 
 				<div class="card-grid">
 					<div class="card">
-						<h3>🏛️ Local Engagement</h3>
-						<p>
-							Attend city council meetings, town halls, and school board
-							meetings. These are the most accessible and impactful venues.
+						<h3 data-translate="threat_card1_title">
+							Widespread Surveillance Technology
+						</h3>
+						<p data-translate="threat_card1_text">
+							Cameras with facial recognition, automated license plate readers,
+							and data analysis systems are increasingly common in public
+							spaces.
 						</p>
-						<a
-							href="#action-modal"
+						<span
 							class="badge"
-							>Learn More</a
+							data-translate="threat_card1_badge"
+							>Current Reality</span
 						>
 					</div>
-
 					<div class="card">
-						<h3>📢 Contact Representatives</h3>
-						<p>
-							Regularly call, write, or email your elected officials at local,
-							state, and federal levels.
+						<h3 data-translate="threat_card2_title">
+							Data Sharing & Collection
+						</h3>
+						<p data-translate="threat_card2_text">
+							Corporations and government agencies often share personal data,
+							creating comprehensive profiles of individuals.
 						</p>
-						<span class="badge">High Impact</span>
+						<span
+							class="badge"
+							data-translate="threat_card2_badge"
+							>Growing Concern</span
+						>
 					</div>
-
 					<div class="card">
-						<h3>🤲 Community Organizing</h3>
-						<p>
-							Join or support local groups working on issues you care about.
-							Grassroots efforts drive change.
+						<h3 data-translate="threat_card3_title">
+							Algorithmic Decision-Making
+						</h3>
+						<p data-translate="threat_card3_text">
+							Automated systems increasingly influence decisions in law
+							enforcement, lending, hiring, and public services, sometimes with
+							problematic biases.
 						</p>
-						<span class="badge">Powerful</span>
+						<span
+							class="badge"
+							data-translate="threat_card3_badge"
+							>Requires Oversight</span
+						>
 					</div>
-
 					<div class="card">
-						<h3>💪 Volunteer</h3>
-						<p>
-							Get involved in community projects and support local initiatives.
-							This strengthens bonds.
+						<h3 data-translate="threat_card4_title">
+							Data Security Vulnerabilities
+						</h3>
+						<p data-translate="threat_card4_text">
+							Large-scale data collection creates targets for hackers and
+							creates risks when security is breached.
 						</p>
-						<span class="badge">Essential</span>
+						<span
+							class="badge"
+							data-translate="threat_card4_badge"
+							>Ongoing Risk</span
+						>
 					</div>
+				</div>
 
-					<div class="card">
-						<h3>📚 Stay Informed</h3>
-						<p>
-							Understand the basics of the legislative process and different
-							levels of government.
+				<details>
+					<summary data-translate="detail1_title">
+						Surveillance Technology
+					</summary>
+					<div class="details-content">
+						<p data-translate="detail1_text">
+							Facial recognition, automated license plate readers, and security
+							cameras with advanced analytics are deployed in many public spaces
+							including airports, government buildings, and increasingly on city
+							streets.
 						</p>
-						<span class="badge">Foundation</span>
+						<div class="alert alert-info">
+							<strong data-translate="detail1_data_title">Example:</strong>
+							<span data-translate="detail1_data_text"
+								>Federal agencies use facial recognition at borders and airports
+								for identity verification. While this can enhance security, it
+								also raises privacy concerns about constant surveillance and
+								data storage.</span
+							>
+						</div>
 					</div>
-
-					<div class="card">
-						<h3>🗳️ Vote Always</h3>
-						<p>
-							Vote in every election—local, state, and federal. Local elections
-							often have the biggest impact on daily life.
+				</details>
+				<details>
+					<summary data-translate="detail2_title">
+						Data Sharing Practices
+					</summary>
+					<div class="details-content">
+						<p data-translate="detail2_text">
+							Government agencies and private companies often share personal
+							data. Law enforcement may access corporate databases, and
+							companies sell consumer data to third parties.
 						</p>
-						<span class="badge">Critical</span>
+						<div class="alert alert-info">
+							<strong data-translate="detail2_data_title">Concern:</strong>
+							<span data-translate="detail2_data_text"
+								>The FTC has documented how technology companies collect
+								extensive personal data for advertising. Some smart home device
+								companies have partnered with law enforcement, raising questions
+								about privacy in our own homes.</span
+							>
+						</div>
+					</div>
+				</details>
+				<details>
+					<summary data-translate="detail3_title">Algorithmic Systems</summary>
+					<div class="details-content">
+						<p data-translate="detail3_text">
+							Automated decision-making systems are used for predictive
+							policing, credit scoring, hiring decisions, and benefit
+							eligibility. Studies have found that some systems exhibit racial,
+							gender, or socioeconomic biases.
+						</p>
+						<div class="alert alert-info">
+							<strong data-translate="detail3_data_title">Issue:</strong>
+							<span data-translate="detail3_data_text"
+								>Algorithmic bias can perpetuate historical discrimination when
+								systems are trained on biased data. Greater transparency and
+								oversight of these systems is needed.</span
+							>
+						</div>
+					</div>
+				</details>
+				<details>
+					<summary data-translate="detail4_title">Data Security Risks</summary>
+					<div class="details-content">
+						<p data-translate="detail4_text">
+							Centralized databases of personal information create attractive
+							targets for cybercriminals. When breached, sensitive data
+							including social security numbers, health records, and financial
+							information can be exposed.
+						</p>
+						<div class="alert alert-info">
+							<strong data-translate="detail4_data_title">Reality:</strong>
+							<span data-translate="detail4_data_text"
+								>Major data breaches have exposed billions of personal records
+								in recent years, affecting government agencies, healthcare
+								providers, retailers, and financial institutions.</span
+							>
+						</div>
+					</div>
+				</details>
+			</section>
+
+			<!-- TIMELINE: SURVEILLANCE HISTORY -->
+			<section>
+				<h2 data-translate="timeline_title">
+					Timeline: Key Moments in Digital Surveillance
+				</h2>
+				<div class="timeline">
+					<div class="timeline-item">
+						<div
+							class="timeline-date"
+							data-translate="timeline1_date"
+						>
+							2001
+						</div>
+						<div
+							class="timeline-content"
+							data-translate="timeline1_content"
+						>
+							<strong>USA PATRIOT Act:</strong> Expanded government surveillance
+							authority following 9/11 attacks, including increased ability to
+							monitor communications and access records.
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div
+							class="timeline-date"
+							data-translate="timeline2_date"
+						>
+							2013
+						</div>
+						<div
+							class="timeline-content"
+							data-translate="timeline2_content"
+						>
+							<strong>Snowden Disclosures:</strong> Revealed extent of NSA
+							surveillance programs, sparking global debate about privacy versus
+							security.
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div
+							class="timeline-date"
+							data-translate="timeline3_date"
+						>
+							2016-2018
+						</div>
+						<div
+							class="timeline-content"
+							data-translate="timeline3_content"
+						>
+							<strong>Privacy Legislation:</strong> GDPR in Europe and CCPA in
+							California establish new data privacy standards, though US lacks
+							comprehensive federal privacy law.
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div
+							class="timeline-date"
+							data-translate="timeline4_date"
+						>
+							2020s
+						</div>
+						<div
+							class="timeline-content"
+							data-translate="timeline4_content"
+						>
+							<strong>AI & Biometrics:</strong> Rapid expansion of facial
+							recognition and algorithmic systems in both government and private
+							sector, with some cities banning the technology.
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div
+							class="timeline-date"
+							data-translate="timeline5_date"
+						>
+							Present
+						</div>
+						<div
+							class="timeline-content"
+							data-translate="timeline5_content"
+						>
+							<strong>Ongoing Debate:</strong> Society continues balancing
+							security needs with privacy rights as surveillance technology
+							advances faster than regulation.
+						</div>
 					</div>
 				</div>
 			</section>
 
-			<!-- MODAL FOR ADDITIONAL INFO -->
-			<div
-				id="action-modal"
-				class="modal"
-			>
-				<div class="modal-content">
-					<a
-						href="#"
-						class="modal-close"
-						>×</a
-					>
-					<h2>Local Engagement: Getting Started</h2>
+			<!-- COMPARISON: TRADITIONAL VS DIGITAL -->
+			<section id="identifying">
+				<h2 data-translate="section2_title">
+					Part II: Traditional vs. Digital Surveillance
+				</h2>
+				<p data-translate="section2_text">
+					Understanding how surveillance methods have evolved helps us recognize
+					modern privacy challenges and protect ourselves effectively.
+				</p>
 
-					<div class="timeline">
-						<div class="timeline-item">
-							<div class="timeline-date">Step 1</div>
-							<div class="timeline-content">
-								Find your local government website and subscribe to meeting
-								notifications
-							</div>
+				<div class="comparison">
+					<div class="comparison-side">
+						<div
+							class="comparison-title"
+							data-translate="comparison_historical_title"
+						>
+							Traditional Surveillance
 						</div>
-						<div class="timeline-item">
-							<div class="timeline-date">Step 2</div>
-							<div class="timeline-content">
-								Review meeting agendas ahead of time to understand topics
-							</div>
-						</div>
-						<div class="timeline-item">
-							<div class="timeline-date">Step 3</div>
-							<div class="timeline-content">
-								Attend as an observer first to understand the process
-							</div>
-						</div>
-						<div class="timeline-item">
-							<div class="timeline-date">Step 4</div>
-							<div class="timeline-content">
-								Sign up for public comment on issues you care about
-							</div>
-						</div>
+						<ul>
+							<li data-translate="historical1">
+								<strong>Method:</strong> Physical observation, wiretaps
+								requiring warrants
+							</li>
+							<li data-translate="historical2">
+								<strong>Scale:</strong> Labor-intensive, targeted individuals or
+								groups
+							</li>
+							<li data-translate="historical3">
+								<strong>Data:</strong> Paper files, limited sharing between
+								agencies
+							</li>
+							<li data-translate="historical4">
+								<strong>Oversight:</strong> Courts, warrants, established legal
+								frameworks
+							</li>
+						</ul>
 					</div>
-
-					<div class="alert alert-success">
-						<strong>Pro Tip:</strong> Most local meetings have public comment
-						periods where any citizen can speak for 2-3 minutes.
+					<div class="comparison-side">
+						<div
+							class="comparison-title"
+							data-translate="comparison_techno_title"
+						>
+							Digital Surveillance
+						</div>
+						<ul>
+							<li data-translate="techno1">
+								<strong>Method:</strong> Automated monitoring, facial
+								recognition, data mining
+							</li>
+							<li data-translate="techno2">
+								<strong>Scale:</strong> Mass surveillance possible, everyone
+								captured
+							</li>
+							<li data-translate="techno3">
+								<strong>Data:</strong> Integrated databases, instant sharing
+								across agencies
+							</li>
+							<li data-translate="techno4">
+								<strong>Oversight:</strong> Laws struggling to keep pace with
+								technology
+							</li>
+						</ul>
 					</div>
 				</div>
-			</div>
 
-			<!-- FINAL CALL TO ACTION -->
+				<details>
+					<summary data-translate="comparison1_title">Scope & Scale</summary>
+					<div class="details-content">
+						<h3 data-translate="comparison_historical">Traditional:</h3>
+						<p data-translate="comparison1_historical">
+							Surveillance required significant human resources. Officers had to
+							physically follow subjects or set up wiretaps, limiting how many
+							people could be monitored.
+						</p>
+						<hr />
+						<h3 data-translate="comparison_techno">Digital:</h3>
+						<p data-translate="comparison1_techno">
+							Automated systems can monitor millions simultaneously. Cameras
+							with facial recognition, automated license plate readers, and data
+							analysis tools process vast amounts of information with minimal
+							human oversight.
+						</p>
+					</div>
+				</details>
+				<details>
+					<summary data-translate="comparison2_title">
+						Data Storage & Sharing
+					</summary>
+					<div class="details-content">
+						<h3 data-translate="comparison_historical">Traditional:</h3>
+						<p data-translate="comparison2_historical">
+							Information was stored in physical files with limited access.
+							Sharing between agencies required physical transfer and was
+							relatively uncommon.
+						</p>
+						<hr />
+						<h3 data-translate="comparison_techno">Digital:</h3>
+						<p data-translate="comparison2_techno">
+							Digital databases enable instant access and sharing. Multiple
+							agencies can access the same information simultaneously, and data
+							can be stored indefinitely at minimal cost.
+						</p>
+					</div>
+				</details>
+				<details>
+					<summary data-translate="comparison3_title">
+						Legal Protections
+					</summary>
+					<div class="details-content">
+						<h3 data-translate="comparison_historical">Traditional:</h3>
+						<p data-translate="comparison3_historical">
+							Fourth Amendment protections and warrant requirements were
+							generally understood and followed for physical searches and
+							wiretaps.
+						</p>
+						<hr />
+						<h3 data-translate="comparison_techno">Digital:</h3>
+						<p data-translate="comparison3_techno">
+							Legal frameworks are still developing for digital surveillance.
+							Courts and legislatures are working to define privacy rights in
+							the digital age, but laws often lag behind technology.
+						</p>
+					</div>
+				</details>
+			</section>
+
+			<!-- PRIVACY CHALLENGES -->
 			<section>
-				<h2>The Path Forward</h2>
+				<h2 data-translate="risk_title">Current Privacy Challenges</h2>
+				<p data-translate="risk_text">
+					Key areas where digital privacy rights need stronger protection:
+				</p>
+
+				<div class="card">
+					<h3 data-translate="risk1_title">
+						<span class="badge">Concern</span> Expanding Surveillance
+						Infrastructure
+					</h3>
+					<p data-translate="risk1_text">
+						Facial recognition and biometric systems deployed at borders,
+						airports, and increasingly in public spaces with limited oversight
+						or public input.
+					</p>
+					<div class="progress-bar">
+						<div
+							class="progress-fill"
+							style="width: 75%"
+						></div>
+						<span
+							class="progress-label"
+							data-translate="risk1_level"
+							>Needs Regulation</span
+						>
+					</div>
+				</div>
+
+				<div class="card">
+					<h3 data-translate="risk2_title">
+						<span class="badge">Active Threat</span> Data Breach Risks
+					</h3>
+					<p data-translate="risk2_text">
+						Billions of personal records exposed annually through breaches
+						affecting retailers, healthcare providers, government agencies, and
+						financial institutions.
+					</p>
+					<div class="progress-bar">
+						<div
+							class="progress-fill"
+							style="width: 80%"
+						></div>
+						<span
+							class="progress-label"
+							data-translate="risk2_level"
+							>Requires Better Security</span
+						>
+					</div>
+				</div>
+
+				<div class="card">
+					<h3 data-translate="risk3_title">
+						<span class="badge">Policy Gap</span> Insufficient Privacy Laws
+					</h3>
+					<p data-translate="risk3_text">
+						The US lacks comprehensive federal privacy legislation, leaving most
+						Americans with limited control over their personal data.
+					</p>
+					<div class="progress-bar">
+						<div
+							class="progress-fill"
+							style="width: 35%"
+						></div>
+						<span
+							class="progress-label"
+							data-translate="risk3_level"
+							>Needs Federal Action</span
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- PRIVACY PROTECTION TOOLKIT -->
+			<section id="resistance">
+				<h2 data-translate="section3_title">
+					Part III: Protecting Your Digital Privacy
+				</h2>
 
 				<div class="alert alert-info">
-					<strong>Remember:</strong> By arming ourselves with credible
-					information, engaging in respectful dialogue, and actively
-					participating in our communities and government, we can move towards a
-					more informed and unified society.
+					<strong data-translate="resistance_intro_title">Take Action:</strong>
+					<span data-translate="resistance_intro_text"
+						>These practical steps can significantly improve your digital
+						privacy and security. Start with the basics and build from
+						there.</span
+					>
 				</div>
 
-				<p style="text-align: center; margin-top: 2rem; font-size: 1.1rem">
-					<strong>Every informed citizen strengthens democracy.</strong><br />
-					<span style="opacity: 0.8">Start your journey today.</span>
+				<details open>
+					<summary>
+						<span class="badge">1</span>
+						<span data-translate="toolkit1_title">Essential Privacy Tools</span>
+					</summary>
+					<div class="details-content">
+						<p data-translate="toolkit1_text">
+							Basic digital privacy practices that everyone should adopt to
+							protect their personal information online.
+						</p>
+						<ul>
+							<li data-translate="toolkit1_item1">
+								<strong>Secure Messaging:</strong> Use end-to-end encrypted
+								messaging apps like Signal or WhatsApp for sensitive
+								conversations
+							</li>
+							<li data-translate="toolkit1_item2">
+								<strong>Strong Passwords:</strong> Use a password manager (like
+								Bitwarden or 1Password) to create and store unique passwords,
+								enable two-factor authentication
+							</li>
+							<li data-translate="toolkit1_item3">
+								<strong>Data Minimization:</strong> Share minimal personal
+								information online, use email aliases for non-essential services
+							</li>
+							<li data-translate="toolkit1_item4">
+								<strong>Private Browsing:</strong> Use privacy-focused browsers
+								(Firefox, Brave) with ad blockers (uBlock Origin), consider
+								DuckDuckGo for searches
+							</li>
+							<li data-translate="toolkit1_item5">
+								<strong>VPN Services:</strong> Use a reputable VPN to encrypt
+								your internet connection and mask your IP address when using
+								public WiFi
+							</li>
+						</ul>
+						<div class="progress-bar">
+							<div
+								class="progress-fill"
+								style="width: 33%"
+							></div>
+							<span
+								class="progress-label"
+								data-translate="progress1"
+								>Essential Protection</span
+							>
+						</div>
+					</div>
+				</details>
+
+				<details>
+					<summary>
+						<span class="badge">2</span>
+						<span data-translate="toolkit2_title">Support Privacy Rights</span>
+					</summary>
+					<div class="details-content">
+						<p data-translate="toolkit2_text">
+							Individual privacy practices are important, but systemic change
+							requires collective action and policy reform.
+						</p>
+						<ul>
+							<li data-translate="toolkit2_item1">
+								<strong>Support Journalism:</strong> Subscribe to quality news
+								sources that hold governments and corporations accountable on
+								privacy issues
+							</li>
+							<li data-translate="toolkit2_item2">
+								<strong>Civil Liberties Organizations:</strong> Support groups
+								like EFF, ACLU, and other organizations advocating for digital
+								rights and privacy protections
+							</li>
+							<li data-translate="toolkit2_item3">
+								<strong>Civic Participation:</strong> Vote for candidates who
+								support strong privacy protections, contact representatives
+								about privacy legislation
+							</li>
+							<li data-translate="toolkit2_item4">
+								<strong>Local Advocacy:</strong> Attend city council meetings,
+								advocate for privacy-protecting policies at the local and state
+								level
+							</li>
+						</ul>
+						<div class="progress-bar">
+							<div
+								class="progress-fill"
+								style="width: 66%"
+							></div>
+							<span
+								class="progress-label"
+								data-translate="progress2"
+								>Active Engagement</span
+							>
+						</div>
+					</div>
+				</details>
+
+				<details>
+					<summary>
+						<span class="badge">3</span>
+						<span data-translate="toolkit3_title"
+							>Educate & Share Knowledge</span
+						>
+					</summary>
+					<div class="details-content">
+						<p data-translate="toolkit3_text">
+							Help others understand digital privacy issues and adopt protective
+							measures. Privacy is stronger when everyone participates.
+						</p>
+						<ul>
+							<li data-translate="toolkit3_item1">
+								<strong>Digital Literacy:</strong> Share privacy tips with
+								friends and family, help them adopt secure practices
+							</li>
+							<li data-translate="toolkit3_item2">
+								<strong>Community Education:</strong> Organize workshops on
+								digital security at libraries, community centers, or online
+							</li>
+							<li data-translate="toolkit3_item3">
+								<strong>Stay Informed:</strong> Keep learning about privacy
+								issues, share credible information about emerging threats and
+								protections
+							</li>
+						</ul>
+						<div class="progress-bar">
+							<div
+								class="progress-fill"
+								style="width: 100%"
+							></div>
+							<span
+								class="progress-label"
+								data-translate="progress3"
+								>Community Impact</span
+							>
+						</div>
+					</div>
+				</details>
+			</section>
+
+			<!-- RESOURCES MODAL -->
+			<section>
+				<h2 data-translate="resources_title">Helpful Resources</h2>
+				<p>
+					<a
+						href="#resources-modal"
+						class="badge"
+						data-translate="resources_link"
+						>View Organizations & Tools</a
+					>
 				</p>
+
+				<div
+					id="resources-modal"
+					class="modal"
+				>
+					<div class="modal-content">
+						<a
+							href="#"
+							class="modal-close"
+							>×</a
+						>
+						<h2 data-translate="modal_title">
+							Privacy Rights Organizations & Tools
+						</h2>
+
+						<h3 data-translate="modal_section1">Advocacy Organizations</h3>
+						<ul>
+							<li>
+								<strong>Electronic Frontier Foundation (EFF):</strong>
+								<span data-translate="modal_eff"
+									>Leading digital rights organization with extensive privacy
+									resources and the Atlas of Surveillance project</span
+								>
+							</li>
+							<li>
+								<strong>American Civil Liberties Union (ACLU):</strong>
+								<span data-translate="modal_aclu"
+									>Privacy and technology litigation, advocates for civil
+									liberties protection</span
+								>
+							</li>
+							<li>
+								<strong>Fight for the Future:</strong>
+								<span data-translate="modal_fftf"
+									>Grassroots campaigns for internet freedom and privacy
+									rights</span
+								>
+							</li>
+						</ul>
+
+						<h3 data-translate="modal_section2">Privacy Tools</h3>
+						<ul>
+							<li>
+								<strong>Signal:</strong>
+								<span data-translate="modal_signal"
+									>Free, open-source end-to-end encrypted messaging</span
+								>
+							</li>
+							<li>
+								<strong>Bitwarden / 1Password:</strong>
+								<span data-translate="modal_bitwarden"
+									>Secure password managers for creating and storing strong
+									passwords</span
+								>
+							</li>
+							<li>
+								<strong>Firefox / Brave:</strong>
+								<span data-translate="modal_tor"
+									>Privacy-focused web browsers with built-in tracking
+									protection</span
+								>
+							</li>
+							<li>
+								<strong>DuckDuckGo:</strong>
+								<span data-translate="modal_ddg"
+									>Private search engine that doesn't track your searches</span
+								>
+							</li>
+						</ul>
+
+						<h3 data-translate="modal_section3">Educational Resources</h3>
+						<ul>
+							<li>
+								<strong>EFF's Surveillance Self-Defense:</strong>
+								<span data-translate="modal_ssd"
+									>ssd.eff.org - Comprehensive, accessible security and privacy
+									guides</span
+								>
+							</li>
+							<li>
+								<strong>Privacy Rights Clearinghouse:</strong>
+								<span data-translate="modal_prc"
+									>Privacy education, data breach tracking, and consumer
+									advocacy</span
+								>
+							</li>
+						</ul>
+
+						<div class="alert alert-info">
+							<strong data-translate="modal_note_title"
+								>Support Privacy Rights:</strong
+							>
+							<span data-translate="modal_note_text"
+								>These non-profit organizations rely on donations and
+								volunteers. Consider supporting them if you value digital
+								privacy and civil liberties.</span
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- FINAL MESSAGE -->
+			<section>
+				<h2 data-translate="final_title">
+					Privacy is a Right, Not a Privilege
+				</h2>
+
+				<div class="alert alert-info">
+					<strong data-translate="final_warning_title">Remember:</strong>
+					<span data-translate="final_warning_text"
+						>While surveillance technology has expanded rapidly, privacy rights
+						can be protected and strengthened through individual action,
+						advocacy, and policy reform. Your choices matter.</span
+					>
+				</div>
+
+				<p
+					style="
+						text-align: center;
+						margin-top: 2rem;
+						font-size: 1.1rem;
+						line-height: 1.8;
+					"
+				>
+					<span data-translate="final_quote"
+						>"Privacy is not about having something to hide. It's about having
+						the freedom to be yourself without being constantly monitored,
+						profiled, or judged. By understanding digital surveillance, adopting
+						protective practices, and advocating for strong privacy laws, we can
+						maintain our civil liberties in the digital age."</span
+					>
+				</p>
+
+				<div style="text-align: center; margin-top: 2rem">
+					<span
+						class="badge"
+						data-translate="final_badge1"
+						>Stay Informed</span
+					>
+					<span
+						class="badge"
+						data-translate="final_badge2"
+						>Stay Secure</span
+					>
+					<span
+						class="badge"
+						data-translate="final_badge3"
+						>Stay Private</span
+					>
+				</div>
 			</section>
 		</main>
 
 		<footer>
-			<h3>Resources & Further Reading</h3>
+			<h3 data-translate="footer_sources_title">Learn More</h3>
 			<ul style="font-size: 0.85rem; opacity: 0.8">
-				<li>
-					<strong>Fact Checking:</strong> FactCheck.org, PolitiFact, Snopes
+				<li data-translate="source1">
+					Electronic Frontier Foundation (eff.org) - Digital rights advocacy and
+					education
 				</li>
-				<li>
-					<strong>Media Evaluation:</strong> Media Bias/Fact Check, AllSides
+				<li data-translate="source2">
+					ACLU Privacy & Technology (aclu.org) - Civil liberties protection
 				</li>
-				<li><strong>News Literacy:</strong> NewsLit.org</li>
-				<li><strong>Government Info:</strong> USA.gov, Congress.gov</li>
+				<li data-translate="source3">
+					Privacy Rights Clearinghouse (privacyrights.org) - Consumer privacy
+					resources
+				</li>
+				<li data-translate="source4">
+					Surveillance Self-Defense (ssd.eff.org) - Practical security guides
+				</li>
+				<li data-translate="source5">
+					EPIC (epic.org) - Electronic Privacy Information Center
+				</li>
 			</ul>
-			<p style="text-align: center; margin-top: 1rem; font-size: 0.85rem">
-				Sources: Conference Board, Yale Climate Communication, NewsLit, Fair
-				Media Council
+			<p
+				style="text-align: center; margin-top: 1rem"
+				data-translate="footer_text"
+			>
+				Your privacy matters. Stay informed, stay secure, stay engaged.
 			</p>
 		</footer>
+
+		<script>
+			// --- TRANSLATION SCRIPT ---
+			const translations = {
+				en: {
+					lang_en: 'English',
+					lang_es: 'Español',
+					main_title: 'Digital Privacy in the Surveillance Age',
+					main_subtitle:
+						"A Citizen's Guide to Understanding and Protecting Your Digital Rights",
+					alert_title: 'Important Information:',
+					alert_text:
+						'Digital surveillance has expanded significantly in recent years. Understanding these trends is the first step toward protecting your privacy and civil liberties.',
+					stats_title: 'Digital Surveillance: Key Statistics',
+					stat1_label: 'Surveillance Tech Deployments (US, documented)',
+					stat2_label: 'Major Airports Using Facial Recognition',
+					stat3_label: "Americans' Faces in Recognition Databases",
+					stat4_label: 'Personal Records Exposed in Data Breaches Annually',
+					stat_context_title: 'Context:',
+					stat_context_text:
+						"The Electronic Frontier Foundation's Atlas of Surveillance has documented over 10,000 police surveillance technology deployments across the US. Facial recognition technology is increasingly used at airports, borders, and by law enforcement. Data breaches continue to expose billions of personal records each year.",
+					growth_title: 'Surveillance Technology Adoption Trends',
+					growth_bar1: 'Major Airports Using Biometric Screening',
+					growth_bar2: 'Law Enforcement Access to Recognition Tech',
+					growth_bar3: 'States With Privacy Protections',
+					growth_bar4: 'Data Breach Incidents',
+					growth_note:
+						'These trends illustrate the expanding digital surveillance infrastructure and the need for stronger privacy protections.',
+					section1_title: 'Part I: Understanding Digital Surveillance',
+					section1_text:
+						'Modern surveillance combines government security measures with corporate data collection practices. Understanding these systems is essential for protecting your privacy and civil liberties in the digital age.',
+					threat_card1_title: 'Widespread Surveillance Technology',
+					threat_card1_text:
+						'Cameras with facial recognition, automated license plate readers, and data analysis systems are increasingly common in public spaces.',
+					threat_card1_badge: 'Current Reality',
+					threat_card2_title: 'Data Sharing & Collection',
+					threat_card2_text:
+						'Corporations and government agencies often share personal data, creating comprehensive profiles of individuals.',
+					threat_card2_badge: 'Growing Concern',
+					threat_card3_title: 'Algorithmic Decision-Making',
+					threat_card3_text:
+						'Automated systems increasingly influence decisions in law enforcement, lending, hiring, and public services, sometimes with problematic biases.',
+					threat_card3_badge: 'Requires Oversight',
+					threat_card4_title: 'Data Security Vulnerabilities',
+					threat_card4_text:
+						'Large-scale data collection creates targets for hackers and creates risks when security is breached.',
+					threat_card4_badge: 'Ongoing Risk',
+					detail1_title: 'Surveillance Technology',
+					detail1_text:
+						'Facial recognition, automated license plate readers, and security cameras with advanced analytics are deployed in many public spaces including airports, government buildings, and increasingly on city streets.',
+					detail1_data_title: 'Example:',
+					detail1_data_text:
+						'Federal agencies use facial recognition at borders and airports for identity verification. While this can enhance security, it also raises privacy concerns about constant surveillance and data storage.',
+					detail2_title: 'Data Sharing Practices',
+					detail2_text:
+						'Government agencies and private companies often share personal data. Law enforcement may access corporate databases, and companies sell consumer data to third parties.',
+					detail2_data_title: 'Concern:',
+					detail2_data_text:
+						'The FTC has documented how technology companies collect extensive personal data for advertising. Some smart home device companies have partnered with law enforcement, raising questions about privacy in our own homes.',
+					detail3_title: 'Algorithmic Systems',
+					detail3_text:
+						'Automated decision-making systems are used for predictive policing, credit scoring, hiring decisions, and benefit eligibility. Studies have found that some systems exhibit racial, gender, or socioeconomic biases.',
+					detail3_data_title: 'Issue:',
+					detail3_data_text:
+						'Algorithmic bias can perpetuate historical discrimination when systems are trained on biased data. Greater transparency and oversight of these systems is needed.',
+					detail4_title: 'Data Security Risks',
+					detail4_text:
+						'Centralized databases of personal information create attractive targets for cybercriminals. When breached, sensitive data including social security numbers, health records, and financial information can be exposed.',
+					detail4_data_title: 'Reality:',
+					detail4_data_text:
+						'Major data breaches have exposed billions of personal records in recent years, affecting government agencies, healthcare providers, retailers, and financial institutions.',
+					timeline_title: 'Timeline: Key Moments in Digital Surveillance',
+					timeline1_date: '2001',
+					timeline1_content:
+						'<strong>USA PATRIOT Act:</strong> Expanded government surveillance authority following 9/11 attacks, including increased ability to monitor communications and access records.',
+					timeline2_date: '2013',
+					timeline2_content:
+						'<strong>Snowden Disclosures:</strong> Revealed extent of NSA surveillance programs, sparking global debate about privacy versus security.',
+					timeline3_date: '2016-2018',
+					timeline3_content:
+						'<strong>Privacy Legislation:</strong> GDPR in Europe and CCPA in California establish new data privacy standards, though US lacks comprehensive federal privacy law.',
+					timeline4_date: '2020s',
+					timeline4_content:
+						'<strong>AI & Biometrics:</strong> Rapid expansion of facial recognition and algorithmic systems in both government and private sector, with some cities banning the technology.',
+					timeline5_date: 'Present',
+					timeline5_content:
+						'<strong>Ongoing Debate:</strong> Society continues balancing security needs with privacy rights as surveillance technology advances faster than regulation.',
+					section2_title: 'Part II: Traditional vs. Digital Surveillance',
+					section2_text:
+						'Understanding how surveillance methods have evolved helps us recognize modern privacy challenges and protect ourselves effectively.',
+					comparison_historical_title: 'Traditional Surveillance',
+					comparison_techno_title: 'Digital Surveillance',
+					historical1:
+						'<strong>Method:</strong> Physical observation, wiretaps requiring warrants',
+					historical2:
+						'<strong>Scale:</strong> Labor-intensive, targeted individuals or groups',
+					historical3:
+						'<strong>Data:</strong> Paper files, limited sharing between agencies',
+					historical4:
+						'<strong>Oversight:</strong> Courts, warrants, established legal frameworks',
+					techno1:
+						'<strong>Method:</strong> Automated monitoring, facial recognition, data mining',
+					techno2:
+						'<strong>Scale:</strong> Mass surveillance possible, everyone captured',
+					techno3:
+						'<strong>Data:</strong> Integrated databases, instant sharing across agencies',
+					techno4:
+						'<strong>Oversight:</strong> Laws struggling to keep pace with technology',
+					comparison_historical: 'Traditional:',
+					comparison_techno: 'Digital:',
+					comparison1_title: 'Scope & Scale',
+					comparison1_historical:
+						'Surveillance required significant human resources. Officers had to physically follow subjects or set up wiretaps, limiting how many people could be monitored.',
+					comparison1_techno:
+						'Automated systems can monitor millions simultaneously. Cameras with facial recognition, automated license plate readers, and data analysis tools process vast amounts of information with minimal human oversight.',
+					comparison2_title: 'Data Storage & Sharing',
+					comparison2_historical:
+						'Information was stored in physical files with limited access. Sharing between agencies required physical transfer and was relatively uncommon.',
+					comparison2_techno:
+						'Digital databases enable instant access and sharing. Multiple agencies can access the same information simultaneously, and data can be stored indefinitely at minimal cost.',
+					comparison3_title: 'Legal Protections',
+					comparison3_historical:
+						'Fourth Amendment protections and warrant requirements were generally understood and followed for physical searches and wiretaps.',
+					comparison3_techno:
+						'Legal frameworks are still developing for digital surveillance. Courts and legislatures are working to define privacy rights in the digital age, but laws often lag behind technology.',
+					risk_title: 'Current Privacy Challenges',
+					risk_text:
+						'Key areas where digital privacy rights need stronger protection:',
+					risk1_title: 'Expanding Surveillance Infrastructure',
+					risk1_text:
+						'Facial recognition and biometric systems deployed at borders, airports, and increasingly in public spaces with limited oversight or public input.',
+					risk1_level: 'Needs Regulation',
+					risk2_title: 'Data Breach Risks',
+					risk2_text:
+						'Billions of personal records exposed annually through breaches affecting retailers, healthcare providers, government agencies, and financial institutions.',
+					risk2_level: 'Requires Better Security',
+					risk3_title: 'Insufficient Privacy Laws',
+					risk3_text:
+						'The US lacks comprehensive federal privacy legislation, leaving most Americans with limited control over their personal data.',
+					risk3_level: 'Needs Federal Action',
+					section3_title: 'Part III: Protecting Your Digital Privacy',
+					resistance_intro_title: 'Take Action:',
+					resistance_intro_text:
+						'These practical steps can significantly improve your digital privacy and security. Start with the basics and build from there.',
+					toolkit1_title: 'Essential Privacy Tools',
+					toolkit1_text:
+						'Basic digital privacy practices that everyone should adopt to protect their personal information online.',
+					toolkit1_item1:
+						'<strong>Secure Messaging:</strong> Use end-to-end encrypted messaging apps like Signal or WhatsApp for sensitive conversations',
+					toolkit1_item2:
+						'<strong>Strong Passwords:</strong> Use a password manager (like Bitwarden or 1Password) to create and store unique passwords, enable two-factor authentication',
+					toolkit1_item3:
+						'<strong>Data Minimization:</strong> Share minimal personal information online, use email aliases for non-essential services',
+					toolkit1_item4:
+						'<strong>Private Browsing:</strong> Use privacy-focused browsers (Firefox, Brave) with ad blockers (uBlock Origin), consider DuckDuckGo for searches',
+					toolkit1_item5:
+						'<strong>VPN Services:</strong> Use a reputable VPN to encrypt your internet connection and mask your IP address when using public WiFi',
+					progress1: 'Essential Protection',
+					toolkit2_title: 'Support Privacy Rights',
+					toolkit2_text:
+						'Individual privacy practices are important, but systemic change requires collective action and policy reform.',
+					toolkit2_item1:
+						'<strong>Support Journalism:</strong> Subscribe to quality news sources that hold governments and corporations accountable on privacy issues',
+					toolkit2_item2:
+						'<strong>Civil Liberties Organizations:</strong> Support groups like EFF, ACLU, and other organizations advocating for digital rights and privacy protections',
+					toolkit2_item3:
+						'<strong>Civic Participation:</strong> Vote for candidates who support strong privacy protections, contact representatives about privacy legislation',
+					toolkit2_item4:
+						'<strong>Local Advocacy:</strong> Attend city council meetings, advocate for privacy-protecting policies at the local and state level',
+					progress2: 'Active Engagement',
+					toolkit3_title: 'Educate & Share Knowledge',
+					toolkit3_text:
+						'Help others understand digital privacy issues and adopt protective measures. Privacy is stronger when everyone participates.',
+					toolkit3_item1:
+						'<strong>Digital Literacy:</strong> Share privacy tips with friends and family, help them adopt secure practices',
+					toolkit3_item2:
+						'<strong>Community Education:</strong> Organize workshops on digital security at libraries, community centers, or online',
+					toolkit3_item3:
+						'<strong>Stay Informed:</strong> Keep learning about privacy issues, share credible information about emerging threats and protections',
+					progress3: 'Community Impact',
+					resources_title: 'Helpful Resources',
+					resources_link: 'View Organizations & Tools',
+					modal_title: 'Privacy Rights Organizations & Tools',
+					modal_section1: 'Advocacy Organizations',
+					modal_eff:
+						'Leading digital rights organization with extensive privacy resources and the Atlas of Surveillance project',
+					modal_aclu:
+						'Privacy and technology litigation, advocates for civil liberties protection',
+					modal_fftf:
+						'Grassroots campaigns for internet freedom and privacy rights',
+					modal_section2: 'Privacy Tools',
+					modal_signal: 'Free, open-source end-to-end encrypted messaging',
+					modal_bitwarden:
+						'Secure password managers for creating and storing strong passwords',
+					modal_tor:
+						'Privacy-focused web browsers with built-in tracking protection',
+					modal_ddg: "Private search engine that doesn't track your searches",
+					modal_section3: 'Educational Resources',
+					modal_ssd:
+						'ssd.eff.org - Comprehensive, accessible security and privacy guides',
+					modal_prc:
+						'Privacy education, data breach tracking, and consumer advocacy',
+					modal_note_title: 'Support Privacy Rights:',
+					modal_note_text:
+						'These non-profit organizations rely on donations and volunteers. Consider supporting them if you value digital privacy and civil liberties.',
+					final_title: 'Privacy is a Right, Not a Privilege',
+					final_warning_title: 'Remember:',
+					final_warning_text:
+						'While surveillance technology has expanded rapidly, privacy rights can be protected and strengthened through individual action, advocacy, and policy reform. Your choices matter.',
+					final_quote:
+						'"Privacy is not about having something to hide. It\'s about having the freedom to be yourself without being constantly monitored, profiled, or judged. By understanding digital surveillance, adopting protective practices, and advocating for strong privacy laws, we can maintain our civil liberties in the digital age."',
+					final_badge1: 'Stay Informed',
+					final_badge2: 'Stay Secure',
+					final_badge3: 'Stay Private',
+					footer_sources_title: 'Learn More',
+					source1:
+						'Electronic Frontier Foundation (eff.org) - Digital rights advocacy and education',
+					source2:
+						'ACLU Privacy & Technology (aclu.org) - Civil liberties protection',
+					source3:
+						'Privacy Rights Clearinghouse (privacyrights.org) - Consumer privacy resources',
+					source4:
+						'Surveillance Self-Defense (ssd.eff.org) - Practical security guides',
+					source5: 'EPIC (epic.org) - Electronic Privacy Information Center',
+					footer_text:
+						'Your privacy matters. Stay informed, stay secure, stay engaged.',
+				},
+				es: {
+					lang_en: 'English',
+					lang_es: 'Español',
+					main_title: 'Privacidad Digital en la Era de Vigilancia',
+					main_subtitle:
+						'Una Guía Ciudadana para Entender y Proteger tus Derechos Digitales',
+					alert_title: 'Información Importante:',
+					alert_text:
+						'La vigilancia digital se ha expandido significativamente en años recientes. Comprender estas tendencias es el primer paso para proteger tu privacidad y libertades civiles.',
+					stats_title: 'Vigilancia Digital: Estadísticas Clave',
+					stat1_label:
+						'Despliegues de Tecnología de Vigilancia (EE.UU., documentados)',
+					stat2_label: 'Aeropuertos Principales Usando Reconocimiento Facial',
+					stat3_label:
+						'Rostros de Estadounidenses en Bases de Datos de Reconocimiento',
+					stat4_label:
+						'Registros Personales Expuestos en Brechas de Datos Anualmente',
+					stat_context_title: 'Contexto:',
+					stat_context_text:
+						'El Atlas de Vigilancia de la Electronic Frontier Foundation ha documentado más de 10,000 despliegues de tecnología de vigilancia policial en EE.UU. La tecnología de reconocimiento facial se usa cada vez más en aeropuertos, fronteras y por agencias del orden. Las brechas de datos continúan exponiendo miles de millones de registros personales cada año.',
+					growth_title: 'Tendencias de Adopción de Tecnología de Vigilancia',
+					growth_bar1: 'Aeropuertos Principales Usando Detección Biométrica',
+					growth_bar2: 'Acceso Policial a Tecnología de Reconocimiento',
+					growth_bar3: 'Estados Con Protecciones de Privacidad',
+					growth_bar4: 'Incidentes de Brechas de Datos',
+					growth_note:
+						'Estas tendencias ilustran la expansión de la infraestructura de vigilancia digital y la necesidad de protecciones de privacidad más fuertes.',
+					section1_title: 'Parte I: Entendiendo la Vigilancia Digital',
+					section1_text:
+						'La vigilancia moderna combina medidas de seguridad gubernamentales con prácticas corporativas de recopilación de datos. Comprender estos sistemas es esencial para proteger tu privacidad y libertades civiles en la era digital.',
+					threat_card1_title: 'Tecnología de Vigilancia Generalizada',
+					threat_card1_text:
+						'Cámaras con reconocimiento facial, lectores automáticos de placas y sistemas de análisis de datos son cada vez más comunes en espacios públicos.',
+					threat_card1_badge: 'Realidad Actual',
+					threat_card2_title: 'Compartir y Recopilar Datos',
+					threat_card2_text:
+						'Corporaciones y agencias gubernamentales a menudo comparten datos personales, creando perfiles completos de individuos.',
+					threat_card2_badge: 'Preocupación Creciente',
+					threat_card3_title: 'Toma de Decisiones Algorítmica',
+					threat_card3_text:
+						'Sistemas automatizados influyen cada vez más en decisiones policiales, crediticias, de contratación y servicios públicos, a veces con sesgos problemáticos.',
+					threat_card3_badge: 'Requiere Supervisión',
+					threat_card4_title: 'Vulnerabilidades de Seguridad de Datos',
+					threat_card4_text:
+						'La recopilación de datos a gran escala crea objetivos para hackers y genera riesgos cuando se viola la seguridad.',
+					threat_card4_badge: 'Riesgo Continuo',
+					detail1_title: 'Tecnología de Vigilancia',
+					detail1_text:
+						'Reconocimiento facial, lectores automáticos de placas y cámaras de seguridad con análisis avanzado se despliegan en muchos espacios públicos incluyendo aeropuertos, edificios gubernamentales y cada vez más en calles de la ciudad.',
+					detail1_data_title: 'Ejemplo:',
+					detail1_data_text:
+						'Agencias federales usan reconocimiento facial en fronteras y aeropuertos para verificación de identidad. Aunque puede mejorar la seguridad, también plantea preocupaciones de privacidad sobre vigilancia constante y almacenamiento de datos.',
+					detail2_title: 'Prácticas de Compartir Datos',
+					detail2_text:
+						'Agencias gubernamentales y empresas privadas a menudo comparten datos personales. Las fuerzas del orden pueden acceder a bases de datos corporativas, y las empresas venden datos de consumidores a terceros.',
+					detail2_data_title: 'Preocupación:',
+					detail2_data_text:
+						'La FTC ha documentado cómo las empresas tecnológicas recopilan datos personales extensos para publicidad. Algunas empresas de dispositivos domésticos inteligentes se han asociado con agencias del orden, planteando preguntas sobre privacidad en nuestros propios hogares.',
+					detail3_title: 'Sistemas Algorítmicos',
+					detail3_text:
+						'Sistemas automatizados de toma de decisiones se usan para vigilancia predictiva, calificación crediticia, decisiones de contratación y elegibilidad de beneficios. Estudios han encontrado que algunos sistemas exhiben sesgos raciales, de género o socioeconómicos.',
+					detail3_data_title: 'Problema:',
+					detail3_data_text:
+						'El sesgo algorítmico puede perpetuar discriminación histórica cuando los sistemas se entrenan con datos sesgados. Se necesita mayor transparencia y supervisión de estos sistemas.',
+					detail4_title: 'Riesgos de Seguridad de Datos',
+					detail4_text:
+						'Bases de datos centralizadas de información personal crean objetivos atractivos para cibercriminales. Cuando se violan, datos sensibles incluyendo números de seguro social, registros de salud e información financiera pueden ser expuestos.',
+					detail4_data_title: 'Realidad:',
+					detail4_data_text:
+						'Brechas de datos importantes han expuesto miles de millones de registros personales en años recientes, afectando agencias gubernamentales, proveedores de atención médica, minoristas e instituciones financieras.',
+					timeline_title:
+						'Línea de Tiempo: Momentos Clave en Vigilancia Digital',
+					timeline1_date: '2001',
+					timeline1_content:
+						'<strong>Ley PATRIOT de EE.UU.:</strong> Expandió la autoridad de vigilancia gubernamental tras los ataques del 11/9, incluyendo mayor capacidad para monitorear comunicaciones y acceder a registros.',
+					timeline2_date: '2013',
+					timeline2_content:
+						'<strong>Revelaciones Snowden:</strong> Reveló la extensión de los programas de vigilancia de la NSA, generando debate global sobre privacidad versus seguridad.',
+					timeline3_date: '2016-2018',
+					timeline3_content:
+						'<strong>Legislación de Privacidad:</strong> GDPR en Europa y CCPA en California establecen nuevos estándares de privacidad de datos, aunque EE.UU. carece de ley federal integral de privacidad.',
+					timeline4_date: '2020s',
+					timeline4_content:
+						'<strong>IA y Biometría:</strong> Rápida expansión de reconocimiento facial y sistemas algorítmicos en sectores gubernamental y privado, con algunas ciudades prohibiendo la tecnología.',
+					timeline5_date: 'Presente',
+					timeline5_content:
+						'<strong>Debate Continuo:</strong> La sociedad continúa equilibrando necesidades de seguridad con derechos de privacidad mientras la tecnología de vigilancia avanza más rápido que la regulación.',
+					section2_title: 'Parte II: Vigilancia Tradicional vs. Digital',
+					section2_text:
+						'Comprender cómo han evolucionado los métodos de vigilancia nos ayuda a reconocer desafíos modernos de privacidad y protegernos efectivamente.',
+					comparison_historical_title: 'Vigilancia Tradicional',
+					comparison_techno_title: 'Vigilancia Digital',
+					historical1:
+						'<strong>Método:</strong> Observación física, escuchas telefónicas que requieren órdenes',
+					historical2:
+						'<strong>Escala:</strong> Intensiva en mano de obra, individuos o grupos específicos',
+					historical3:
+						'<strong>Datos:</strong> Archivos en papel, intercambio limitado entre agencias',
+					historical4:
+						'<strong>Supervisión:</strong> Tribunales, órdenes, marcos legales establecidos',
+					techno1:
+						'<strong>Método:</strong> Monitoreo automatizado, reconocimiento facial, minería de datos',
+					techno2:
+						'<strong>Escala:</strong> Vigilancia masiva posible, todos capturados',
+					techno3:
+						'<strong>Datos:</strong> Bases de datos integradas, intercambio instantáneo entre agencias',
+					techno4:
+						'<strong>Supervisión:</strong> Leyes luchando por seguir el ritmo de la tecnología',
+					comparison_historical: 'Tradicional:',
+					comparison_techno: 'Digital:',
+					comparison1_title: 'Alcance y Escala',
+					comparison1_historical:
+						'La vigilancia requería recursos humanos significativos. Los oficiales tenían que seguir físicamente a sujetos o instalar escuchas telefónicas, limitando cuántas personas podían ser monitoreadas.',
+					comparison1_techno:
+						'Sistemas automatizados pueden monitorear millones simultáneamente. Cámaras con reconocimiento facial, lectores automáticos de placas y herramientas de análisis de datos procesan vastas cantidades de información con supervisión humana mínima.',
+					comparison2_title: 'Almacenamiento e Intercambio de Datos',
+					comparison2_historical:
+						'La información se almacenaba en archivos físicos con acceso limitado. El intercambio entre agencias requería transferencia física y era relativamente poco común.',
+					comparison2_techno:
+						'Bases de datos digitales permiten acceso e intercambio instantáneo. Múltiples agencias pueden acceder a la misma información simultáneamente, y los datos pueden almacenarse indefinidamente a costo mínimo.',
+					comparison3_title: 'Protecciones Legales',
+					comparison3_historical:
+						'Protecciones de la Cuarta Enmienda y requisitos de orden judicial generalmente se entendían y seguían para búsquedas físicas y escuchas telefónicas.',
+					comparison3_techno:
+						'Los marcos legales aún se están desarrollando para vigilancia digital. Tribunales y legislaturas trabajan para definir derechos de privacidad en la era digital, pero las leyes a menudo van detrás de la tecnología.',
+					risk_title: 'Desafíos Actuales de Privacidad',
+					risk_text:
+						'Áreas clave donde los derechos de privacidad digital necesitan protección más fuerte:',
+					risk1_title: 'Infraestructura de Vigilancia en Expansión',
+					risk1_text:
+						'Reconocimiento facial y sistemas biométricos desplegados en fronteras, aeropuertos y cada vez más en espacios públicos con supervisión o aporte público limitado.',
+					risk1_level: 'Necesita Regulación',
+					risk2_title: 'Riesgos de Brechas de Datos',
+					risk2_text:
+						'Miles de millones de registros personales expuestos anualmente a través de brechas que afectan minoristas, proveedores de salud, agencias gubernamentales e instituciones financieras.',
+					risk2_level: 'Requiere Mejor Seguridad',
+					risk3_title: 'Leyes de Privacidad Insuficientes',
+					risk3_text:
+						'EE.UU. carece de legislación federal integral de privacidad, dejando a la mayoría de estadounidenses con control limitado sobre sus datos personales.',
+					risk3_level: 'Necesita Acción Federal',
+					section3_title: 'Parte III: Protegiendo tu Privacidad Digital',
+					resistance_intro_title: 'Toma Acción:',
+					resistance_intro_text:
+						'Estos pasos prácticos pueden mejorar significativamente tu privacidad y seguridad digital. Comienza con lo básico y avanza desde ahí.',
+					toolkit1_title: 'Herramientas de Privacidad Esenciales',
+					toolkit1_text:
+						'Prácticas básicas de privacidad digital que todos deberían adoptar para proteger su información personal en línea.',
+					toolkit1_item1:
+						'<strong>Mensajería Segura:</strong> Usa apps de mensajería cifrada de extremo a extremo como Signal o WhatsApp para conversaciones sensibles',
+					toolkit1_item2:
+						'<strong>Contraseñas Fuertes:</strong> Usa un gestor de contraseñas (como Bitwarden o 1Password) para crear y almacenar contraseñas únicas, habilita autenticación de dos factores',
+					toolkit1_item3:
+						'<strong>Minimización de Datos:</strong> Comparte información personal mínima en línea, usa alias de correo para servicios no esenciales',
+					toolkit1_item4:
+						'<strong>Navegación Privada:</strong> Usa navegadores enfocados en privacidad (Firefox, Brave) con bloqueadores de anuncios (uBlock Origin), considera DuckDuckGo para búsquedas',
+					toolkit1_item5:
+						'<strong>Servicios VPN:</strong> Usa una VPN confiable para cifrar tu conexión de internet y ocultar tu dirección IP al usar WiFi público',
+					progress1: 'Protección Esencial',
+					toolkit2_title: 'Apoya los Derechos de Privacidad',
+					toolkit2_text:
+						'Las prácticas individuales de privacidad son importantes, pero el cambio sistémico requiere acción colectiva y reforma de políticas.',
+					toolkit2_item1:
+						'<strong>Apoya el Periodismo:</strong> Suscríbete a fuentes de noticias de calidad que responsabilicen a gobiernos y corporaciones en temas de privacidad',
+					toolkit2_item2:
+						'<strong>Organizaciones de Libertades Civiles:</strong> Apoya a grupos como EFF, ACLU y otras organizaciones que abogan por derechos digitales y protecciones de privacidad',
+					toolkit2_item3:
+						'<strong>Participación Cívica:</strong> Vota por candidatos que apoyen protecciones de privacidad fuertes, contacta a representantes sobre legislación de privacidad',
+					toolkit2_item4:
+						'<strong>Defensa Local:</strong> Asiste a reuniones del consejo municipal, aboga por políticas protectoras de privacidad a nivel local y estatal',
+					progress2: 'Participación Activa',
+					toolkit3_title: 'Educa y Comparte Conocimiento',
+					toolkit3_text:
+						'Ayuda a otros a entender temas de privacidad digital y adoptar medidas de protección. La privacidad es más fuerte cuando todos participan.',
+					toolkit3_item1:
+						'<strong>Alfabetización Digital:</strong> Comparte consejos de privacidad con amigos y familia, ayúdalos a adoptar prácticas seguras',
+					toolkit3_item2:
+						'<strong>Educación Comunitaria:</strong> Organiza talleres sobre seguridad digital en bibliotecas, centros comunitarios o en línea',
+					toolkit3_item3:
+						'<strong>Mantente Informado:</strong> Continúa aprendiendo sobre temas de privacidad, comparte información confiable sobre amenazas y protecciones emergentes',
+					progress3: 'Impacto Comunitario',
+					resources_title: 'Recursos Útiles',
+					resources_link: 'Ver Organizaciones y Herramientas',
+					modal_title:
+						'Organizaciones y Herramientas de Derechos de Privacidad',
+					modal_section1: 'Organizaciones de Defensa',
+					modal_eff:
+						'Organización líder de derechos digitales con extensos recursos de privacidad y el proyecto Atlas de Vigilancia',
+					modal_aclu:
+						'Litigación de privacidad y tecnología, defensores de protección de libertades civiles',
+					modal_fftf:
+						'Campañas de base para libertad de internet y derechos de privacidad',
+					modal_section2: 'Herramientas de Privacidad',
+					modal_signal:
+						'Mensajería cifrada de extremo a extremo gratuita y de código abierto',
+					modal_bitwarden:
+						'Gestores de contraseñas seguros para crear y almacenar contraseñas fuertes',
+					modal_tor:
+						'Navegadores web enfocados en privacidad con protección de rastreo incorporada',
+					modal_ddg: 'Motor de búsqueda privado que no rastrea tus búsquedas',
+					modal_section3: 'Recursos Educativos',
+					modal_ssd:
+						'ssd.eff.org - Guías de seguridad y privacidad accesibles y completas',
+					modal_prc:
+						'Educación sobre privacidad, rastreo de brechas de datos y defensa del consumidor',
+					modal_note_title: 'Apoya los Derechos de Privacidad:',
+					modal_note_text:
+						'Estas organizaciones sin fines de lucro dependen de donaciones y voluntarios. Considera apoyarlas si valoras la privacidad digital y las libertades civiles.',
+					final_title: 'La Privacidad es un Derecho, No un Privilegio',
+					final_warning_title: 'Recuerda:',
+					final_warning_text:
+						'Aunque la tecnología de vigilancia se ha expandido rápidamente, los derechos de privacidad pueden ser protegidos y fortalecidos a través de acción individual, defensa y reforma de políticas. Tus elecciones importan.',
+					final_quote:
+						'"La privacidad no se trata de tener algo que ocultar. Se trata de tener la libertad de ser tú mismo sin ser constantemente monitoreado, perfilado o juzgado. Al entender la vigilancia digital, adoptar prácticas de protección y abogar por leyes de privacidad fuertes, podemos mantener nuestras libertades civiles en la era digital."',
+					final_badge1: 'Mantente Informado',
+					final_badge2: 'Mantente Seguro',
+					final_badge3: 'Mantente Privado',
+					footer_sources_title: 'Aprende Más',
+					source1:
+						'Electronic Frontier Foundation (eff.org) - Defensa y educación de derechos digitales',
+					source2:
+						'ACLU Privacy & Technology (aclu.org) - Protección de libertades civiles',
+					source3:
+						'Privacy Rights Clearinghouse (privacyrights.org) - Recursos de privacidad del consumidor',
+					source4:
+						'Surveillance Self-Defense (ssd.eff.org) - Guías de seguridad prácticas',
+					source5:
+						'EPIC (epic.org) - Centro de Información de Privacidad Electrónica',
+					footer_text:
+						'Tu privacidad importa. Mantente informado, mantente seguro, mantente comprometido.',
+				},
+			};
+
+			let currentLang = 'en';
+
+			const setLanguage = (lang) => {
+				if (!translations[lang]) return;
+				currentLang = lang;
+
+				document
+					.getElementById('lang-en')
+					.classList.toggle('active', lang === 'en');
+				document
+					.getElementById('lang-es')
+					.classList.toggle('active', lang === 'es');
+
+				document.querySelectorAll('[data-translate]').forEach((el) => {
+					const key = el.dataset.translate;
+					if (translations[lang][key]) {
+						el.innerHTML = translations[lang][key];
+					}
+				});
+			};
+
+			document
+				.getElementById('lang-en')
+				.addEventListener('click', () => setLanguage('en'));
+			document
+				.getElementById('lang-es')
+				.addEventListener('click', () => setLanguage('es'));
+
+			setLanguage(currentLang);
+		</script>
 	</body>
 </html>

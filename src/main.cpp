@@ -157,7 +157,8 @@ void startCaptivePortal()
                           "<p>You can now close this page and use the internet.</p></body></html>"); });
 
   // Serve CSS file
-  server.on("/minimal.css", HTTP_GET, []() {
+  server.on("/minimal.css", HTTP_GET, []()
+            {
     server.sendHeader("Cache-Control", "public, max-age=3600");
     server.sendHeader("Content-Type", "text/css");
     
@@ -167,17 +168,15 @@ void startCaptivePortal()
       file.close();
     } else {
       server.send(404, "text/plain", "CSS file not found");
-    }
-  });
+    } });
 
   // Visit counter endpoint
-  server.on("/visit", HTTP_GET, []() {
+  server.on("/visit", HTTP_GET, []()
+            {
     visitCount++;
     server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     server.sendHeader("Content-Type", "text/plain");
-    server.send(200, "text/plain", String(visitCount));
-  });
-
+    server.send(200, "text/plain", String(visitCount)); });
 
   // Main portal pages
   server.on("/", HTTP_GET, handleRoot);
