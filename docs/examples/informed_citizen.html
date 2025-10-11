@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Becoming an Informed Citizen</title>
+    <link rel="stylesheet" href="./minimal.css">
+</head>
+<body class="theme-professional">
+    <header>
+        <div class="lang-switch">
+            <button id="lang-en" class="lang-btn" data-translate="lang_en">English</button>
+            <button id="lang-es" class="lang-btn" data-translate="lang_es">Español</button>
+        </div>
+        <h1 data-translate="main_title">Becoming an Informed Citizen</h1>
+        <p class="subtitle" data-translate="main_subtitle">Building Media Literacy in the Digital Age</p>
+    </header>
+
+    <main>
+        <!-- INTRODUCTION WITH ALERT -->
+        <section>
+            <h2 data-translate="intro_title">Why Media Literacy Matters</h2>
+            <div class="alert alert-info">
+                <strong data-translate="intro_alert_title">Important:</strong> <span data-translate="intro_alert_text">In an era of unprecedented information flow, the ability to distinguish reliable information from misinformation is essential for informed citizenship and democratic participation.</span>
+            </div>
+
+            <p data-translate="intro_text">Developing strong media literacy skills and seeking out credible information sources helps you navigate the complex information landscape. This guide provides practical tools for evaluating news, identifying misinformation, and engaging constructively in civic life.</p>
+        </section>
+
+        <!-- KEY STATISTICS WITH STAT CARDS -->
+        <section>
+            <h2 data-translate="stats_title">Media Literacy Challenge: Key Statistics</h2>
+            <div class="card-grid">
+                <div class="stat-card">
+                    <span class="stat-number">65%</span>
+                    <div class="stat-label" data-translate="stat1_label">Americans Struggle to Identify Misinformation</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">54%</span>
+                    <div class="stat-label" data-translate="stat2_label">Get News Primarily from Social Media</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">82%</span>
+                    <div class="stat-label" data-translate="stat3_label">Say They Want Better Tools to Identify Reliable News</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                <em data-translate="stats_note">Strong media literacy skills help citizens make informed decisions and participate meaningfully in democracy</em>
+            </p>
+        </section>
+
+        <!-- CREDIBILITY ASSESSMENT WITH PROGRESS BARS -->
+        <section>
+            <h2 data-translate="credibility_title">Hallmarks of a Credible News Source</h2>
+            <p data-translate="credibility_intro">Quality journalism exhibits these characteristics. Use this checklist to evaluate your news sources:</p>
+
+            <div class="card">
+                <h3>
+                    <span class="badge">1</span> <span data-translate="cred1_title">Transparency</span>
+                </h3>
+                <p data-translate="cred1_text">They are open about their funding, leadership, and mission.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%;"></div>
+                    <span class="progress-label" data-translate="cred1_label">Essential</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>
+                    <span class="badge">2</span> <span data-translate="cred2_title">Standards</span>
+                </h3>
+                <p data-translate="cred2_text">They adhere to a publicly available code of ethics.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;"></div>
+                    <span class="progress-label" data-translate="cred2_label">Critical</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>
+                    <span class="badge">3</span> <span data-translate="cred3_title">Corrections</span>
+                </h3>
+                <p data-translate="cred3_text">They openly and promptly correct errors in their reporting.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%;"></div>
+                    <span class="progress-label" data-translate="cred3_label">Vital</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>
+                    <span class="badge">4</span> <span data-translate="cred4_title">Objectivity</span>
+                </h3>
+                <p data-translate="cred4_text">They distinguish between news reporting and opinion pieces.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 88%;"></div>
+                    <span class="progress-label" data-translate="cred4_label">Important</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARISON VIEW -->
+        <section>
+            <h2 data-translate="comparison_title">Credible vs. Questionable Sources</h2>
+            <div class="comparison">
+                <div class="comparison-side">
+                    <div class="comparison-title" data-translate="red_flags_title">🚫 Red Flags</div>
+                    <ul>
+                        <li data-translate="red1">No "About Us" section</li>
+                        <li data-translate="red2">Hidden ownership</li>
+                        <li data-translate="red3">Emotional, inflammatory headlines</li>
+                        <li data-translate="red4">No corrections policy</li>
+                        <li data-translate="red5">Mixes news and opinion without labeling</li>
+                    </ul>
+                </div>
+                <div class="comparison-side">
+                    <div class="comparison-title" data-translate="green_lights_title">✓ Green Lights</div>
+                    <ul>
+                        <li data-translate="green1">Clear mission statement</li>
+                        <li data-translate="green2">Transparent funding</li>
+                        <li data-translate="green3">Balanced, factual reporting</li>
+                        <li data-translate="green4">Public ethics code</li>
+                        <li data-translate="green5">Clearly labeled opinion sections</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISINFORMATION DETECTION WITH TOOLTIPS AND CARDS -->
+        <section>
+            <h2 data-translate="misinfo_title">Spotting Misinformation: Essential Skills</h2>
+
+            <div class="alert alert-info">
+                <strong data-translate="protip">Pro Tip:</strong> <span data-translate="protip_text">Misinformation often preys on emotions like fear and anger. Be skeptical of content designed to provoke strong reactions, as emotional manipulation can bypass critical thinking.</span>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 data-translate="skill1_title">✓ Check Multiple Sources</h3>
+                    <p data-translate="skill1_text">Corroborate information across reputable outlets with differing perspectives.</p>
+                    <span class="badge" data-translate="skill1_badge">Essential</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="skill2_title">🔍 Investigate the Source</h3>
+                    <p data-translate="skill2_text">Look into the "About Us" section. Use tools like Media Bias/Fact Check or AllSides to check source reliability.</p>
+                    <span class="badge" data-translate="skill2_badge">Important</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="skill3_title">📊 Use Fact-Checkers</h3>
+                    <p data-translate="skill3_text">Utilize FactCheck.org, PolitiFact, and Snopes for verification.</p>
+                    <span class="badge" data-translate="skill3_badge">Critical</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="skill4_title">😤 Beware Emotional Manipulation</h3>
+                    <p data-translate="skill4_text">Pause when you feel strong emotions. That's often intentional manipulation.</p>
+                    <span class="badge" data-translate="skill4_badge">Key Skill</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="skill5_title">🖼️ Reverse Image Search</h3>
+                    <p data-translate="skill5_text">Use Google Reverse Image Search to verify authenticity of visuals.</p>
+                    <span class="badge" data-translate="skill5_badge">Useful</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="skill6_title">📰 Read Beyond Headlines</h3>
+                    <p data-translate="skill6_text">Headlines are designed for clicks. Always read the full article.</p>
+                    <span class="badge" data-translate="skill6_badge">Must Do</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAR CHART FOR MEDIA LITERACY SKILLS -->
+        <section>
+            <h2 data-translate="skills_title">Media Literacy Skills Assessment</h2>
+            <p data-translate="skills_intro">Rate your current skill level in these critical areas:</p>
+
+            <div class="bar-chart">
+                <div class="bar">
+                    <div class="bar-label" data-translate="skill_bar1">Source Evaluation</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 70%;">
+                            <span class="bar-value">70%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="bar-label" data-translate="skill_bar2">Fact Checking</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 65%;">
+                            <span class="bar-value">65%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="bar-label" data-translate="skill_bar3">Bias Recognition</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 55%;">
+                            <span class="bar-value">55%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="bar-label" data-translate="skill_bar4">Emotional Awareness</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 80%;">
+                            <span class="bar-value">80%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong data-translate="skills_goal_title">Goal:</strong> <span data-translate="skills_goal_text">Aim for 80%+ in all categories to become a resilient, informed citizen.</span>
+            </div>
+        </section>
+
+        <!-- TIMELINE FOR CIVIC ENGAGEMENT -->
+        <section>
+            <h2 data-translate="timeline_title">Your Civic Engagement Journey</h2>
+            <p data-translate="timeline_intro">Building an informed, engaged citizenry is a progressive journey:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time1_date">Week 1-2</div>
+                    <div class="timeline-content" data-translate="time1_content">
+                        <strong>Audit Your News Diet</strong> - Identify your current sources and evaluate their credibility using the checklist above.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time2_date">Week 3-4</div>
+                    <div class="timeline-content" data-translate="time2_content">
+                        <strong>Diversify Your Sources</strong> - Add 2-3 credible sources with different perspectives to your regular reading.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time3_date">Month 2</div>
+                    <div class="timeline-content" data-translate="time3_content">
+                        <strong>Practice Fact-Checking</strong> - Before sharing anything on social media, verify it using fact-checking websites.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time4_date">Month 3</div>
+                    <div class="timeline-content" data-translate="time4_content">
+                        <strong>Engage Locally</strong> - Attend one local government meeting (city council, school board, town hall).
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time5_date">Ongoing</div>
+                    <div class="timeline-content" data-translate="time5_content">
+                        <strong>Stay Active</strong> - Contact representatives, volunteer, and maintain your media literacy practices.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRIDGING DIVIDES SECTION -->
+        <section>
+            <h2 data-translate="bridge_title">Bridging Divides: Productive Conversation Strategies</h2>
+
+            <p data-translate="bridge_intro">In a polarized society, coming together requires conscious effort to engage in constructive dialogue.</p>
+
+            <details open>
+                <summary data-translate="conv1_title">🤝 Seek to Understand, Not to Win</summary>
+                <div class="details-content">
+                    <p data-translate="conv1_text">Approach conversations with genuine curiosity about the other person's perspective. Ask open-ended questions to understand their "why."</p>
+                </div>
+            </details>
+
+            <details>
+                <summary data-translate="conv2_title">💬 Use "I" Statements</summary>
+                <div class="details-content">
+                    <p data-translate="conv2_text">Express your own feelings and beliefs without attacking. Say <strong>"I am concerned about..."</strong> rather than <strong>"You are wrong because..."</strong></p>
+                    <div class="comparison">
+                        <div class="comparison-side">
+                            <div class="comparison-title" data-translate="conv2_dont">❌ Don't Say</div>
+                            <p data-translate="conv2_dont_ex">"You're wrong about that policy."</p>
+                        </div>
+                        <div class="comparison-side">
+                            <div class="comparison-title" data-translate="conv2_do">✓ Do Say</div>
+                            <p data-translate="conv2_do_ex">"I'm concerned about the impact of that policy because..."</p>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary data-translate="conv3_title">🎯 Find Shared Values</summary>
+                <div class="details-content">
+                    <p data-translate="conv3_text">Even with differing views, people often share core values like safety, family, and prosperity. Build on common ground.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary data-translate="conv4_title">🧘 Stay Calm and Respectful</summary>
+                <div class="details-content">
+                    <p data-translate="conv4_text">Avoid raising your voice or making personal attacks. If conversation becomes heated, it's okay to take a break.</p>
+                    <div class="alert alert-warning">
+                        <strong data-translate="conv4_remember">Remember:</strong> <span data-translate="conv4_remember_text">The goal is understanding, not winning an argument.</span>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary data-translate="conv5_title">👂 Listen Actively</summary>
+                <div class="details-content">
+                    <p data-translate="conv5_text">Pay attention without planning your rebuttal. Acknowledge their points before responding.</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- TAKING ACTION -->
+        <section>
+            <h2 data-translate="action_title">Taking Action: Getting Involved</h2>
+
+            <p data-translate="action_intro">Understanding issues is the first step; taking action is the next. Here's how to make a difference:</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 data-translate="act1_title">🏛️ Local Engagement</h3>
+                    <p data-translate="act1_text">Attend city council meetings, town halls, and school board meetings. These are the most accessible and impactful venues.</p>
+                    <a href="#action-modal" class="badge" data-translate="act1_badge">Learn More</a>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="act2_title">📢 Contact Representatives</h3>
+                    <p data-translate="act2_text">Regularly call, write, or email your elected officials at local, state, and federal levels.</p>
+                    <span class="badge" data-translate="act2_badge">High Impact</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="act3_title">🤲 Community Organizing</h3>
+                    <p data-translate="act3_text">Join or support local groups working on issues you care about. Grassroots efforts drive change.</p>
+                    <span class="badge" data-translate="act3_badge">Powerful</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="act4_title">💪 Volunteer</h3>
+                    <p data-translate="act4_text">Get involved in community projects and support local initiatives. This strengthens bonds.</p>
+                    <span class="badge" data-translate="act4_badge">Essential</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="act5_title">📚 Stay Informed</h3>
+                    <p data-translate="act5_text">Understand the basics of the legislative process and different levels of government.</p>
+                    <span class="badge" data-translate="act5_badge">Foundation</span>
+                </div>
+
+                <div class="card">
+                    <h3 data-translate="act6_title">🗳️ Vote Always</h3>
+                    <p data-translate="act6_text">Vote in every election—local, state, and federal. Local elections often have the biggest impact on daily life.</p>
+                    <span class="badge" data-translate="act6_badge">Critical</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAL FOR ADDITIONAL INFO -->
+        <div id="action-modal" class="modal">
+            <div class="modal-content">
+                <a href="#" class="modal-close">×</a>
+                <h2 data-translate="modal_title">Local Engagement: Getting Started</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date" data-translate="modal_step1">Step 1</div>
+                        <div class="timeline-content" data-translate="modal_step1_text">Find your local government website and subscribe to meeting notifications</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date" data-translate="modal_step2">Step 2</div>
+                        <div class="timeline-content" data-translate="modal_step2_text">Review meeting agendas ahead of time to understand topics</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date" data-translate="modal_step3">Step 3</div>
+                        <div class="timeline-content" data-translate="modal_step3_text">Attend as an observer first to understand the process</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date" data-translate="modal_step4">Step 4</div>
+                        <div class="timeline-content" data-translate="modal_step4_text">Sign up for public comment on issues you care about</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong data-translate="modal_tip_title">Pro Tip:</strong> <span data-translate="modal_tip_text">Most local meetings have public comment periods where any citizen can speak for 2-3 minutes.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINAL CALL TO ACTION -->
+        <section>
+            <h2 data-translate="final_title">The Path Forward</h2>
+
+            <div class="alert alert-info">
+                <strong data-translate="final_remember">Remember:</strong> <span data-translate="final_remember_text">By arming ourselves with credible information, engaging in respectful dialogue, and actively participating in our communities and government, we can move towards a more informed and unified society.</span>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem;">
+                <strong data-translate="final_quote1">Every informed citizen strengthens democracy.</strong><br>
+                <span style="opacity: 0.8;" data-translate="final_quote2">Start your journey today.</span>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <h3 data-translate="footer_title">Resources & Further Reading</h3>
+        <ul style="font-size: 0.85rem; opacity: 0.8;">
+            <li data-translate="footer_fact"><strong>Fact Checking:</strong> FactCheck.org, PolitiFact, Snopes</li>
+            <li data-translate="footer_media"><strong>Media Evaluation:</strong> Media Bias/Fact Check, AllSides</li>
+            <li data-translate="footer_literacy"><strong>News Literacy:</strong> NewsLit.org</li>
+            <li data-translate="footer_gov"><strong>Government Info:</strong> USA.gov, Congress.gov</li>
+        </ul>
+        <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem;" data-translate="footer_sources">
+            Quality journalism and media literacy resources help citizens make informed decisions
+        </p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                lang_en: 'English',
+                lang_es: 'Español',
+                main_title: 'Becoming an Informed Citizen',
+                main_subtitle: 'Building Media Literacy in the Digital Age',
+                intro_title: 'Why Media Literacy Matters',
+                intro_alert_title: 'Important:',
+                intro_alert_text: 'In an era of unprecedented information flow, the ability to distinguish reliable information from misinformation is essential for informed citizenship and democratic participation.',
+                intro_text: 'Developing strong media literacy skills and seeking out credible information sources helps you navigate the complex information landscape. This guide provides practical tools for evaluating news, identifying misinformation, and engaging constructively in civic life.',
+                stats_title: 'Media Literacy Challenge: Key Statistics',
+                stat1_label: 'Americans Struggle to Identify Misinformation',
+                stat2_label: 'Get News Primarily from Social Media',
+                stat3_label: 'Say They Want Better Tools to Identify Reliable News',
+                stats_note: 'Strong media literacy skills help citizens make informed decisions and participate meaningfully in democracy',
+                credibility_title: 'Hallmarks of a Credible News Source',
+                credibility_intro: 'Quality journalism exhibits these characteristics. Use this checklist to evaluate your news sources:',
+                cred1_title: 'Transparency',
+                cred1_text: 'They are open about their funding, leadership, and mission.',
+                cred1_label: 'Essential',
+                cred2_title: 'Standards',
+                cred2_text: 'They adhere to a publicly available code of ethics.',
+                cred2_label: 'Critical',
+                cred3_title: 'Corrections',
+                cred3_text: 'They openly and promptly correct errors in their reporting.',
+                cred3_label: 'Vital',
+                cred4_title: 'Objectivity',
+                cred4_text: 'They distinguish between news reporting and opinion pieces.',
+                cred4_label: 'Important',
+                comparison_title: 'Credible vs. Questionable Sources',
+                red_flags_title: '🚫 Red Flags',
+                red1: 'No "About Us" section',
+                red2: 'Hidden ownership',
+                red3: 'Emotional, inflammatory headlines',
+                red4: 'No corrections policy',
+                red5: 'Mixes news and opinion without labeling',
+                green_lights_title: '✓ Green Lights',
+                green1: 'Clear mission statement',
+                green2: 'Transparent funding',
+                green3: 'Balanced, factual reporting',
+                green4: 'Public ethics code',
+                green5: 'Clearly labeled opinion sections',
+                misinfo_title: 'Spotting Misinformation: Essential Skills',
+                protip: 'Pro Tip:',
+                protip_text: 'Misinformation often preys on emotions like fear and anger. Be skeptical of content designed to provoke strong reactions, as emotional manipulation can bypass critical thinking.',
+                skill1_title: '✓ Check Multiple Sources',
+                skill1_text: 'Corroborate information across reputable outlets with differing perspectives.',
+                skill1_badge: 'Essential',
+                skill2_title: '🔍 Investigate the Source',
+                skill2_text: 'Look into the "About Us" section. Use tools like Media Bias/Fact Check or AllSides to check source reliability.',
+                skill2_badge: 'Important',
+                skill3_title: '📊 Use Fact-Checkers',
+                skill3_text: 'Utilize FactCheck.org, PolitiFact, and Snopes for verification.',
+                skill3_badge: 'Critical',
+                skill4_title: '😤 Beware Emotional Manipulation',
+                skill4_text: 'Pause when you feel strong emotions. That\'s often intentional manipulation.',
+                skill4_badge: 'Key Skill',
+                skill5_title: '🖼️ Reverse Image Search',
+                skill5_text: 'Use Google Reverse Image Search to verify authenticity of visuals.',
+                skill5_badge: 'Useful',
+                skill6_title: '📰 Read Beyond Headlines',
+                skill6_text: 'Headlines are designed for clicks. Always read the full article.',
+                skill6_badge: 'Must Do',
+                skills_title: 'Media Literacy Skills Assessment',
+                skills_intro: 'Rate your current skill level in these critical areas:',
+                skill_bar1: 'Source Evaluation',
+                skill_bar2: 'Fact Checking',
+                skill_bar3: 'Bias Recognition',
+                skill_bar4: 'Emotional Awareness',
+                skills_goal_title: 'Goal:',
+                skills_goal_text: 'Aim for 80%+ in all categories to become a resilient, informed citizen.',
+                timeline_title: 'Your Civic Engagement Journey',
+                timeline_intro: 'Building an informed, engaged citizenry is a progressive journey:',
+                time1_date: 'Week 1-2',
+                time1_content: '<strong>Audit Your News Diet</strong> - Identify your current sources and evaluate their credibility using the checklist above.',
+                time2_date: 'Week 3-4',
+                time2_content: '<strong>Diversify Your Sources</strong> - Add 2-3 credible sources with different perspectives to your regular reading.',
+                time3_date: 'Month 2',
+                time3_content: '<strong>Practice Fact-Checking</strong> - Before sharing anything on social media, verify it using fact-checking websites.',
+                time4_date: 'Month 3',
+                time4_content: '<strong>Engage Locally</strong> - Attend one local government meeting (city council, school board, town hall).',
+                time5_date: 'Ongoing',
+                time5_content: '<strong>Stay Active</strong> - Contact representatives, volunteer, and maintain your media literacy practices.',
+                bridge_title: 'Bridging Divides: Productive Conversation Strategies',
+                bridge_intro: 'In a polarized society, coming together requires conscious effort to engage in constructive dialogue.',
+                conv1_title: '🤝 Seek to Understand, Not to Win',
+                conv1_text: 'Approach conversations with genuine curiosity about the other person\'s perspective. Ask open-ended questions to understand their "why."',
+                conv2_title: '💬 Use "I" Statements',
+                conv2_text: 'Express your own feelings and beliefs without attacking. Say <strong>"I am concerned about..."</strong> rather than <strong>"You are wrong because..."</strong>',
+                conv2_dont: '❌ Don\'t Say',
+                conv2_dont_ex: '"You\'re wrong about that policy."',
+                conv2_do: '✓ Do Say',
+                conv2_do_ex: '"I\'m concerned about the impact of that policy because..."',
+                conv3_title: '🎯 Find Shared Values',
+                conv3_text: 'Even with differing views, people often share core values like safety, family, and prosperity. Build on common ground.',
+                conv4_title: '🧘 Stay Calm and Respectful',
+                conv4_text: 'Avoid raising your voice or making personal attacks. If conversation becomes heated, it\'s okay to take a break.',
+                conv4_remember: 'Remember:',
+                conv4_remember_text: 'The goal is understanding, not winning an argument.',
+                conv5_title: '👂 Listen Actively',
+                conv5_text: 'Pay attention without planning your rebuttal. Acknowledge their points before responding.',
+                action_title: 'Taking Action: Getting Involved',
+                action_intro: 'Understanding issues is the first step; taking action is the next. Here\'s how to make a difference:',
+                act1_title: '🏛️ Local Engagement',
+                act1_text: 'Attend city council meetings, town halls, and school board meetings. These are the most accessible and impactful venues.',
+                act1_badge: 'Learn More',
+                act2_title: '📢 Contact Representatives',
+                act2_text: 'Regularly call, write, or email your elected officials at local, state, and federal levels.',
+                act2_badge: 'High Impact',
+                act3_title: '🤲 Community Organizing',
+                act3_text: 'Join or support local groups working on issues you care about. Grassroots efforts drive change.',
+                act3_badge: 'Powerful',
+                act4_title: '💪 Volunteer',
+                act4_text: 'Get involved in community projects and support local initiatives. This strengthens bonds.',
+                act4_badge: 'Essential',
+                act5_title: '📚 Stay Informed',
+                act5_text: 'Understand the basics of the legislative process and different levels of government.',
+                act5_badge: 'Foundation',
+                act6_title: '🗳️ Vote Always',
+                act6_text: 'Vote in every election—local, state, and federal. Local elections often have the biggest impact on daily life.',
+                act6_badge: 'Critical',
+                modal_title: 'Local Engagement: Getting Started',
+                modal_step1: 'Step 1',
+                modal_step1_text: 'Find your local government website and subscribe to meeting notifications',
+                modal_step2: 'Step 2',
+                modal_step2_text: 'Review meeting agendas ahead of time to understand topics',
+                modal_step3: 'Step 3',
+                modal_step3_text: 'Attend as an observer first to understand the process',
+                modal_step4: 'Step 4',
+                modal_step4_text: 'Sign up for public comment on issues you care about',
+                modal_tip_title: 'Pro Tip:',
+                modal_tip_text: 'Most local meetings have public comment periods where any citizen can speak for 2-3 minutes.',
+                final_title: 'The Path Forward',
+                final_remember: 'Remember:',
+                final_remember_text: 'By arming ourselves with credible information, engaging in respectful dialogue, and actively participating in our communities and government, we can move towards a more informed and unified society.',
+                final_quote1: 'Every informed citizen strengthens democracy.',
+                final_quote2: 'Start your journey today.',
+                footer_title: 'Resources & Further Reading',
+                footer_fact: '<strong>Fact Checking:</strong> FactCheck.org, PolitiFact, Snopes',
+                footer_media: '<strong>Media Evaluation:</strong> Media Bias/Fact Check, AllSides',
+                footer_literacy: '<strong>News Literacy:</strong> NewsLit.org',
+                footer_gov: '<strong>Government Info:</strong> USA.gov, Congress.gov',
+                footer_sources: 'Quality journalism and media literacy resources help citizens make informed decisions'
+            },
+            es: {
+                lang_en: 'English',
+                lang_es: 'Español',
+                main_title: 'Convertirse en un Ciudadano Informado',
+                main_subtitle: 'Construyendo Alfabetización Mediática en la Era Digital',
+                intro_title: 'Por Qué Importa la Alfabetización Mediática',
+                intro_alert_title: 'Importante:',
+                intro_alert_text: 'En una era de flujo de información sin precedentes, la capacidad de distinguir información confiable de la desinformación es esencial para la ciudadanía informada y la participación democrática.',
+                intro_text: 'Desarrollar habilidades sólidas de alfabetización mediática y buscar fuentes de información confiables le ayuda a navegar el complejo panorama informativo. Esta guía proporciona herramientas prácticas para evaluar noticias, identificar desinformación y participar constructivamente en la vida cívica.',
+                stats_title: 'Desafío de Alfabetización Mediática: Estadísticas Clave',
+                stat1_label: 'Los Estadounidenses Luchan por Identificar la Desinformación',
+                stat2_label: 'Obtienen Noticias Principalmente de Redes Sociales',
+                stat3_label: 'Dicen Querer Mejores Herramientas para Identificar Noticias Confiables',
+                stats_note: 'Las habilidades sólidas de alfabetización mediática ayudan a los ciudadanos a tomar decisiones informadas y participar significativamente en la democracia',
+                credibility_title: 'Características de una Fuente de Noticias Confiable',
+                credibility_intro: 'El periodismo de calidad exhibe estas características. Use esta lista de verificación para evaluar sus fuentes de noticias:',
+                cred1_title: 'Transparencia',
+                cred1_text: 'Son abiertos sobre su financiación, liderazgo y misión.',
+                cred1_label: 'Esencial',
+                cred2_title: 'Estándares',
+                cred2_text: 'Se adhieren a un código de ética disponible públicamente.',
+                cred2_label: 'Crítico',
+                cred3_title: 'Correcciones',
+                cred3_text: 'Corrigen errores en sus informes de manera abierta y rápida.',
+                cred3_label: 'Vital',
+                cred4_title: 'Objetividad',
+                cred4_text: 'Distinguen entre reportajes noticiosos y piezas de opinión.',
+                cred4_label: 'Importante',
+                comparison_title: 'Fuentes Confiables vs. Cuestionables',
+                red_flags_title: '🚫 Señales de Alerta',
+                red1: 'No hay sección "Acerca de Nosotros"',
+                red2: 'Propiedad oculta',
+                red3: 'Titulares emocionales e inflamatorios',
+                red4: 'Sin política de correcciones',
+                red5: 'Mezcla noticias y opinión sin etiquetado',
+                green_lights_title: '✓ Señales Positivas',
+                green1: 'Declaración de misión clara',
+                green2: 'Financiación transparente',
+                green3: 'Reportajes equilibrados y factuales',
+                green4: 'Código de ética público',
+                green5: 'Secciones de opinión claramente etiquetadas',
+                misinfo_title: 'Detectar Desinformación: Habilidades Esenciales',
+                protip: 'Consejo Profesional:',
+                protip_text: 'La desinformación a menudo se aprovecha de emociones como el miedo y la ira. Sea escéptico del contenido diseñado para provocar reacciones fuertes, ya que la manipulación emocional puede evitar el pensamiento crítico.',
+                skill1_title: '✓ Verificar Múltiples Fuentes',
+                skill1_text: 'Corrobore la información en medios de comunicación confiables con diferentes perspectivas.',
+                skill1_badge: 'Esencial',
+                skill2_title: '🔍 Investigar la Fuente',
+                skill2_text: 'Revise la sección "Acerca de Nosotros". Use herramientas como Media Bias/Fact Check o AllSides para verificar la confiabilidad de la fuente.',
+                skill2_badge: 'Importante',
+                skill3_title: '📊 Usar Verificadores de Hechos',
+                skill3_text: 'Utilice FactCheck.org, PolitiFact y Snopes para verificación.',
+                skill3_badge: 'Crítico',
+                skill4_title: '😤 Cuidado con la Manipulación Emocional',
+                skill4_text: 'Haga una pausa cuando sienta emociones fuertes. Eso a menudo es manipulación intencional.',
+                skill4_badge: 'Habilidad Clave',
+                skill5_title: '🖼️ Búsqueda Inversa de Imágenes',
+                skill5_text: 'Use la Búsqueda Inversa de Imágenes de Google para verificar la autenticidad de imágenes.',
+                skill5_badge: 'Útil',
+                skill6_title: '📰 Leer Más Allá de los Titulares',
+                skill6_text: 'Los titulares están diseñados para clics. Siempre lea el artículo completo.',
+                skill6_badge: 'Debe Hacer',
+                skills_title: 'Evaluación de Habilidades de Alfabetización Mediática',
+                skills_intro: 'Califique su nivel de habilidad actual en estas áreas críticas:',
+                skill_bar1: 'Evaluación de Fuentes',
+                skill_bar2: 'Verificación de Hechos',
+                skill_bar3: 'Reconocimiento de Sesgos',
+                skill_bar4: 'Conciencia Emocional',
+                skills_goal_title: 'Objetivo:',
+                skills_goal_text: 'Apunte a 80%+ en todas las categorías para convertirse en un ciudadano resiliente e informado.',
+                timeline_title: 'Su Viaje de Compromiso Cívico',
+                timeline_intro: 'Construir una ciudadanía informada y comprometida es un viaje progresivo:',
+                time1_date: 'Semana 1-2',
+                time1_content: '<strong>Audite su Dieta de Noticias</strong> - Identifique sus fuentes actuales y evalúe su credibilidad usando la lista de verificación anterior.',
+                time2_date: 'Semana 3-4',
+                time2_content: '<strong>Diversifique sus Fuentes</strong> - Agregue 2-3 fuentes confiables con diferentes perspectivas a su lectura regular.',
+                time3_date: 'Mes 2',
+                time3_content: '<strong>Practique la Verificación de Hechos</strong> - Antes de compartir algo en redes sociales, verifíquelo usando sitios web de verificación de hechos.',
+                time4_date: 'Mes 3',
+                time4_content: '<strong>Participe Localmente</strong> - Asista a una reunión del gobierno local (consejo municipal, junta escolar, ayuntamiento).',
+                time5_date: 'Continuo',
+                time5_content: '<strong>Manténgase Activo</strong> - Contacte a representantes, sea voluntario y mantenga sus prácticas de alfabetización mediática.',
+                bridge_title: 'Cerrando Brechas: Estrategias de Conversación Productiva',
+                bridge_intro: 'En una sociedad polarizada, unirse requiere un esfuerzo consciente para participar en un diálogo constructivo.',
+                conv1_title: '🤝 Busque Comprender, No Ganar',
+                conv1_text: 'Aborde las conversaciones con curiosidad genuina sobre la perspectiva de la otra persona. Haga preguntas abiertas para comprender su "por qué".',
+                conv2_title: '💬 Use Declaraciones "Yo"',
+                conv2_text: 'Exprese sus propios sentimientos y creencias sin atacar. Diga <strong>"Me preocupa..."</strong> en lugar de <strong>"Estás equivocado porque..."</strong>',
+                conv2_dont: '❌ No Diga',
+                conv2_dont_ex: '"Te equivocas sobre esa política."',
+                conv2_do: '✓ Diga',
+                conv2_do_ex: '"Me preocupa el impacto de esa política porque..."',
+                conv3_title: '🎯 Encuentre Valores Compartidos',
+                conv3_text: 'Incluso con opiniones diferentes, las personas a menudo comparten valores centrales como seguridad, familia y prosperidad. Construya sobre un terreno común.',
+                conv4_title: '🧘 Manténgase Tranquilo y Respetuoso',
+                conv4_text: 'Evite levantar la voz o hacer ataques personales. Si la conversación se calienta, está bien tomar un descanso.',
+                conv4_remember: 'Recuerde:',
+                conv4_remember_text: 'El objetivo es comprender, no ganar una discusión.',
+                conv5_title: '👂 Escuche Activamente',
+                conv5_text: 'Preste atención sin planear su refutación. Reconozca sus puntos antes de responder.',
+                action_title: 'Tomando Acción: Involucrándose',
+                action_intro: 'Comprender los problemas es el primer paso; tomar acción es el siguiente. Aquí está cómo marcar la diferencia:',
+                act1_title: '🏛️ Participación Local',
+                act1_text: 'Asista a reuniones del consejo municipal, ayuntamientos y juntas escolares. Estos son los lugares más accesibles e impactantes.',
+                act1_badge: 'Aprenda Más',
+                act2_title: '📢 Contacte a Representantes',
+                act2_text: 'Llame, escriba o envíe correos electrónicos regularmente a sus funcionarios electos a nivel local, estatal y federal.',
+                act2_badge: 'Alto Impacto',
+                act3_title: '🤲 Organización Comunitaria',
+                act3_text: 'Únase o apoye grupos locales que trabajan en temas que le importan. Los esfuerzos de base impulsan el cambio.',
+                act3_badge: 'Poderoso',
+                act4_title: '💪 Sea Voluntario',
+                act4_text: 'Involúcrese en proyectos comunitarios y apoye iniciativas locales. Esto fortalece los lazos.',
+                act4_badge: 'Esencial',
+                act5_title: '📚 Manténgase Informado',
+                act5_text: 'Comprenda los conceptos básicos del proceso legislativo y los diferentes niveles de gobierno.',
+                act5_badge: 'Fundamento',
+                act6_title: '🗳️ Vote Siempre',
+                act6_text: 'Vote en cada elección—local, estatal y federal. Las elecciones locales a menudo tienen el mayor impacto en la vida diaria.',
+                act6_badge: 'Crítico',
+                modal_title: 'Participación Local: Comenzando',
+                modal_step1: 'Paso 1',
+                modal_step1_text: 'Encuentre el sitio web de su gobierno local y suscríbase a notificaciones de reuniones',
+                modal_step2: 'Paso 2',
+                modal_step2_text: 'Revise las agendas de reuniones con anticipación para comprender los temas',
+                modal_step3: 'Paso 3',
+                modal_step3_text: 'Asista primero como observador para comprender el proceso',
+                modal_step4: 'Paso 4',
+                modal_step4_text: 'Regístrese para comentarios públicos sobre temas que le importan',
+                modal_tip_title: 'Consejo Profesional:',
+                modal_tip_text: 'La mayoría de las reuniones locales tienen períodos de comentarios públicos donde cualquier ciudadano puede hablar durante 2-3 minutos.',
+                final_title: 'El Camino a Seguir',
+                final_remember: 'Recuerde:',
+                final_remember_text: 'Al armarnos con información confiable, participar en un diálogo respetuoso y participar activamente en nuestras comunidades y gobierno, podemos avanzar hacia una sociedad más informada y unificada.',
+                final_quote1: 'Cada ciudadano informado fortalece la democracia.',
+                final_quote2: 'Comience su viaje hoy.',
+                footer_title: 'Recursos y Lectura Adicional',
+                footer_fact: '<strong>Verificación de Hechos:</strong> FactCheck.org, PolitiFact, Snopes',
+                footer_media: '<strong>Evaluación de Medios:</strong> Media Bias/Fact Check, AllSides',
+                footer_literacy: '<strong>Alfabetización en Noticias:</strong> NewsLit.org',
+                footer_gov: '<strong>Información Gubernamental:</strong> USA.gov, Congress.gov',
+                footer_sources: 'Los recursos de periodismo de calidad y alfabetización mediática ayudan a los ciudadanos a tomar decisiones informadas'
+            }
+        };
+
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+            document.querySelectorAll('[data-translate]').forEach((el) => {
+                const key = el.dataset.translate;
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        };
+
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>

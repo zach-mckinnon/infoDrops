@@ -1,993 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream:docs/example_info/community_cohesion.html
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Weaving the Social Fabric: Community Building Guide</title>
-    <link rel="stylesheet" href="/minimal.css">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        /* Techno-Resistance Aesthetic - WCAG AA Compliant */
-        body { 
-            font-family: 'Courier New', Courier, 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 25%, #1a2a1a 75%, #1a1a1a 100%);
-            background-attachment: fixed;
-            color: #f5f5f5;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        /* Subtle Grid Overlay - Reduced for accessibility */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(220, 38, 38, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(220, 38, 38, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .container { 
-            max-width: 100%; 
-            margin: 0 auto;
-            padding: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        @media (min-width: 768px) { 
-            .container { max-width: 1000px; padding: 2rem; } 
-        }
-        
-        header {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a1a1a 100%);
-            border-bottom: 2px solid #ff4444;
-            border-top: 2px solid #ff4444;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #ffeb3b;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            font-size: 0.875rem;
-        }
-        
-        .nav-btn {
-            padding: 0.5rem 0.75rem;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            border: 2px solid #ff4444;
-            border-radius: 0;
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        }
-        
-        .nav-btn:hover, .nav-btn.active {
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-            border-color: #ffeb3b;
-        }
-        
-        .section {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            border: 2px solid #ff4444;
-            border-radius: 4px;
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #3a1a1a 100%);
-            border: 3px solid #ff4444;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), transparent);
-            animation: scanline 3s linear infinite;
-        }
-        
-        @keyframes scanline {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            line-height: 1.25;
-            color: #ff4444;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
-            position: relative;
-            z-index: 2;
-        }
-        
-        @media (min-width: 768px) {
-            .hero h1 { font-size: 3.75rem; }
-        }
-        
-        .hero p {
-            font-size: 1.125rem;
-            color: #f5f5f5;
-            max-width: 48rem;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-            line-height: 1.6;
-        }
-        
-        .section-title {
-            font-size: 1.875rem;
-            font-weight: 900;
-            color: #ff4444;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
-            padding: 0.5rem 0;
-            text-align: center;
-        }
-        
-        .section-subtitle {
-            color: #e5e5e5;
-            margin-bottom: 2rem;
-            font-size: 1rem;
-            font-style: italic;
-            text-align: center;
-            line-height: 1.6;
-        }
-        
-        .part-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffeb3b;
-            margin: 2rem 0 1rem 0;
-            border-left: 4px solid #ff4444;
-            padding-left: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .chapter-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #f5f5f5;
-            margin: 1.5rem 0 1rem 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .content-text {
-            color: #e5e5e5;
-            margin-bottom: 1.5rem;
-            text-align: justify;
-            line-height: 1.6;
-        }
-        
-        .stats-grid {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: 1fr;
-            margin: 2rem 0;
-        }
-        
-        @media (min-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            padding: 1.5rem;
-            border: 2px solid #ff4444;
-            border-radius: 4px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 68, 68, 0.3);
-            border-color: #ffeb3b;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #ff4444;
-            display: block;
-            text-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
-        }
-        
-        .stat-label {
-            color: #f5f5f5;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, #3a2a2a 0%, #4a3a2a 100%);
-            border-left: 4px solid #ffeb3b;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-            border: 2px solid #ff4444;
-            color: #f5f5f5;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #3a3a2a 0%, #4a4a2a 100%);
-            border-left: 4px solid #ffeb3b;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-            border: 2px solid #ffeb3b;
-            color: #f5f5f5;
-        }
-        
-        .action-ladder {
-            background: linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 100%);
-            border: 2px solid #ffeb3b;
-            border-radius: 4px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 0 20px rgba(255, 235, 59, 0.2);
-        }
-        
-        .action-ladder h3 {
-            color: #ffeb3b;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
-        }
-        
-        .ladder-tier {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a2a2a 100%);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-            border: 2px solid #ffeb3b;
-            transition: all 0.3s;
-        }
-        
-        .ladder-tier:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 235, 59, 0.3);
-        }
-        
-        .tier-number {
-            display: inline-block;
-            width: 2rem;
-            height: 2rem;
-            background: linear-gradient(135deg, #ffeb3b 0%, #ffd700 100%);
-            color: #000000;
-            border-radius: 50%;
-            text-align: center;
-            font-weight: bold;
-            margin-right: 1rem;
-            line-height: 2rem;
-            text-shadow: none;
-            border: 2px solid #ff4444;
-        }
-        
-        .tier-title {
-            color: #166534;
-            font-weight: 600;
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .benefits-grid {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: 1fr;
-            margin: 2rem 0;
-        }
-        
-        @media (min-width: 768px) {
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        .benefit-card {
-            background: #fefce8;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            border: 1px solid #eab308;
-        }
-        
-        .benefit-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .benefit-title {
-            color: #a16207;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        
-        .practical-steps {
-            background: #eff6ff;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            margin: 2rem 0;
-        }
-        
-        .practical-steps h3 {
-            color: #1d4ed8;
-            margin-bottom: 1rem;
-        }
-        
-        .step-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .step-item {
-            background: white;
-            padding: 1rem;
-            margin: 0.75rem 0;
-            border-radius: 0.5rem;
-            border-left: 3px solid #3b82f6;
-        }
-        
-        .step-item strong {
-            color: #1d4ed8;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #e5e5e5;
-            font-size: 0.9rem;
-            border-top: 2px solid #ff4444;
-            margin-top: 3rem;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Performance optimizations for ESP32 */
-        .no-transitions * {
-            transition: none !important;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Weaving the Social Fabric</title>
+    <link rel="stylesheet" href="./minimal.css" />
 </head>
-<body>
+<body class="theme-chill">
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Community Building Guide</div>
-                <nav class="nav-buttons">
-                    <a href="#crisis" class="nav-btn">The Crisis</a>
-                    <a href="#costs" class="nav-btn">The Costs</a>
-                    <a href="#blueprint" class="nav-btn">Blueprint</a>
-                    <a href="#action" class="nav-btn">Take Action</a>
-                    <a href="/" class="nav-btn">← Back</a>
-                </nav>
-            </div>
+        <div class="lang-switch">
+            <button id="lang-en" class="lang-btn" data-translate="lang_en">English</button>
+            <button id="lang-es" class="lang-btn" data-translate="lang_es">Español</button>
         </div>
+        <h1 data-translate="main_title">Weaving the Social Fabric</h1>
+        <p class="subtitle" data-translate="main_subtitle">Building Community and Connection in the Modern Age</p>
     </header>
 
-    <main class="container">
-        <div class="hero">
-            <h1>Weaving the Social Fabric</h1>
-            <p>A Citizen's Guide to Rebuilding Community and Resisting Division in America</p>
-        </div>
+    <main>
+        <!-- CRISIS SECTION WITH STAT CARDS -->
+        <section>
+            <h2 data-translate="crisis_title">The Crisis of Connection</h2>
 
-        <section id="crisis" class="section">
-            <h2 class="section-title">The Crisis of Connection</h2>
-            <p class="section-subtitle">The data reveals a profound unraveling of American community life</p>
-            
-            <div class="content-text">
-                <p>There is a palpable sense of unease in modern American life—a quiet hum of disconnection, exhaustion, and powerlessness. This is not a personal failing; it's a symptom of a systemic unraveling of our social fabric.</p>
+            <div class="alert alert-danger">
+                <strong data-translate="sg_warning_title">Surgeon General's Warning:</strong> <span data-translate="sg_warning_text">In May 2023, the U.S. Surgeon General declared an "epidemic of loneliness and isolation" with devastating health consequences.</span>
             </div>
-            
-            <div class="stats-grid">
+
+            <p data-translate="crisis_intro">Many people today experience a sense of disconnection, exhaustion, and isolation. This is not a personal failing; it's a symptom of changes in how our communities function and how we connect with one another.</p>
+
+            <h3 data-translate="data_title">Understanding the Challenge</h3>
+            <div class="card-grid">
                 <div class="stat-card">
-                    <span class="stat-number">46%</span>
-                    <div class="stat-label">Drop in general trust since the 1970s (from 46% to 31%)</div>
+                    <span class="stat-number">50%</span>
+                    <div class="stat-label" data-translate="stat1_label">Adults Experiencing Loneliness (Pre-COVID)</div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">15pts</span>
-                    <div class="stat-label">Decline in religious membership (70% to 55%)</div>
+                    <span class="stat-number">70%</span>
+                    <div class="stat-label" data-translate="stat2_label">Less Social Time for Ages 15-24 vs. 20 Years Ago</div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">16pts</span>
-                    <div class="stat-label">Fewer families in middle-income neighborhoods (65% to 40%)</div>
+                    <span class="stat-number">-33%</span>
+                    <div class="stat-label" data-translate="stat3_label">Drop in Social Trust Since 1970s (46% to 31%)</div>
                 </div>
             </div>
-            
-            <div class="warning-box">
-                <strong>The Sorting Problem:</strong> Americans have increasingly sorted themselves into politically and economically homogeneous communities, creating "social bubbles" that prevent the everyday interactions needed to build bridging social capital across class and political divides.
+
+            <div class="bar-chart">
+                <h3 data-translate="indicators_title">Social Connection Indicators</h3>
+                <div class="bar">
+                    <div class="bar-label" data-translate="bar1_label">Trust Decline</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 67%;">
+                            <span class="bar-value">67%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="bar-label" data-translate="bar2_label">Religious Participation</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 78%;">
+                            <span class="bar-value">-15pts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="bar-label" data-translate="bar3_label">Mixed-Income Neighborhoods</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 62%;">
+                            <span class="bar-value">-25pts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="bar-label" data-translate="bar4_label">Youth Social Time</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 30%;">
+                            <span class="bar-value">-70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong data-translate="sorting_title">The Sorting Challenge:</strong> <span data-translate="sorting_text">Communities have become more economically and politically homogeneous, creating fewer opportunities for diverse everyday interactions that build social connections across differences.</span>
             </div>
         </section>
 
-        <section id="costs" class="section">
-            <div class="part-title">The High Cost of Coming Apart</div>
-            
-            <div class="chapter-title">Democracy Under Threat</div>
-            <div class="content-text">
-                <p>Recent research has uncovered a direct causal pathway linking breakdown in social cohesion to increased desire for authoritarian leadership. The process is predictable:</p>
-            </div>
-            
-            <div class="practical-steps">
-                <h3>The Path to Authoritarianism</h3>
-                <ol class="step-list">
-                    <li class="step-item"><strong>Perceived Anomie:</strong> Society's norms and leadership appear to be breaking down</li>
-                    <li class="step-item"><strong>Political Powerlessness:</strong> Individuals feel they have no control over the political process</li>
-                    <li class="step-item"><strong>Political Uncertainty:</strong> Politics feels too chaotic and complex to understand</li>
-                    <li class="step-item"><strong>Appeal of Authoritarianism:</strong> Strong leaders who promise simple answers become attractive</li>
-                </ol>
-            </div>
-            
-            <div class="chapter-title">Public Health Crisis</div>
-            <div class="content-text">
-                <p>The U.S. Surgeon General has declared an "epidemic of loneliness and isolation" with health consequences that rival smoking and obesity.</p>
-            </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🚭</div>
-                    <div class="benefit-title">Equivalent to Smoking</div>
-                    <p>Being socially disconnected has mortality impact similar to smoking 15 cigarettes daily</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💖</div>
-                    <div class="benefit-title">Heart & Mind</div>
-                    <p>Social isolation increases stroke risk by 32%, heart disease by 29%, and dementia by 50%</p>
-                </div>
-            </div>
-        </section>
-=======
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, user-scalable=no"
-		/>
-		<title>Community Guide [v.1.1]</title>
-		<link
-			rel="stylesheet"
-			href="/minimal.css"
-		/>
-	</head>
-	<body class="theme-light">
-		<header>
-			<div class="lang-switch">
-				<button
-					id="lang-en"
-					class="lang-btn"
-					data-translate="lang_en"
-				>
-					English
-				</button>
-				<button
-					id="lang-es"
-					class="lang-btn"
-					data-translate="lang_es"
-				>
-					Español
-				</button>
-			</div>
-			<h1 data-translate="main_title">Weaving the Social Fabric</h1>
-			<p
-				class="subtitle"
-				data-translate="main_subtitle"
-			>
-				A Citizen's Guide to Rebuilding Community.
-			</p>
-		</header>
->>>>>>> Stashed changes:docs/examples/community_cohesion.html
+        <!-- HEALTH COSTS SECTION WITH COMPARISON -->
+        <section>
+            <h2 data-translate="health_title">The Impact of Social Disconnection</h2>
 
-        <section id="blueprint" class="section">
-            <div class="part-title">The Blueprint for Renewal</div>
-            
-            <div class="action-ladder">
-                <h3>🪜 The Ladder of Engagement</h3>
-                <p style="margin-bottom: 2rem;">Community building starts small and grows through collective action. Here's your pathway:</p>
-                
-                <div class="ladder-tier">
-                    <span class="tier-number">1</span>
-                    <div class="tier-title">Individual & Hyper-Local Acts</div>
-                    <p>Simple, low-coordination actions to increase visibility and foster goodwill with immediate neighbors. Examples: sit on front porch, share baked goods, start a "Little Free Library," offer help to neighbors.</p>
+            <h3 data-translate="health_subtitle">Public Health Perspective</h3>
+            <p data-translate="health_intro">The U.S. Surgeon General's 2023 advisory documented significant health consequences of poor social connection:</p>
+
+            <div class="comparison">
+                <div class="comparison-side">
+                    <div class="comparison-title" data-translate="risks_title">⚠️ Health Risks</div>
+                    <ul>
+                        <li data-translate="risk1"><strong>+29%</strong> Heart Disease Risk</li>
+                        <li data-translate="risk2"><strong>+32%</strong> Stroke Risk</li>
+                        <li data-translate="risk3"><strong>+50%</strong> Dementia Risk (Older Adults)</li>
+                        <li data-translate="risk4"><strong>Equal to</strong> Smoking 15 Cigarettes/Day</li>
+                    </ul>
                 </div>
-                
-                <div class="ladder-tier">
-                    <span class="tier-number">2</span>
-                    <div class="tier-title">Coordinated Group Projects</div>
-                    <p>Event-based activities requiring medium coordination among neighbors for shared experiences. Examples: organize block party, start book club, launch community garden, coordinate neighborhood cleanup.</p>
+                <div class="comparison-side">
+                    <div class="comparison-title" data-translate="benefits_title">✓ Connection Benefits</div>
+                    <ul>
+                        <li data-translate="benefit1">Longer Lifespan</li>
+                        <li data-translate="benefit2">Better Mental Health</li>
+                        <li data-translate="benefit3">Stronger Immune System</li>
+                        <li data-translate="benefit4">Greater Life Satisfaction</li>
+                    </ul>
                 </div>
-                
-                <div class="ladder-tier">
-                    <span class="tier-number">3</span>
-                    <div class="tier-title">Sustainable Community Structures</div>
-                    <p>Formal, ongoing initiatives requiring high coordination to build lasting community assets. Examples: establish mutual aid network, create tool-lending library, form neighborhood association.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 data-translate="civic_title">🏛️ Civic Engagement</h3>
+                    <p data-translate="civic_text">Research shows that social disconnection can lead to feelings of powerlessness and disengagement from democratic processes. Strong community bonds help maintain civic participation.</p>
+                    <span class="badge" data-translate="civic_badge">Important</span>
                 </div>
+                <div class="card">
+                    <h3 data-translate="economic_title">💰 Economic Impact</h3>
+                    <p data-translate="economic_text">Social connections facilitate job opportunities, reduce business costs, and help communities bounce back from economic challenges.</p>
+                    <span class="badge" data-translate="economic_badge">Significant</span>
+                </div>
+                <div class="card">
+                    <h3 data-translate="happiness_title">😊 Personal Happiness</h3>
+                    <p data-translate="happiness_text">Civically engaged people are significantly more likely to be "very happy" and half as likely to experience loneliness.</p>
+                    <span class="badge" data-translate="happiness_badge">Life-Changing</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <h3 data-translate="disconnect_path_title">How Social Breakdown Affects Communities</h3>
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="stage1_date">Stage 1</div>
+                    <div class="timeline-content" data-translate="stage1_text"><strong>Perceived Breakdown:</strong> Community norms and trust appear to be weakening</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="stage2_date">Stage 2</div>
+                    <div class="timeline-content" data-translate="stage2_text"><strong>Sense of Powerlessness:</strong> People feel they have little influence over community decisions</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="stage3_date">Stage 3</div>
+                    <div class="timeline-content" data-translate="stage3_text"><strong>Increased Uncertainty:</strong> Civic processes feel chaotic and difficult to understand</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="stage4_date">Stage 4</div>
+                    <div class="timeline-content" data-translate="stage4_text"><strong>Seeking Simple Solutions:</strong> People become attracted to leaders who promise easy answers to complex problems</div>
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <strong data-translate="immune_title">Building Resilience:</strong> <span data-translate="immune_text">Communities with strong social connections across diverse groups are more resilient and harder to divide. Every act of building community strengthens democratic participation.</span>
             </div>
         </section>
 
-        <section id="action" class="section">
-            <div class="part-title">Start Where You Are</div>
-            
-            <div class="practical-steps">
-                <h3>🏠 Simple Everyday Acts</h3>
-                <ul class="step-list">
-                    <li class="step-item"><strong>Be Present:</strong> Spend time in your front yard instead of back. Walk the neighborhood regularly at consistent times.</li>
-                    <li class="step-item"><strong>Share Food:</strong> Pass out fresh cookies, share garden surplus, buy extra donuts to give away.</li>
-                    <li class="step-item"><strong>Offer Help:</strong> Assist elderly neighbors with yard work, bring in trash cans, help with technology.</li>
-                    <li class="step-item"><strong>Get Creative:</strong> Start a "roaming gnome" game, create positive chalk messages, decorate shared spaces.</li>
-                </ul>
+        <!-- BLUEPRINT SECTION -->
+        <section>
+            <h2 data-translate="blueprint_title">Building Community Connections</h2>
+            <p data-translate="blueprint_intro">Community building starts small and grows through collective action. Here's your pathway:</p>
+
+            <details open>
+                <summary data-translate="level1_title"><span class="badge">1</span> Individual & Hyper-Local Acts</summary>
+                <div class="details-content">
+                    <p data-translate="level1_intro">Simple, low-coordination actions to increase visibility and foster goodwill with immediate neighbors.</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4 data-translate="act1_title">Be Present</h4>
+                            <p data-translate="act1_text">Sit on front porch, walk neighborhood regularly at consistent times</p>
+                        </div>
+                        <div class="card">
+                            <h4 data-translate="act2_title">Share Food</h4>
+                            <p data-translate="act2_text">Pass out cookies, share garden surplus, buy extra donuts to give away</p>
+                        </div>
+                        <div class="card">
+                            <h4 data-translate="act3_title">Offer Help</h4>
+                            <p data-translate="act3_text">Assist elderly neighbors with yard work, bring in trash cans, help with technology</p>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%;"></div>
+                        <span class="progress-label" data-translate="level1_label">Foundation Level</span>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary data-translate="level2_title"><span class="badge">2</span> Coordinated Group Projects</summary>
+                <div class="details-content">
+                    <p data-translate="level2_intro">Event-based activities requiring medium coordination among neighbors for shared experiences.</p>
+                    <ul>
+                        <li data-translate="proj1"><strong>Block Party:</strong> Plan 6 weeks ahead, use potluck model, provide name tags, plan simple activities</li>
+                        <li data-translate="proj2"><strong>Skill Shares:</strong> Teach each other practical skills like gardening, baking, bike maintenance, or basic coding</li>
+                        <li data-translate="proj3"><strong>Community Garden:</strong> Form core group, secure land, plan design, build and fund together, get growing</li>
+                        <li data-translate="proj4"><strong>Neighborhood Cleanup:</strong> Coordinate cleanup days for local parks, streets, or common areas</li>
+                    </ul>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 66%;"></div>
+                        <span class="progress-label" data-translate="level2_label">Building Level</span>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary data-translate="level3_title"><span class="badge">3</span> Sustainable Community Structures</summary>
+                <div class="details-content">
+                    <p data-translate="level3_intro">Formal, ongoing initiatives requiring high coordination to build lasting community assets.</p>
+                    <ul>
+                        <li data-translate="struct1"><strong>Mutual Aid Network:</strong> "Solidarity, not charity" - horizontal systems where everyone gives and receives based on needs and abilities</li>
+                        <li data-translate="struct2"><strong>Tool-Lending Library:</strong> Shared collection of tools and equipment - saves money, reduces consumption, builds community</li>
+                        <li data-translate="struct3"><strong>Neighborhood Association:</strong> Formal organization to improve and advocate for your area - unified voice for local issues</li>
+                        <li data-translate="struct4"><strong>Time Bank:</strong> Exchange services based on time rather than money - everyone's hour is equal</li>
+                    </ul>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                        <span class="progress-label" data-translate="level3_label">Sustainable Level</span>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- ACTION TIMELINE -->
+        <section>
+            <h2 data-translate="journey_title">Your Community Building Journey</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time1_date">Week 1-2</div>
+                    <div class="timeline-content" data-translate="time1_text">
+                        <strong>Start Small:</strong> Commit to spending 30 minutes outside your front door 3x per week. Wave and say hello to neighbors.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time2_date">Week 3-4</div>
+                    <div class="timeline-content" data-translate="time2_text">
+                        <strong>Make Connections:</strong> Learn 3 neighbors' names. Share something small (baked goods, garden produce, a kind note).
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time3_date">Month 2</div>
+                    <div class="timeline-content" data-translate="time3_text">
+                        <strong>Offer Help:</strong> Identify one neighbor who might benefit from assistance. Offer specific help (not "let me know if you need anything").
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time4_date">Month 3</div>
+                    <div class="timeline-content" data-translate="time4_text">
+                        <strong>Organize:</strong> Host a simple gathering - coffee morning, front yard hangout, or informal potluck.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time5_date">Month 4-6</div>
+                    <div class="timeline-content" data-translate="time5_text">
+                        <strong>Build Structure:</strong> Start planning a recurring event or project that brings neighbors together regularly.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date" data-translate="time6_date">Ongoing</div>
+                    <div class="timeline-content" data-translate="time6_text">
+                        <strong>Sustain Momentum:</strong> Keep showing up, keep connecting, keep building. The work is never "done" - it's a way of living.
+                    </div>
+                </div>
             </div>
-            
-            <div class="practical-steps">
-                <h3>🤝 Organize Group Projects</h3>
-                <ul class="step-list">
-                    <li class="step-item"><strong>Block Party:</strong> Plan 6 weeks ahead, use potluck model, provide name tags, plan simple activities.</li>
-                    <li class="step-item"><strong>Skill Shares:</strong> Teach each other practical skills like gardening, baking, bike maintenance, or basic coding.</li>
-                    <li class="step-item"><strong>Community Garden:</strong> Form core group, secure land, plan design, build and fund together, get growing!</li>
-                </ul>
-            </div>
-            
-            <div class="highlight-box">
-                <strong>The Science of Happiness:</strong> Research shows people who are civically engaged are significantly more likely to report being "very happy" and half as likely to suffer from loneliness. Community engagement is more effective at promoting well-being than increases in income.
-            </div>
-            
-            <div class="practical-steps">
-                <h3>🌱 Build Sustainable Structures</h3>
-                <ul class="step-list">
-                    <li class="step-item"><strong>Mutual Aid Network:</strong> "Solidarity, not charity" - horizontal systems where everyone gives and receives based on needs and abilities.</li>
-                    <li class="step-item"><strong>Tool-Lending Library:</strong> Shared collection of tools and equipment - saves money, reduces consumption, builds community.</li>
-                    <li class="step-item"><strong>Neighborhood Association:</strong> Formal organization to improve and advocate for your area - unified voice for local issues.</li>
-                </ul>
+
+            <div class="alert alert-success">
+                <strong data-translate="wellbeing_title">Remember:</strong> <span data-translate="wellbeing_text">Research shows that community engagement is more effective at promoting well-being than increases in income. The happiness you build by connecting is real and lasting.</span>
             </div>
         </section>
 
-        <section class="section">
-            <div class="part-title">The Power of We</div>
-            <div class="content-text">
-                <p>In an age defined by division, alienation, and the siren song of authoritarian certainty, the most radical and resilient act is to build community. It is to choose connection over isolation, reciprocity over consumption, and collaboration over competition.</p>
-                
-                <p><strong>Every act of building community is an act of democratic reinforcement.</strong> A society with strong, cross-cutting social capital is simply harder to divide and conquer.</p>
+        <!-- MODAL FOR MORE INFO -->
+        <section>
+            <h2 data-translate="resources_title">Additional Resources</h2>
+            <p><a href="#more-info" class="badge" data-translate="resources_link">Click for Detailed Guide</a></p>
+
+            <div id="more-info" class="modal">
+                <div class="modal-content">
+                    <a href="#" class="modal-close">×</a>
+                    <h2 data-translate="modal_title">Detailed Community Building Resources</h2>
+
+                    <h3 data-translate="modal_books_title">Books & Research</h3>
+                    <ul>
+                        <li data-translate="book1">Putnam, Robert D. "Bowling Alone: The Collapse and Revival of American Community" (2000)</li>
+                        <li data-translate="book2">Wheatley, Margaret J. "Turning to One Another: Simple Conversations to Restore Hope to the Future" (2009)</li>
+                        <li data-translate="book3">U.S. Surgeon General's Advisory, "Our Epidemic of Loneliness and Isolation" (2023)</li>
+                    </ul>
+
+                    <h3 data-translate="modal_orgs_title">Organizations to Support</h3>
+                    <ul>
+                        <li data-translate="org1">Better Block Foundation - Neighborhood revitalization</li>
+                        <li data-translate="org2">Project for Public Spaces - Community-led placemaking</li>
+                        <li data-translate="org3">Mutual Aid Hub - Connect with local mutual aid groups</li>
+                        <li data-translate="org4">Nextdoor - Digital neighborhood platform</li>
+                    </ul>
+
+                    <div class="alert alert-info">
+                        <strong data-translate="modal_tip_title">Pro Tip:</strong> <span data-translate="modal_tip_text">Start with what you have energy for. Consistency beats intensity every time.</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🏛️</div>
-                    <div class="benefit-title">Strengthen Democracy</div>
-                    <p>Cohesive communities act as an immune system against authoritarianism by fostering trust and peaceful disagreement.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💚</div>
-                    <div class="benefit-title">Improve Health</div>
-                    <p>Strong social networks reduce disease risk, extend lifespan, and dramatically improve mental health outcomes.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💼</div>
-                    <div class="benefit-title">Economic Resilience</div>
-                    <p>Social capital facilitates job opportunities, reduces business costs, and helps communities bounce back from economic shocks.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">😊</div>
-                    <div class="benefit-title">Personal Happiness</div>
-                    <p>Community engagement and helping others are more effective at promoting life satisfaction than material wealth.</p>
-                </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section>
+            <h2 data-translate="power_title">The Power of Community</h2>
+
+            <p style="font-size: 1.1rem; line-height: 1.8;" data-translate="power_intro">In an age of division and isolation, building community is a powerful and resilient act. It means choosing connection over isolation, mutual support over individualism, and collaboration over competition.</p>
+
+            <div class="alert alert-info">
+                <strong data-translate="impact_title">The Impact:</strong> <span data-translate="impact_text">By strengthening our human bonds and community connections, we create a more connected, supportive, and genuinely democratic society where everyone can thrive.</span>
             </div>
-            
-            <div class="highlight-box">
-                <strong>Remember:</strong> The work is not easy, but it is essential. By fortifying both our digital defenses and our human bonds, we are not only pushing back against authoritarianism, but actively creating a more connected, equitable, and genuinely democratic society.
+
+            <p style="text-align: center; margin-top: 2rem; font-size: 1.2rem; font-weight: bold;" data-translate="quote">
+                "There is no power for change greater than a community discovering what it cares about."<br>
+                <span style="opacity: 0.8; font-size: 0.9rem;">- Margaret J. Wheatley</span>
+            </p>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <span class="badge" data-translate="badge1">Alone, we can do so little</span>
+                <span class="badge" data-translate="badge2">Together, we can do so much</span>
             </div>
         </section>
     </main>
 
     <footer>
-        <p><em>"There is no power for change greater than a community discovering what it cares about." - Margaret J. Wheatley</em></p>
-        <p style="margin-top: 1rem;"><strong>Alone, we can do so little; together, we can do so much.</strong></p>
+        <h3 data-translate="footer_title">Sources</h3>
+        <ul style="font-size: 0.85rem; opacity: 0.8;">
+            <li data-translate="source1">U.S. Surgeon General's Advisory on Social Connection (2023) - HHS.gov</li>
+            <li data-translate="source2">Pew Research Center - Social Trust and Political Polarization Studies</li>
+            <li data-translate="source3">Robert Putnam - "Bowling Alone" and social capital research</li>
+            <li data-translate="source4">Margaret Wheatley - Community and organizational development</li>
+        </ul>
     </footer>
 
-<<<<<<< Updated upstream:docs/example_info/community_cohesion.html
     <script>
-        // Performance optimization for ESP32
-        if (navigator.userAgent.includes('ESP32') || window.innerWidth < 768) {
-            document.body.classList.add('no-transitions');
-        }
-        
-        // Smooth scrolling navigation
-        document.querySelectorAll('.nav-btn[href^="#"]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const translations = {
+            en: {
+                lang_en: 'English',
+                lang_es: 'Español',
+                main_title: 'Weaving the Social Fabric',
+                main_subtitle: 'Building Community and Connection in the Modern Age',
+                crisis_title: 'The Crisis of Connection',
+                sg_warning_title: 'Surgeon General\'s Warning:',
+                sg_warning_text: 'In May 2023, the U.S. Surgeon General declared an "epidemic of loneliness and isolation" with devastating health consequences.',
+                crisis_intro: 'Many people today experience a sense of disconnection, exhaustion, and isolation. This is not a personal failing; it\'s a symptom of changes in how our communities function and how we connect with one another.',
+                data_title: 'Understanding the Challenge',
+                stat1_label: 'Adults Experiencing Loneliness (Pre-COVID)',
+                stat2_label: 'Less Social Time for Ages 15-24 vs. 20 Years Ago',
+                stat3_label: 'Drop in Social Trust Since 1970s (46% to 31%)',
+                indicators_title: 'Social Connection Indicators',
+                bar1_label: 'Trust Decline',
+                bar2_label: 'Religious Participation',
+                bar3_label: 'Mixed-Income Neighborhoods',
+                bar4_label: 'Youth Social Time',
+                sorting_title: 'The Sorting Challenge:',
+                sorting_text: 'Communities have become more economically and politically homogeneous, creating fewer opportunities for diverse everyday interactions that build social connections across differences.',
+                health_title: 'The Impact of Social Disconnection',
+                health_subtitle: 'Public Health Perspective',
+                health_intro: 'The U.S. Surgeon General\'s 2023 advisory documented significant health consequences of poor social connection:',
+                risks_title: '⚠️ Health Risks',
+                risk1: '<strong>+29%</strong> Heart Disease Risk',
+                risk2: '<strong>+32%</strong> Stroke Risk',
+                risk3: '<strong>+50%</strong> Dementia Risk (Older Adults)',
+                risk4: '<strong>Equal to</strong> Smoking 15 Cigarettes/Day',
+                benefits_title: '✓ Connection Benefits',
+                benefit1: 'Longer Lifespan',
+                benefit2: 'Better Mental Health',
+                benefit3: 'Stronger Immune System',
+                benefit4: 'Greater Life Satisfaction',
+                civic_title: '🏛️ Civic Engagement',
+                civic_text: 'Research shows that social disconnection can lead to feelings of powerlessness and disengagement from democratic processes. Strong community bonds help maintain civic participation.',
+                civic_badge: 'Important',
+                economic_title: '💰 Economic Impact',
+                economic_text: 'Social connections facilitate job opportunities, reduce business costs, and help communities bounce back from economic challenges.',
+                economic_badge: 'Significant',
+                happiness_title: '😊 Personal Happiness',
+                happiness_text: 'Civically engaged people are significantly more likely to be "very happy" and half as likely to experience loneliness.',
+                happiness_badge: 'Life-Changing',
+                disconnect_path_title: 'How Social Breakdown Affects Communities',
+                stage1_date: 'Stage 1',
+                stage1_text: '<strong>Perceived Breakdown:</strong> Community norms and trust appear to be weakening',
+                stage2_date: 'Stage 2',
+                stage2_text: '<strong>Sense of Powerlessness:</strong> People feel they have little influence over community decisions',
+                stage3_date: 'Stage 3',
+                stage3_text: '<strong>Increased Uncertainty:</strong> Civic processes feel chaotic and difficult to understand',
+                stage4_date: 'Stage 4',
+                stage4_text: '<strong>Seeking Simple Solutions:</strong> People become attracted to leaders who promise easy answers to complex problems',
+                immune_title: 'Building Resilience:',
+                immune_text: 'Communities with strong social connections across diverse groups are more resilient and harder to divide. Every act of building community strengthens democratic participation.',
+                blueprint_title: 'Building Community Connections',
+                blueprint_intro: 'Community building starts small and grows through collective action. Here\'s your pathway:',
+                level1_title: '<span class="badge">1</span> Individual & Hyper-Local Acts',
+                level1_intro: 'Simple, low-coordination actions to increase visibility and foster goodwill with immediate neighbors.',
+                act1_title: 'Be Present',
+                act1_text: 'Sit on front porch, walk neighborhood regularly at consistent times',
+                act2_title: 'Share Food',
+                act2_text: 'Pass out cookies, share garden surplus, buy extra donuts to give away',
+                act3_title: 'Offer Help',
+                act3_text: 'Assist elderly neighbors with yard work, bring in trash cans, help with technology',
+                level1_label: 'Foundation Level',
+                level2_title: '<span class="badge">2</span> Coordinated Group Projects',
+                level2_intro: 'Event-based activities requiring medium coordination among neighbors for shared experiences.',
+                proj1: '<strong>Block Party:</strong> Plan 6 weeks ahead, use potluck model, provide name tags, plan simple activities',
+                proj2: '<strong>Skill Shares:</strong> Teach each other practical skills like gardening, baking, bike maintenance, or basic coding',
+                proj3: '<strong>Community Garden:</strong> Form core group, secure land, plan design, build and fund together, get growing',
+                proj4: '<strong>Neighborhood Cleanup:</strong> Coordinate cleanup days for local parks, streets, or common areas',
+                level2_label: 'Building Level',
+                level3_title: '<span class="badge">3</span> Sustainable Community Structures',
+                level3_intro: 'Formal, ongoing initiatives requiring high coordination to build lasting community assets.',
+                struct1: '<strong>Mutual Aid Network:</strong> "Solidarity, not charity" - horizontal systems where everyone gives and receives based on needs and abilities',
+                struct2: '<strong>Tool-Lending Library:</strong> Shared collection of tools and equipment - saves money, reduces consumption, builds community',
+                struct3: '<strong>Neighborhood Association:</strong> Formal organization to improve and advocate for your area - unified voice for local issues',
+                struct4: '<strong>Time Bank:</strong> Exchange services based on time rather than money - everyone\'s hour is equal',
+                level3_label: 'Sustainable Level',
+                journey_title: 'Your Community Building Journey',
+                time1_date: 'Week 1-2',
+                time1_text: '<strong>Start Small:</strong> Commit to spending 30 minutes outside your front door 3x per week. Wave and say hello to neighbors.',
+                time2_date: 'Week 3-4',
+                time2_text: '<strong>Make Connections:</strong> Learn 3 neighbors\' names. Share something small (baked goods, garden produce, a kind note).',
+                time3_date: 'Month 2',
+                time3_text: '<strong>Offer Help:</strong> Identify one neighbor who might benefit from assistance. Offer specific help (not "let me know if you need anything").',
+                time4_date: 'Month 3',
+                time4_text: '<strong>Organize:</strong> Host a simple gathering - coffee morning, front yard hangout, or informal potluck.',
+                time5_date: 'Month 4-6',
+                time5_text: '<strong>Build Structure:</strong> Start planning a recurring event or project that brings neighbors together regularly.',
+                time6_date: 'Ongoing',
+                time6_text: '<strong>Sustain Momentum:</strong> Keep showing up, keep connecting, keep building. The work is never "done" - it\'s a way of living.',
+                wellbeing_title: 'Remember:',
+                wellbeing_text: 'Research shows that community engagement is more effective at promoting well-being than increases in income. The happiness you build by connecting is real and lasting.',
+                resources_title: 'Additional Resources',
+                resources_link: 'Click for Detailed Guide',
+                modal_title: 'Detailed Community Building Resources',
+                modal_books_title: 'Books & Research',
+                book1: 'Putnam, Robert D. "Bowling Alone: The Collapse and Revival of American Community" (2000)',
+                book2: 'Wheatley, Margaret J. "Turning to One Another: Simple Conversations to Restore Hope to the Future" (2009)',
+                book3: 'U.S. Surgeon General\'s Advisory, "Our Epidemic of Loneliness and Isolation" (2023)',
+                modal_orgs_title: 'Organizations to Support',
+                org1: 'Better Block Foundation - Neighborhood revitalization',
+                org2: 'Project for Public Spaces - Community-led placemaking',
+                org3: 'Mutual Aid Hub - Connect with local mutual aid groups',
+                org4: 'Nextdoor - Digital neighborhood platform',
+                modal_tip_title: 'Pro Tip:',
+                modal_tip_text: 'Start with what you have energy for. Consistency beats intensity every time.',
+                power_title: 'The Power of Community',
+                power_intro: 'In an age of division and isolation, building community is a powerful and resilient act. It means choosing connection over isolation, mutual support over individualism, and collaboration over competition.',
+                impact_title: 'The Impact:',
+                impact_text: 'By strengthening our human bonds and community connections, we create a more connected, supportive, and genuinely democratic society where everyone can thrive.',
+                quote: '"There is no power for change greater than a community discovering what it cares about."<br><span style="opacity: 0.8; font-size: 0.9rem;">- Margaret J. Wheatley</span>',
+                badge1: 'Alone, we can do so little',
+                badge2: 'Together, we can do so much',
+                footer_title: 'Sources',
+                source1: 'U.S. Surgeon General\'s Advisory on Social Connection (2023) - HHS.gov',
+                source2: 'Pew Research Center - Social Trust and Political Polarization Studies',
+                source3: 'Robert Putnam - "Bowling Alone" and social capital research',
+                source4: 'Margaret Wheatley - Community and organizational development'
+            },
+            es: {
+                lang_en: 'English',
+                lang_es: 'Español',
+                main_title: 'Tejiendo el Tejido Social',
+                main_subtitle: 'Construyendo Comunidad y Conexión en la Era Moderna',
+                crisis_title: 'La Crisis de Conexión',
+                sg_warning_title: 'Advertencia del Cirujano General:',
+                sg_warning_text: 'En mayo de 2023, el Cirujano General de EE.UU. declaró una "epidemia de soledad y aislamiento" con consecuencias devastadoras para la salud.',
+                crisis_intro: 'Muchas personas hoy experimentan una sensación de desconexión, agotamiento y aislamiento. Esto no es un fracaso personal; es un síntoma de cambios en cómo funcionan nuestras comunidades y cómo nos conectamos unos con otros.',
+                data_title: 'Comprendiendo el Desafío',
+                stat1_label: 'Adultos Experimentando Soledad (Pre-COVID)',
+                stat2_label: 'Menos Tiempo Social para Edades 15-24 vs. Hace 20 Años',
+                stat3_label: 'Caída en Confianza Social Desde los 70s (46% a 31%)',
+                indicators_title: 'Indicadores de Conexión Social',
+                bar1_label: 'Disminución de Confianza',
+                bar2_label: 'Participación Religiosa',
+                bar3_label: 'Vecindarios de Ingresos Mixtos',
+                bar4_label: 'Tiempo Social Juvenil',
+                sorting_title: 'El Desafío de la Segregación:',
+                sorting_text: 'Las comunidades se han vuelto más homogéneas económica y políticamente, creando menos oportunidades para interacciones cotidianas diversas que construyen conexiones sociales a través de las diferencias.',
+                health_title: 'El Impacto de la Desconexión Social',
+                health_subtitle: 'Perspectiva de Salud Pública',
+                health_intro: 'El aviso del Cirujano General de EE.UU. de 2023 documentó consecuencias significativas para la salud de la mala conexión social:',
+                risks_title: '⚠️ Riesgos de Salud',
+                risk1: '<strong>+29%</strong> Riesgo de Enfermedad Cardíaca',
+                risk2: '<strong>+32%</strong> Riesgo de Derrame Cerebral',
+                risk3: '<strong>+50%</strong> Riesgo de Demencia (Adultos Mayores)',
+                risk4: '<strong>Equivalente a</strong> Fumar 15 Cigarrillos/Día',
+                benefits_title: '✓ Beneficios de la Conexión',
+                benefit1: 'Mayor Esperanza de Vida',
+                benefit2: 'Mejor Salud Mental',
+                benefit3: 'Sistema Inmunológico Más Fuerte',
+                benefit4: 'Mayor Satisfacción con la Vida',
+                civic_title: '🏛️ Compromiso Cívico',
+                civic_text: 'La investigación muestra que la desconexión social puede llevar a sentimientos de impotencia y desvinculación de los procesos democráticos. Los fuertes lazos comunitarios ayudan a mantener la participación cívica.',
+                civic_badge: 'Importante',
+                economic_title: '💰 Impacto Económico',
+                economic_text: 'Las conexiones sociales facilitan oportunidades de empleo, reducen costos empresariales y ayudan a las comunidades a recuperarse de desafíos económicos.',
+                economic_badge: 'Significativo',
+                happiness_title: '😊 Felicidad Personal',
+                happiness_text: 'Las personas cívicamente comprometidas son significativamente más propensas a ser "muy felices" y tienen la mitad de probabilidades de experimentar soledad.',
+                happiness_badge: 'Cambia Vidas',
+                disconnect_path_title: 'Cómo el Colapso Social Afecta a las Comunidades',
+                stage1_date: 'Etapa 1',
+                stage1_text: '<strong>Percepción de Colapso:</strong> Las normas comunitarias y la confianza parecen debilitarse',
+                stage2_date: 'Etapa 2',
+                stage2_text: '<strong>Sensación de Impotencia:</strong> Las personas sienten que tienen poca influencia sobre las decisiones comunitarias',
+                stage3_date: 'Etapa 3',
+                stage3_text: '<strong>Incertidumbre Aumentada:</strong> Los procesos cívicos se sienten caóticos y difíciles de entender',
+                stage4_date: 'Etapa 4',
+                stage4_text: '<strong>Búsqueda de Soluciones Simples:</strong> Las personas se sienten atraídas por líderes que prometen respuestas fáciles a problemas complejos',
+                immune_title: 'Construyendo Resiliencia:',
+                immune_text: 'Las comunidades con fuertes conexiones sociales entre grupos diversos son más resilientes y más difíciles de dividir. Cada acto de construcción comunitaria fortalece la participación democrática.',
+                blueprint_title: 'Construyendo Conexiones Comunitarias',
+                blueprint_intro: 'La construcción comunitaria comienza pequeña y crece a través de la acción colectiva. Aquí está su camino:',
+                level1_title: '<span class="badge">1</span> Actos Individuales e Hiperlocales',
+                level1_intro: 'Acciones simples de baja coordinación para aumentar la visibilidad y fomentar la buena voluntad con los vecinos inmediatos.',
+                act1_title: 'Estar Presente',
+                act1_text: 'Sentarse en el porche delantero, caminar por el vecindario regularmente a horas consistentes',
+                act2_title: 'Compartir Alimentos',
+                act2_text: 'Repartir galletas, compartir excedentes del jardín, comprar donas extra para regalar',
+                act3_title: 'Ofrecer Ayuda',
+                act3_text: 'Ayudar a vecinos ancianos con trabajo de jardín, traer botes de basura, ayudar con tecnología',
+                level1_label: 'Nivel Fundamental',
+                level2_title: '<span class="badge">2</span> Proyectos Grupales Coordinados',
+                level2_intro: 'Actividades basadas en eventos que requieren coordinación media entre vecinos para experiencias compartidas.',
+                proj1: '<strong>Fiesta de Barrio:</strong> Planificar con 6 semanas de anticipación, usar modelo de comida compartida, proporcionar etiquetas con nombres, planear actividades simples',
+                proj2: '<strong>Intercambio de Habilidades:</strong> Enseñarse habilidades prácticas como jardinería, panadería, mantenimiento de bicicletas o programación básica',
+                proj3: '<strong>Jardín Comunitario:</strong> Formar grupo central, asegurar terreno, planificar diseño, construir y financiar juntos, comenzar a cultivar',
+                proj4: '<strong>Limpieza del Vecindario:</strong> Coordinar días de limpieza para parques locales, calles o áreas comunes',
+                level2_label: 'Nivel de Construcción',
+                level3_title: '<span class="badge">3</span> Estructuras Comunitarias Sostenibles',
+                level3_intro: 'Iniciativas formales continuas que requieren alta coordinación para construir activos comunitarios duraderos.',
+                struct1: '<strong>Red de Ayuda Mutua:</strong> "Solidaridad, no caridad" - sistemas horizontales donde todos dan y reciben según necesidades y habilidades',
+                struct2: '<strong>Biblioteca de Préstamo de Herramientas:</strong> Colección compartida de herramientas y equipos - ahorra dinero, reduce consumo, construye comunidad',
+                struct3: '<strong>Asociación de Vecinos:</strong> Organización formal para mejorar y abogar por su área - voz unificada para asuntos locales',
+                struct4: '<strong>Banco de Tiempo:</strong> Intercambio de servicios basado en tiempo en lugar de dinero - la hora de todos es igual',
+                level3_label: 'Nivel Sostenible',
+                journey_title: 'Su Viaje de Construcción Comunitaria',
+                time1_date: 'Semana 1-2',
+                time1_text: '<strong>Empezar Pequeño:</strong> Comprometerse a pasar 30 minutos fuera de su puerta principal 3 veces por semana. Saludar con la mano y decir hola a los vecinos.',
+                time2_date: 'Semana 3-4',
+                time2_text: '<strong>Hacer Conexiones:</strong> Aprender los nombres de 3 vecinos. Compartir algo pequeño (productos horneados, productos del jardín, una nota amable).',
+                time3_date: 'Mes 2',
+                time3_text: '<strong>Ofrecer Ayuda:</strong> Identificar un vecino que podría beneficiarse de asistencia. Ofrecer ayuda específica (no "avísame si necesitas algo").',
+                time4_date: 'Mes 3',
+                time4_text: '<strong>Organizar:</strong> Organizar una reunión simple - café matutino, reunión en el jardín delantero o potluck informal.',
+                time5_date: 'Mes 4-6',
+                time5_text: '<strong>Construir Estructura:</strong> Comenzar a planificar un evento o proyecto recurrente que reúna a los vecinos regularmente.',
+                time6_date: 'Continuo',
+                time6_text: '<strong>Mantener el Impulso:</strong> Seguir apareciendo, seguir conectando, seguir construyendo. El trabajo nunca está "terminado" - es una forma de vivir.',
+                wellbeing_title: 'Recuerde:',
+                wellbeing_text: 'La investigación muestra que el compromiso comunitario es más efectivo para promover el bienestar que los aumentos en los ingresos. La felicidad que construye al conectarse es real y duradera.',
+                resources_title: 'Recursos Adicionales',
+                resources_link: 'Haga Clic para Guía Detallada',
+                modal_title: 'Recursos Detallados de Construcción Comunitaria',
+                modal_books_title: 'Libros e Investigación',
+                book1: 'Putnam, Robert D. "Bowling Alone: The Collapse and Revival of American Community" (2000)',
+                book2: 'Wheatley, Margaret J. "Turning to One Another: Simple Conversations to Restore Hope to the Future" (2009)',
+                book3: 'Aviso del Cirujano General de EE.UU., "Nuestra Epidemia de Soledad y Aislamiento" (2023)',
+                modal_orgs_title: 'Organizaciones para Apoyar',
+                org1: 'Better Block Foundation - Revitalización de vecindarios',
+                org2: 'Project for Public Spaces - Creación de lugares dirigida por la comunidad',
+                org3: 'Mutual Aid Hub - Conéctese con grupos locales de ayuda mutua',
+                org4: 'Nextdoor - Plataforma digital de vecindario',
+                modal_tip_title: 'Consejo Profesional:',
+                modal_tip_text: 'Comience con lo que tenga energía. La consistencia supera la intensidad cada vez.',
+                power_title: 'El Poder de la Comunidad',
+                power_intro: 'En una era de división y aislamiento, construir comunidad es un acto poderoso y resiliente. Significa elegir la conexión sobre el aislamiento, el apoyo mutuo sobre el individualismo y la colaboración sobre la competencia.',
+                impact_title: 'El Impacto:',
+                impact_text: 'Al fortalecer nuestros lazos humanos y conexiones comunitarias, creamos una sociedad más conectada, solidaria y genuinamente democrática donde todos pueden prosperar.',
+                quote: '"No hay mayor poder para el cambio que una comunidad descubriendo lo que le importa."<br><span style="opacity: 0.8; font-size: 0.9rem;">- Margaret J. Wheatley</span>',
+                badge1: 'Solos, podemos hacer tan poco',
+                badge2: 'Juntos, podemos hacer tanto',
+                footer_title: 'Fuentes',
+                source1: 'Aviso del Cirujano General de EE.UU. sobre Conexión Social (2023) - HHS.gov',
+                source2: 'Pew Research Center - Estudios sobre Confianza Social y Polarización Política',
+                source3: 'Robert Putnam - Investigación sobre "Bowling Alone" y capital social',
+                source4: 'Margaret Wheatley - Desarrollo comunitario y organizacional'
+            }
+        };
+
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+            document.querySelectorAll('[data-translate]').forEach((el) => {
+                const key = el.dataset.translate;
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
                 }
             });
-        });
+        };
+
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
+        setLanguage(currentLang);
     </script>
 </body>
 </html>
-=======
-				<details>
-					<summary data-translate="ladder1_title">
-						Tier 1: Individual & Hyper-Local Acts
-					</summary>
-					<div class="details-content">
-						<p data-translate="ladder1_text">
-							Simple actions to increase visibility and foster goodwill.
-							Examples: sit on your front porch, share baked goods, start a
-							"Little Free Library," offer help to a neighbor.
-						</p>
-					</div>
-				</details>
-				<details>
-					<summary data-translate="ladder2_title">
-						Tier 2: Coordinated Group Projects
-					</summary>
-					<div class="details-content">
-						<p data-translate="ladder2_text">
-							Event-based activities for shared experiences. Examples: organize
-							a block party, start a book club, launch a community garden,
-							coordinate a neighborhood cleanup.
-						</p>
-					</div>
-				</details>
-				<details>
-					<summary data-translate="ladder3_title">
-						Tier 3: Sustainable Community Structures
-					</summary>
-					<div class="details-content">
-						<p data-translate="ladder3_text">
-							Formal, ongoing initiatives to build lasting community assets.
-							Examples: establish a mutual aid network, create a tool-lending
-							library, form a neighborhood association.
-						</p>
-					</div>
-				</details>
-			</section>
-
-			<section id="action">
-				<h2 data-translate="section4_title">Start Where You Are</h2>
-				<p
-					class="subtitle"
-					data-translate="section4_subtitle"
-				>
-					Every act of community is an act of democratic reinforcement.
-				</p>
-
-				<details>
-					<summary data-translate="action1_title">Simple Everyday Acts</summary>
-					<div class="details-content">
-						<ul>
-							<li data-translate="action1_item1">
-								<strong>Be Present:</strong> Spend time in your front yard. Walk
-								the neighborhood regularly.
-							</li>
-							<li data-translate="action1_item2">
-								<strong>Share Food:</strong> Pass out cookies, share garden
-								surplus.
-							</li>
-							<li data-translate="action1_item3">
-								<strong>Offer Help:</strong> Assist neighbors with yard work,
-								bring in trash cans.
-							</li>
-						</ul>
-					</div>
-				</details>
-
-				<details>
-					<summary data-translate="action2_title">
-						Organize Group Projects
-					</summary>
-					<div class="details-content">
-						<ul>
-							<li data-translate="action2_item1">
-								<strong>Block Party:</strong> Plan ahead, use a potluck model,
-								provide name tags.
-							</li>
-							<li data-translate="action2_item2">
-								<strong>Skill Shares:</strong> Teach each other practical skills
-								like gardening or bike maintenance.
-							</li>
-							<li data-translate="action2_item3">
-								<strong>Community Garden:</strong> Form a core group, secure
-								land, and get growing together.
-							</li>
-						</ul>
-					</div>
-				</details>
-
-				<details>
-					<summary data-translate="action3_title">
-						Build Sustainable Structures
-					</summary>
-					<div class="details-content">
-						<ul>
-							<li data-translate="action3_item1">
-								<strong>Mutual Aid Network:</strong> "Solidarity, not charity" -
-								a system where everyone gives and receives based on needs.
-							</li>
-							<li data-translate="action3_item2">
-								<strong>Tool-Lending Library:</strong> A shared collection of
-								tools saves money and builds community.
-							</li>
-							<li data-translate="action3_item3">
-								<strong>Neighborhood Association:</strong> A formal, unified
-								voice for local issues.
-							</li>
-						</ul>
-					</div>
-				</details>
-			</section>
-
-			<section id="sources">
-				<details>
-					<summary data-translate="sources_title">
-						Sources & Further Reading
-					</summary>
-					<div class="details-content">
-						<ul>
-							<li data-translate="source1_text">
-								U.S. Surgeon General's Advisory, "Our Epidemic of Loneliness and
-								Isolation." (2023)
-							</li>
-							<li data-translate="source2_text">
-								Pew Research Center, "Americans' Dismal Views of the Nation's
-								Politics." (2023)
-							</li>
-							<li data-translate="source3_text">
-								Putnam, Robert D., "Bowling Alone: The Collapse and Revival of
-								American Community." (2000)
-							</li>
-							<li data-translate="source4_text">
-								Wheatley, Margaret J., "Turning to One Another: Simple
-								Conversations to Restore Hope to the Future." (2009)
-							</li>
-						</ul>
-					</div>
-				</details>
-			</section>
-		</main>
-
-		<footer>
-			<p
-				class="text-center"
-				data-translate="footer_text"
-			>
-				"There is no power for change greater than a community discovering what
-				it cares about." - Margaret J. Wheatley
-			</p>
-		</footer>
-
-		<script>
-			// --- TRANSLATION SCRIPT ---
-			const translations = {
-				en: {
-					lang_en: 'English',
-					lang_es: 'Español',
-					main_title: 'Weaving the Social Fabric',
-					main_subtitle: "A Citizen's Guide to Rebuilding Community.",
-					section1_title: 'The Crisis of Connection',
-					section1_text1:
-						"There is a palpable sense of unease in modern life—a quiet hum of disconnection and exhaustion. This is not a personal failing; it's a symptom of a systemic unraveling of our social fabric. Americans have increasingly sorted into social bubbles, preventing the everyday interactions needed to build trust across divides.",
-					section1_text2:
-						'<strong>The data is clear:</strong> According to the Pew Research Center, the share of Americans who say they trust other people has plummeted from nearly half in the 1970s to less than a third today. This collapse in social trust, explored in books like Robert Putnam\'s "Bowling Alone," coincides with a decline in participation in civic groups, from unions to local clubs, that once formed the bedrock of American community.',
-					section2_title: 'The High Cost of Coming Apart',
-					section2_subtitle1: 'Democracy Under Threat',
-					section2_text1:
-						'Breakdowns in social cohesion lead to feelings of powerlessness and chaos, making authoritarian leaders who promise simple answers more attractive. A society with strong community bonds is an immune system against authoritarianism.',
-					section2_subtitle2: 'Public Health Crisis',
-					section2_text2:
-						'The U.S. Surgeon General\'s 2023 advisory declared an "epidemic of loneliness," with health consequences that rival smoking 15 cigarettes daily. The report found that social isolation significantly increases the risk of premature death and is associated with a <strong>29% increased risk of heart disease, a 32% increased risk of stroke, and a 50% increased risk of developing dementia</strong> for older adults.',
-					section3_title: 'The Blueprint for Renewal',
-					section3_subtitle:
-						"Community building starts small and grows through collective action. Here's your pathway.",
-					ladder1_title: 'Tier 1: Individual & Hyper-Local Acts',
-					ladder1_text:
-						'Simple actions to increase visibility and foster goodwill. Examples: sit on your front porch, share baked goods, start a "Little Free Library," offer help to a neighbor.',
-					ladder2_title: 'Tier 2: Coordinated Group Projects',
-					ladder2_text:
-						'Event-based activities for shared experiences. Examples: organize a block party, start a book club, launch a community garden, coordinate a neighborhood cleanup.',
-					ladder3_title: 'Tier 3: Sustainable Community Structures',
-					ladder3_text:
-						'Formal, ongoing initiatives to build lasting community assets. Examples: establish a mutual aid network, create a tool-lending library, form a neighborhood association.',
-					section4_title: 'Start Where You Are',
-					section4_subtitle:
-						'Every act of community is an act of democratic reinforcement.',
-					action1_title: 'Simple Everyday Acts',
-					action1_item1:
-						'<strong>Be Present:</strong> Spend time in your front yard. Walk the neighborhood regularly.',
-					action1_item2:
-						'<strong>Share Food:</strong> Pass out cookies, share garden surplus.',
-					action1_item3:
-						'<strong>Offer Help:</strong> Assist neighbors with yard work, bring in trash cans.',
-					action2_title: 'Organize Group Projects',
-					action2_item1:
-						'<strong>Block Party:</strong> Plan ahead, use a potluck model, provide name tags.',
-					action2_item2:
-						'<strong>Skill Shares:</strong> Teach each other practical skills like gardening or bike maintenance.',
-					action2_item3:
-						'<strong>Community Garden:</strong> Form a core group, secure land, and get growing together.',
-					action3_title: 'Build Sustainable Structures',
-					action3_item1:
-						'<strong>Mutual Aid Network:</strong> "Solidarity, not charity" - a system where everyone gives and receives based on needs.',
-					action3_item2:
-						'<strong>Tool-Lending Library:</strong> A shared collection of tools saves money and builds community.',
-					action3_item3:
-						'<strong>Neighborhood Association:</strong> A formal, unified voice for local issues.',
-					sources_title: 'Sources & Further Reading',
-					source1_text:
-						'U.S. Surgeon General\'s Advisory, "Our Epidemic of Loneliness and Isolation." (2023)',
-					source2_text:
-						'Pew Research Center, "Americans\' Dismal Views of the Nation\'s Politics." (2023)',
-					source3_text:
-						'Putnam, Robert D., "Bowling Alone: The Collapse and Revival of American Community." (2000)',
-					source4_text:
-						'Wheatley, Margaret J., "Turning to One Another: Simple Conversations to Restore Hope to the Future." (2009)',
-					footer_text:
-						'"There is no power for change greater than a community discovering what it cares about." - Margaret J. Wheatley',
-				},
-				es: {
-					lang_en: 'English',
-					lang_es: 'Español',
-					main_title: 'Tejiendo el Tejido Social',
-					main_subtitle: 'Una Guía Ciudadana para Reconstruir la Comunidad.',
-					section1_title: 'La Crisis de Conexión',
-					section1_text1:
-						'Hay una palpable sensación de malestar en la vida moderna—un murmullo silencioso de desconexión y agotamiento. No es un fracaso personal; es un síntoma de un desmoronamiento sistémico de nuestro tejido social. Los estadounidenses se han clasificado cada vez más en burbujas sociales, impidiendo las interacciones cotidianas necesarias para construir confianza entre divisiones.',
-					section1_text2:
-						'<strong>Los datos son claros:</strong> Según el Pew Research Center, la proporción de estadounidenses que dicen confiar en otras personas ha caído de casi la mitad en la década de 1970 a menos de un tercio hoy. Este colapso en la confianza social, explorado en libros como "Bowling Alone" de Robert Putnam, coincide con una disminución en la participación en grupos cívicos, desde sindicatos hasta clubes locales, que alguna vez formaron la base de la comunidad estadounidense.',
-					section2_title: 'El Alto Costo de la Desunión',
-					section2_subtitle1: 'La Democracia Bajo Amenaza',
-					section2_text1:
-						'La ruptura de la cohesión social conduce a sentimientos de impotencia y caos, haciendo más atractivos a los líderes autoritarios que prometen respuestas simples. Una sociedad con fuertes lazos comunitarios es un sistema inmune contra el autoritarismo.',
-					section2_subtitle2: 'Crisis de Salud Pública',
-					section2_text2:
-						'El informe del Cirujano General de EE. UU. de 2023 declaró una "epidemia de soledad", con consecuencias para la salud que rivalizan con fumar 15 cigarrillos al día. El informe encontró que el aislamiento social aumenta significativamente el riesgo de muerte prematura y se asocia con un <strong>aumento del 29% en el riesgo de enfermedad cardíaca, un 32% en el riesgo de accidente cerebrovascular y un 50% en el riesgo de desarrollar demencia</strong> para los adultos mayores.',
-					section3_title: 'El Plan para la Renovación',
-					section3_subtitle:
-						'La construcción de comunidad comienza con algo pequeño y crece a través de la acción colectiva. Este es tu camino.',
-					ladder1_title: 'Nivel 1: Actos Individuales e Hiperlocales',
-					ladder1_text:
-						'Acciones sencillas para aumentar la visibilidad y fomentar la buena voluntad. Ejemplos: siéntate en tu porche, comparte postres, inicia una "Pequeña Biblioteca Gratuita", ofrece ayuda a un vecino.',
-					ladder2_title: 'Nivel 2: Proyectos Grupales Coordinados',
-					ladder2_text:
-						'Actividades basadas en eventos para experiencias compartidas. Ejemplos: organiza una fiesta de vecinos, inicia un club de lectura, crea un huerto comunitario, coordina una limpieza del barrio.',
-					ladder3_title: 'Nivel 3: Estructuras Comunitarias Sostenibles',
-					ladder3_text:
-						'Iniciativas formales y continuas para construir bienes comunitarios duraderos. Ejemplos: establece una red de ayuda mutua, crea una biblioteca de herramientas, forma una asociación de vecinos.',
-					section4_title: 'Empieza Donde Estás',
-					section4_subtitle:
-						'Cada acto de comunidad es un acto de refuerzo democrático.',
-					action1_title: 'Actos Sencillos y Cotidianos',
-					action1_item1:
-						'<strong>Sé Presente:</strong> Pasa tiempo en tu patio delantero. Camina por el vecindario regularmente.',
-					action1_item2:
-						'<strong>Comparte Comida:</strong> Reparte galletas, comparte los excedentes del huerto.',
-					action1_item3:
-						'<strong>Ofrece Ayuda:</strong> Ayuda a los vecinos con el jardín, entra sus botes de basura.',
-					action2_title: 'Organiza Proyectos en Grupo',
-					action2_item1:
-						'<strong>Fiesta de Vecinos:</strong> Planifica con antelación, que cada uno traiga algo, pon etiquetas con nombres.',
-					action2_item2:
-						'<strong>Intercambio de Habilidades:</strong> Enséñense mutuamente habilidades prácticas como jardinería o mantenimiento de bicicletas.',
-					action2_item3:
-						'<strong>Huerto Comunitario:</strong> Forma un grupo, consigue un terreno y cultiven juntos.',
-					action3_title: 'Construye Estructuras Sostenibles',
-					action3_item1:
-						'<strong>Red de Ayuda Mutua:</strong> "Solidaridad, no caridad" - un sistema donde todos dan y reciben según sus necesidades.',
-					action3_item2:
-						'<strong>Biblioteca de Herramientas:</strong> Una colección compartida de herramientas ahorra dinero y construye comunidad.',
-					action3_item3:
-						'<strong>Asociación de Vecinos:</strong> Una voz formal y unificada para los problemas locales.',
-					sources_title: 'Fuentes y Lecturas Adicionales',
-					source1_text:
-						'Informe del Cirujano General de EE. UU., "Nuestra Epidemia de Soledad y Aislamiento." (2023)',
-					source2_text:
-						'Pew Research Center, "Las Desoladoras Opiniones de los Estadounidenses sobre la Política de la Nación." (2023)',
-					source3_text:
-						'Putnam, Robert D., "Bowling Alone: El Colapso y Renacimiento de la Comunidad Estadounidense." (2000)',
-					source4_text:
-						'Wheatley, Margaret J., "Turning to One Another: Simple Conversations to Restore Hope to the Future." (2009)',
-					footer_text:
-						'"No hay mayor poder para el cambio que una comunidad que descubre lo que le importa." - Margaret J. Wheatley',
-				},
-			};
-
-			let currentLang = 'en';
-
-			const setLanguage = (lang) => {
-				if (!translations[lang]) return;
-				currentLang = lang;
-
-				document
-					.getElementById('lang-en')
-					.classList.toggle('active', lang === 'en');
-				document
-					.getElementById('lang-es')
-					.classList.toggle('active', lang === 'es');
-
-				document.querySelectorAll('[data-translate]').forEach((el) => {
-					const key = el.dataset.translate;
-					if (translations[lang][key]) {
-						el.innerHTML = translations[lang][key];
-					}
-				});
-			};
-
-			// Event listeners for language buttons
-			document
-				.getElementById('lang-en')
-				.addEventListener('click', () => setLanguage('en'));
-			document
-				.getElementById('lang-es')
-				.addEventListener('click', () => setLanguage('es'));
-
-			// Set initial language
-			setLanguage(currentLang);
-		</script>
-	</body>
-</html>
->>>>>>> Stashed changes:docs/examples/community_cohesion.html

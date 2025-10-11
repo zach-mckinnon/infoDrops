@@ -4,8 +4,9 @@ This directory contains example HTML files for the InfoDrops device, along with 
 
 ## 📁 Included Examples
 
-- **`community_cohesion.html`** - Community organizing guide (uses `theme-light`)
+- **`community_cohesion.html`** - Community organizing guide (uses `theme-chill`)
 - **`resist_fascism.html`** - Digital resistance guide (uses `theme-dossier`)
+- **`informed_citizen.html`** - Media literacy and civic engagement guide (uses `theme-professional`)
 
 ## 🎨 Available CSS Themes
 
